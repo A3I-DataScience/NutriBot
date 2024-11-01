@@ -1,6 +1,8 @@
 # NutriBot
 To contain the code of the Nutrition bot data challenge.
 
+https://www.datais.es/dataton-sostenibilidad
+
 # Project Scope
 
 Optimización de dietas nutricionales con IA Generativa
