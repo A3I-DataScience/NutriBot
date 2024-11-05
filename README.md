@@ -38,6 +38,23 @@ Projects will be evaluated based on the effectiveness of the model in creating b
 
 ## How to run 
 
+1. clone the repo,
+2. Create an Open AI Key the key [here](https://platform.openai.com/api-keys), and run in terminal
+```
+export OPENAI_API_KEY="your_api_key_here"
+```
+**Warning** there multiple types of key that you can create on open AI platform 
+
+3. run 
+
+```
+pip install -r requirements.txt
+```
+
+4. run 
+```
+flask --app server.py --debug run
+```
 
 
 

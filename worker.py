@@ -41,11 +41,7 @@ embeddings = None
 # Function to initialize the language model and its embeddings
 def init_llm():
     global llm, embeddings
-
-    os.environ["OPENAI_API_KEY"] = "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"
-
     llm =  ChatOpenAI(model="gpt-4o-mini")
-
     embeddings = OpenAIEmbeddings()
 
 
