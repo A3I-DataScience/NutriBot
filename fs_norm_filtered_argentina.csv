@@ -1,0 +1,43 @@
+Area Code,Area Code (M49),Area,Item Code,Item,Element Code,Element,Year Code,Year,Unit,Value,Flag,Note,Max Year Code
+9,'032,Argentina,210041,Prevalence of undernourishment (percent) (3-year average),6121,Value,20212023,2021-2023,%,3.2,E,,20212023
+9,'032,Argentina,210091F,Prevalence of moderate or severe food insecurity in the female adult population (percent) (3-year average),6121,Value,20212023,2021-2023,%,41.7,A,FAO data,20212023
+9,'032,Argentina,210091F,Prevalence of moderate or severe food insecurity in the female adult population (percent) (3-year average),61211,Confidence interval: Lower bound,20212023,2021-2023,%,37.9,A,FAO data,20212023
+9,'032,Argentina,210091F,Prevalence of moderate or severe food insecurity in the female adult population (percent) (3-year average),61212,Confidence interval: Upper bound,20212023,2021-2023,%,45.5,A,FAO data,20212023
+9,'032,Argentina,210091M,Prevalence of moderate or severe food insecurity in the male adult population (percent) (3-year average),6121,Value,20212023,2021-2023,%,30.5,A,FAO data,20212023
+9,'032,Argentina,210091M,Prevalence of moderate or severe food insecurity in the male adult population (percent) (3-year average),61211,Confidence interval: Lower bound,20212023,2021-2023,%,27.3,A,FAO data,20212023
+9,'032,Argentina,210091M,Prevalence of moderate or severe food insecurity in the male adult population (percent) (3-year average),61212,Confidence interval: Upper bound,20212023,2021-2023,%,33.8,A,FAO data,20212023
+9,'032,Argentina,21010,Average dietary energy supply adequacy (percent) (3-year average),6121,Value,20212023,2021-2023,%,137,E,,20212023
+9,'032,Argentina,21012,"Share of dietary energy supply derived from cereals, roots and tubers (percent) (3-year average)",6121,Value,20202022,2020-2022,%,33,E,,20202022
+9,'032,Argentina,21013,Average protein supply (g/cap/day) (3-year average),6123,Value,20202022,2020-2022,g/cap/d,119.6,E,,20202022
+9,'032,Argentina,21014,Average supply of protein of animal origin (g/cap/day) (3-year average),6123,Value,20202022,2020-2022,g/cap/d,74.3,E,,20202022
+9,'032,Argentina,21016,Rail lines density (total route in km per 100 square km of land area),6124,Value,2019,2019,km,0.6,X,,2019
+9,'032,Argentina,21025,Percentage of children under 5 years of age who are stunted (modelled estimates) (percent),6121,Value,2022,2022,%,9.5,X,,2022
+9,'032,Argentina,21026,Percentage of children under 5 years affected by wasting (percent),6121,Value,2022,2022,%,,X,,2022
+9,'032,Argentina,21031,Per capita food supply variability (kcal/cap/day),6128,Value,2023,2023,kcal/cap/d,13,E,,2023
+9,'032,Argentina,21032,Political stability and absence of violence/terrorism (index),6125,Value,2022,2022,,-0.01,X,,2022
+9,'032,Argentina,21033,Value of food imports in total merchandise exports (percent) (3-year average),6121,Value,20202022,2020-2022,%,5,E,,20202022
+9,'032,Argentina,21034,Percent of arable land equipped for irrigation (percent) (3-year average),6121,Value,20202022,2020-2022,%,0.9,E,,20202022
+9,'032,Argentina,21035,Cereal import dependency ratio (percent) (3-year average),6121,Value,20202022,2020-2022,%,-138.2,E,,20202022
+9,'032,Argentina,210401F,Prevalence of severe food insecurity in the female adult population (percent) (3-year average),6121,Value,20212023,2021-2023,%,15.7,A,FAO data,20212023
+9,'032,Argentina,210401F,Prevalence of severe food insecurity in the female adult population (percent) (3-year average),61211,Confidence interval: Lower bound,20212023,2021-2023,%,13.4,A,FAO data,20212023
+9,'032,Argentina,210401F,Prevalence of severe food insecurity in the female adult population (percent) (3-year average),61212,Confidence interval: Upper bound,20212023,2021-2023,%,18.1,A,FAO data,20212023
+9,'032,Argentina,210401M,Prevalence of severe food insecurity in the male adult population (percent) (3-year average),6121,Value,20212023,2021-2023,%,10.4,A,FAO data,20212023
+9,'032,Argentina,210401M,Prevalence of severe food insecurity in the male adult population (percent) (3-year average),61211,Confidence interval: Lower bound,20212023,2021-2023,%,8.3,A,FAO data,20212023
+9,'032,Argentina,210401M,Prevalence of severe food insecurity in the male adult population (percent) (3-year average),61212,Confidence interval: Upper bound,20212023,2021-2023,%,12.4,A,FAO data,20212023
+9,'032,Argentina,21041,Percentage of children under 5 years of age who are overweight (modelled estimates) (percent),6121,Value,2022,2022,%,12.6,X,,2022
+9,'032,Argentina,21042,Prevalence of obesity in the adult population (18 years and older) (percent),6121,Value,2022,2022,%,35.4,X,,2022
+9,'032,Argentina,210420,Number of obese adults (18 years and older) (million),6132,Value,2022,2022,million No,11.6,X,,2022
+9,'032,Argentina,21043,Prevalence of anemia among women of reproductive age (15-49 years) (percent),6121,Value,2019,2019,%,11.9,X,,2019
+9,'032,Argentina,21044,Prevalence of exclusive breastfeeding among infants 0-5 months of age (percent),6121,Value,2022,2022,%,,X,,2022
+9,'032,Argentina,21046,Percentage of population using safely managed sanitation services (percent),6121,Value,2016,2016,%,46,X,,2016
+9,'032,Argentina,21047,Percentage of population using at least basic drinking water services (percent),6121,Value,2016,2016,%,99,X,,2016
+9,'032,Argentina,21048,Percentage of population using at least basic sanitation services (percent),6121,Value,2016,2016,%,95,X,,2016
+9,'032,Argentina,21049,Prevalence of low birthweight (percent),6121,Value,2020,2020,%,7.4,X,,2020
+9,'032,Argentina,21056,Minimum dietary energy requirement  (kcal/cap/day),6128,Value,2023,2023,kcal/cap/d,1886,E,,2023
+9,'032,Argentina,21057,Average dietary energy requirement (kcal/cap/day),6128,Value,2023,2023,kcal/cap/d,2445,E,,2023
+9,'032,Argentina,21058,Coefficient of variation of habitual caloric consumption distribution (real number),6173,Value,2023,2023,No,0.28,E,,2023
+9,'032,Argentina,21059,Incidence of caloric losses at retail distribution level (percent),6121,Value,2023,2023,%,2.83,E,,2023
+9,'032,Argentina,21061,Average fat supply (g/cap/day) (3-year average),6123,Value,20202022,2020-2022,g/cap/d,135.2,E,,20202022
+9,'032,Argentina,22000,Dietary energy supply used in the estimation of prevalence of undernourishment (kcal/cap/day) (3-year average),6128,Value,20212023,2021-2023,kcal/cap/d,3353,E,,20212023
+9,'032,Argentina,220001,Dietary energy supply used in the estimation of prevalence of undernourishment (kcal/cap/day),6128,Value,2023,2023,kcal/cap/d,3367,E,Imputed value,2023
+9,'032,Argentina,22013,"Gross domestic product per capita, PPP, (constant 2017 international $)",6126,Value,2022,2022,Int$/cap,27127.4,X,,2022

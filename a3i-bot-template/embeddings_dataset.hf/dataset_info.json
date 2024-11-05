@@ -1,0 +1,46 @@
+{
+  "builder_name": "parquet",
+  "citation": "",
+  "config_name": "default",
+  "dataset_name": "cmu-arctic-xvectors",
+  "dataset_size": 17051644,
+  "description": "",
+  "download_checksums": {
+    "hf://datasets/Matthijs/cmu-arctic-xvectors@36e87b347a6a70f0420445b02ec40c55556f9ed7/default/validation/0000.parquet": {
+      "num_bytes": 21283427,
+      "checksum": null
+    }
+  },
+  "download_size": 21283427,
+  "features": {
+    "filename": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "xvector": {
+      "feature": {
+        "dtype": "float32",
+        "_type": "Value"
+      },
+      "length": 512,
+      "_type": "Sequence"
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "size_in_bytes": 38335071,
+  "splits": {
+    "validation": {
+      "name": "validation",
+      "num_bytes": 17051644,
+      "num_examples": 7931,
+      "dataset_name": "cmu-arctic-xvectors"
+    }
+  },
+  "version": {
+    "version_str": "0.0.1",
+    "major": 0,
+    "minor": 0,
+    "patch": 1
+  }
+}

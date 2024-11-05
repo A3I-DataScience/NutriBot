@@ -1,0 +1,8 @@
+version: '3'  # Versión de Docker Compose utilizada
+
+services:  # Definición de servicios
+  web:  # Nombre del servicio 
+    build: .  # Construye la imagen del contenedor a partir del Dockerfile en el directorio actual
+    image: prueba:latest  # Nombre y etiqueta de la imagen del contenedor que se construirá
+    ports:  # Mapeo de puertos
+      - "80:5000"  # Mapea el puerto 80 del host al puerto 5000 del contenedor

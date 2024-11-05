@@ -1,0 +1,7 @@
+Flask
+Flask_Cors
+openai
+scipy
+
+
+

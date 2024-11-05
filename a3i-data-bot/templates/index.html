@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+            integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+            crossorigin="anonymous"
+    />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="../static/style.css"/>
+    <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='style.css') }}"
+    />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="../static/script.js"></script>
+</head>
+<body>
+    <div class="container d-flex flex-column vh-100">
+        <div class="row">
+            <div class="col-12" style="margin-top: 2rem">
+                <h1 class="text-center mb-3">Personal Data Assistant</h1>
+            </div>
+            <div class="col-12 text-center">
+                <div class="custom-control custom-switch mb-3">
+                    <input type="checkbox" class="custom-control-input" id="light-dark-mode-switch" />
+                    <label class="custom-control-label" for="light-dark-mode-switch">Toggle light/dark mode</label>
+                </div>
+            </div>
+        </div>
+        <div class="row flex-grow-1 overflow-auto">
+            <div class="col-12 col-md-8 mx-auto d-flex flex-column">
+                <div id="chat-window" class="p-3">
+                <div id="message-list"></div>
+                <div class="loading-animation my-loading">
+                    <div class="loading-dots my-loading">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                </div>
+                <div class="loading-animation">
+                    <div class="loading-dots">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                </div>
+                </div>
+                <div class="input-group mt-1">
+                    <input type="text" id="message-input" class="form-control" placeholder="Type your message here..." />
+                    <div class="input-group-append">
+                        <button id="send-button" class="btn btn-primary send">
+                            <i class='fa fa-paper-plane'></i>
+                        </button>
+                        <button id="reset-button" class="btn btn-primary reset">
+                            <i class="fa fa-refresh"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

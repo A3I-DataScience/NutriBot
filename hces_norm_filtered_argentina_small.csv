@@ -1,0 +1,338 @@
+Food Group,Indicator,Element,Unit,Value
+All food groups,Energy apparent intake,Average,kcal/cap/d,1822
+All food groups,Protein apparent intake,Average,g/cap/d,69.2
+All food groups,Fat apparent intake,Average,g/cap/d,69.1
+All food groups,Carbohydrate (available) apparent intake,Average,g/cap/d,216.6
+All food groups,Dietary Fibre apparent intake,Average,g/cap/d,12.1
+All food groups,Calcium apparent intake,Average,mg/cap/d,495
+All food groups,Iron apparent intake,Average,mg/cap/d,12.1
+All food groups,Magnesium apparent intake,Average,mg/cap/d,181
+All food groups,Phosphorus apparent intake,Average,mg/cap/d,994
+All food groups,Potassium apparent intake,Average,mg/cap/d,1976
+All food groups,Zinc apparent intake,Average,mg/cap/d,9.29
+All food groups,Vitamin C apparent intake,Average,mg/cap/d,72
+All food groups,Thiamin apparent intake,Average,mg/cap/d,1.15
+All food groups,Riboflavin apparent intake,Average,mg/cap/d,1.55
+All food groups,Vitamin B6 apparent intake,Average,mg/cap/d,1.62
+All food groups,Vitamin B12 apparent intake,Average,µg/cap/d,4.86
+All food groups (excluding beverages),Energy apparent intake,Average,kcal/cap/d,1743
+All food groups (excluding beverages),Protein apparent intake,Average,g/cap/d,68.4
+All food groups (excluding beverages),Fat apparent intake,Average,g/cap/d,68.7
+All food groups (excluding beverages),Carbohydrate (available) apparent intake,Average,g/cap/d,204.1
+All food groups (excluding beverages),Dietary Fibre apparent intake,Average,g/cap/d,11.5
+All food groups (excluding beverages),Calcium apparent intake,Average,mg/cap/d,457
+All food groups (excluding beverages),Iron apparent intake,Average,mg/cap/d,11.7
+All food groups (excluding beverages),Magnesium apparent intake,Average,mg/cap/d,167
+All food groups (excluding beverages),Phosphorus apparent intake,Average,mg/cap/d,943
+All food groups (excluding beverages),Potassium apparent intake,Average,mg/cap/d,1869
+All food groups (excluding beverages),Zinc apparent intake,Average,mg/cap/d,9.11
+All food groups (excluding beverages),Vitamin C apparent intake,Average,mg/cap/d,61
+All food groups (excluding beverages),Thiamin apparent intake,Average,mg/cap/d,1.13
+All food groups (excluding beverages),Riboflavin apparent intake,Average,mg/cap/d,1.52
+All food groups (excluding beverages),Vitamin B6 apparent intake,Average,mg/cap/d,1.58
+All food groups (excluding beverages),Vitamin B12 apparent intake,Average,µg/cap/d,4.84
+Beverages,"Food, edible, apparent consumption",Average,g/cap/d,289.9
+Beverages,Energy apparent intake,Average,kcal/cap/d,79
+Beverages,Protein apparent intake,Average,g/cap/d,0.8
+Beverages,Fat apparent intake,Average,g/cap/d,0.4
+Beverages,Carbohydrate (available) apparent intake,Average,g/cap/d,12.5
+Beverages,Dietary Fibre apparent intake,Average,g/cap/d,0.6
+Beverages,Calcium apparent intake,Average,mg/cap/d,38
+Beverages,Iron apparent intake,Average,mg/cap/d,0.4
+Beverages,Magnesium apparent intake,Average,mg/cap/d,14
+Beverages,Phosphorus apparent intake,Average,mg/cap/d,51
+Beverages,Potassium apparent intake,Average,mg/cap/d,107
+Beverages,Zinc apparent intake,Average,mg/cap/d,0.18
+Beverages,Vitamin C apparent intake,Average,mg/cap/d,11
+Beverages,Thiamin apparent intake,Average,mg/cap/d,0.02
+Beverages,Riboflavin apparent intake,Average,mg/cap/d,0.03
+Beverages,Vitamin B6 apparent intake,Average,mg/cap/d,0.04
+Beverages,Vitamin B12 apparent intake,Average,µg/cap/d,0.02
+Cereals and their products,"Food, edible, apparent consumption",Average,g/cap/d,156.4
+Cereals and their products,Energy apparent intake,Average,kcal/cap/d,531
+Cereals and their products,Protein apparent intake,Average,g/cap/d,14.6
+Cereals and their products,Fat apparent intake,Average,g/cap/d,6.4
+Cereals and their products,Carbohydrate (available) apparent intake,Average,g/cap/d,101.3
+Cereals and their products,Dietary Fibre apparent intake,Average,g/cap/d,4.5
+Cereals and their products,Calcium apparent intake,Average,mg/cap/d,37
+Cereals and their products,Iron apparent intake,Average,mg/cap/d,4.9
+Cereals and their products,Magnesium apparent intake,Average,mg/cap/d,44
+Cereals and their products,Phosphorus apparent intake,Average,mg/cap/d,173
+Cereals and their products,Potassium apparent intake,Average,mg/cap/d,227
+Cereals and their products,Zinc apparent intake,Average,mg/cap/d,1.44
+Cereals and their products,Vitamin C apparent intake,Average,mg/cap/d,0
+Cereals and their products,Thiamin apparent intake,Average,mg/cap/d,0.48
+Cereals and their products,Riboflavin apparent intake,Average,mg/cap/d,0.53
+Cereals and their products,Vitamin B6 apparent intake,Average,mg/cap/d,0.47
+Cereals and their products,Vitamin B12 apparent intake,Average,µg/cap/d,0.03
+Composite dishes,"Food, edible, apparent consumption",Average,g/cap/d,3.6
+Composite dishes,Energy apparent intake,Average,kcal/cap/d,128
+Composite dishes,Protein apparent intake,Average,g/cap/d,5
+Composite dishes,Fat apparent intake,Average,g/cap/d,4.4
+Composite dishes,Carbohydrate (available) apparent intake,Average,g/cap/d,15.7
+Composite dishes,Dietary Fibre apparent intake,Average,g/cap/d,0.9
+Composite dishes,Calcium apparent intake,Average,mg/cap/d,36
+Composite dishes,Iron apparent intake,Average,mg/cap/d,0.9
+Composite dishes,Magnesium apparent intake,Average,mg/cap/d,14
+Composite dishes,Phosphorus apparent intake,Average,mg/cap/d,74
+Composite dishes,Potassium apparent intake,Average,mg/cap/d,163
+Composite dishes,Zinc apparent intake,Average,mg/cap/d,0.66
+Composite dishes,Vitamin C apparent intake,Average,mg/cap/d,5
+Composite dishes,Thiamin apparent intake,Average,mg/cap/d,0.09
+Composite dishes,Riboflavin apparent intake,Average,mg/cap/d,0.11
+Composite dishes,Vitamin B6 apparent intake,Average,mg/cap/d,0.12
+Composite dishes,Vitamin B12 apparent intake,Average,µg/cap/d,0.27
+Eggs and their products,"Food, edible, apparent consumption",Average,g/cap/d,12.5
+Eggs and their products,Energy apparent intake,Average,kcal/cap/d,17
+Eggs and their products,Protein apparent intake,Average,g/cap/d,1.6
+Eggs and their products,Fat apparent intake,Average,g/cap/d,1.2
+Eggs and their products,Carbohydrate (available) apparent intake,Average,g/cap/d,0.1
+Eggs and their products,Dietary Fibre apparent intake,Average,g/cap/d,0
+Eggs and their products,Calcium apparent intake,Average,mg/cap/d,7
+Eggs and their products,Iron apparent intake,Average,mg/cap/d,0.2
+Eggs and their products,Magnesium apparent intake,Average,mg/cap/d,2
+Eggs and their products,Phosphorus apparent intake,Average,mg/cap/d,25
+Eggs and their products,Potassium apparent intake,Average,mg/cap/d,17
+Eggs and their products,Zinc apparent intake,Average,mg/cap/d,0.16
+Eggs and their products,Vitamin C apparent intake,Average,mg/cap/d,0
+Eggs and their products,Thiamin apparent intake,Average,mg/cap/d,0.01
+Eggs and their products,Riboflavin apparent intake,Average,mg/cap/d,0.06
+Eggs and their products,Vitamin B6 apparent intake,Average,mg/cap/d,0.02
+Eggs and their products,Vitamin B12 apparent intake,Average,µg/cap/d,0.11
+Fats and oils,"Food, edible, apparent consumption",Average,g/cap/d,20
+Fats and oils,Energy apparent intake,Average,kcal/cap/d,178
+Fats and oils,Protein apparent intake,Average,g/cap/d,0
+Fats and oils,Fat apparent intake,Average,g/cap/d,19.8
+Fats and oils,Carbohydrate (available) apparent intake,Average,g/cap/d,0
+Fats and oils,Dietary Fibre apparent intake,Average,g/cap/d,0
+Fats and oils,Calcium apparent intake,Average,mg/cap/d,0
+Fats and oils,Iron apparent intake,Average,mg/cap/d,0
+Fats and oils,Magnesium apparent intake,Average,mg/cap/d,0
+Fats and oils,Phosphorus apparent intake,Average,mg/cap/d,0
+Fats and oils,Potassium apparent intake,Average,mg/cap/d,0
+Fats and oils,Zinc apparent intake,Average,mg/cap/d,0
+Fats and oils,Vitamin C apparent intake,Average,mg/cap/d,0
+Fats and oils,Thiamin apparent intake,Average,mg/cap/d,0
+Fats and oils,Riboflavin apparent intake,Average,mg/cap/d,0
+Fats and oils,Vitamin B6 apparent intake,Average,mg/cap/d,0
+Fats and oils,Vitamin B12 apparent intake,Average,µg/cap/d,0
+"Fish, shellfish and their products","Food, edible, apparent consumption",Average,g/cap/d,5.1
+"Fish, shellfish and their products",Energy apparent intake,Average,kcal/cap/d,5
+"Fish, shellfish and their products",Protein apparent intake,Average,g/cap/d,0.9
+"Fish, shellfish and their products",Fat apparent intake,Average,g/cap/d,0.2
+"Fish, shellfish and their products",Carbohydrate (available) apparent intake,Average,g/cap/d,0
+"Fish, shellfish and their products",Dietary Fibre apparent intake,Average,g/cap/d,0
+"Fish, shellfish and their products",Calcium apparent intake,Average,mg/cap/d,2
+"Fish, shellfish and their products",Iron apparent intake,Average,mg/cap/d,0
+"Fish, shellfish and their products",Magnesium apparent intake,Average,mg/cap/d,1
+"Fish, shellfish and their products",Phosphorus apparent intake,Average,mg/cap/d,10
+"Fish, shellfish and their products",Potassium apparent intake,Average,mg/cap/d,15
+"Fish, shellfish and their products",Zinc apparent intake,Average,mg/cap/d,0.03
+"Fish, shellfish and their products",Vitamin C apparent intake,Average,mg/cap/d,0
+"Fish, shellfish and their products",Thiamin apparent intake,Average,mg/cap/d,0
+"Fish, shellfish and their products",Riboflavin apparent intake,Average,mg/cap/d,0
+"Fish, shellfish and their products",Vitamin B6 apparent intake,Average,mg/cap/d,0
+"Fish, shellfish and their products",Vitamin B12 apparent intake,Average,µg/cap/d,0.1
+Food additives,"Food, edible, apparent consumption",Average,g/cap/d,0.8
+Food additives,Energy apparent intake,Average,kcal/cap/d,3
+Food additives,Protein apparent intake,Average,g/cap/d,0
+Food additives,Fat apparent intake,Average,g/cap/d,0
+Food additives,Carbohydrate (available) apparent intake,Average,g/cap/d,0.6
+Food additives,Dietary Fibre apparent intake,Average,g/cap/d,0
+Food additives,Calcium apparent intake,Average,mg/cap/d,0
+Food additives,Iron apparent intake,Average,mg/cap/d,0
+Food additives,Magnesium apparent intake,Average,mg/cap/d,0
+Food additives,Phosphorus apparent intake,Average,mg/cap/d,1
+Food additives,Potassium apparent intake,Average,mg/cap/d,1
+Food additives,Zinc apparent intake,Average,mg/cap/d,0.01
+Food additives,Vitamin C apparent intake,Average,mg/cap/d,0
+Food additives,Thiamin apparent intake,Average,mg/cap/d,0
+Food additives,Riboflavin apparent intake,Average,mg/cap/d,0
+Food additives,Vitamin B6 apparent intake,Average,mg/cap/d,0
+Food additives,Vitamin B12 apparent intake,Average,µg/cap/d,0
+Foods for particular nutritional uses,"Food, edible, apparent consumption",Average,g/cap/d,1.1
+Foods for particular nutritional uses,Energy apparent intake,Average,kcal/cap/d,0
+Foods for particular nutritional uses,Protein apparent intake,Average,g/cap/d,0
+Foods for particular nutritional uses,Fat apparent intake,Average,g/cap/d,0
+Foods for particular nutritional uses,Carbohydrate (available) apparent intake,Average,g/cap/d,0.1
+Foods for particular nutritional uses,Dietary Fibre apparent intake,Average,g/cap/d,0
+Foods for particular nutritional uses,Calcium apparent intake,Average,mg/cap/d,0
+Foods for particular nutritional uses,Iron apparent intake,Average,mg/cap/d,0
+Foods for particular nutritional uses,Magnesium apparent intake,Average,mg/cap/d,0
+Foods for particular nutritional uses,Phosphorus apparent intake,Average,mg/cap/d,0
+Foods for particular nutritional uses,Potassium apparent intake,Average,mg/cap/d,0
+Foods for particular nutritional uses,Zinc apparent intake,Average,mg/cap/d,0
+Foods for particular nutritional uses,Vitamin C apparent intake,Average,mg/cap/d,0
+Foods for particular nutritional uses,Thiamin apparent intake,Average,mg/cap/d,0
+Foods for particular nutritional uses,Riboflavin apparent intake,Average,mg/cap/d,0
+Foods for particular nutritional uses,Vitamin B6 apparent intake,Average,mg/cap/d,0.01
+Foods for particular nutritional uses,Vitamin B12 apparent intake,Average,µg/cap/d,0.02
+Fruits and their products,"Food, edible, apparent consumption",Average,g/cap/d,52.1
+Fruits and their products,Energy apparent intake,Average,kcal/cap/d,34
+Fruits and their products,Protein apparent intake,Average,g/cap/d,0.5
+Fruits and their products,Fat apparent intake,Average,g/cap/d,0.4
+Fruits and their products,Carbohydrate (available) apparent intake,Average,g/cap/d,6.6
+Fruits and their products,Dietary Fibre apparent intake,Average,g/cap/d,1.1
+Fruits and their products,Calcium apparent intake,Average,mg/cap/d,8
+Fruits and their products,Iron apparent intake,Average,mg/cap/d,0.1
+Fruits and their products,Magnesium apparent intake,Average,mg/cap/d,7
+Fruits and their products,Phosphorus apparent intake,Average,mg/cap/d,11
+Fruits and their products,Potassium apparent intake,Average,mg/cap/d,106
+Fruits and their products,Zinc apparent intake,Average,mg/cap/d,0.06
+Fruits and their products,Vitamin C apparent intake,Average,mg/cap/d,10
+Fruits and their products,Thiamin apparent intake,Average,mg/cap/d,0.02
+Fruits and their products,Riboflavin apparent intake,Average,mg/cap/d,0.02
+Fruits and their products,Vitamin B6 apparent intake,Average,mg/cap/d,0.07
+Fruits and their products,Vitamin B12 apparent intake,Average,µg/cap/d,0
+Meat and meat products,"Food, edible, apparent consumption",Average,g/cap/d,149.3
+Meat and meat products,Energy apparent intake,Average,kcal/cap/d,317
+Meat and meat products,Protein apparent intake,Average,g/cap/d,28.2
+Meat and meat products,Fat apparent intake,Average,g/cap/d,18.8
+Meat and meat products,Carbohydrate (available) apparent intake,Average,g/cap/d,8.3
+Meat and meat products,Dietary Fibre apparent intake,Average,g/cap/d,0.3
+Meat and meat products,Calcium apparent intake,Average,mg/cap/d,37
+Meat and meat products,Iron apparent intake,Average,mg/cap/d,2.8
+Meat and meat products,Magnesium apparent intake,Average,mg/cap/d,33
+Meat and meat products,Phosphorus apparent intake,Average,mg/cap/d,284
+Meat and meat products,Potassium apparent intake,Average,mg/cap/d,433
+Meat and meat products,Zinc apparent intake,Average,mg/cap/d,4.33
+Meat and meat products,Vitamin C apparent intake,Average,mg/cap/d,3
+Meat and meat products,Thiamin apparent intake,Average,mg/cap/d,0.21
+Meat and meat products,Riboflavin apparent intake,Average,mg/cap/d,0.32
+Meat and meat products,Vitamin B6 apparent intake,Average,mg/cap/d,0.49
+Meat and meat products,Vitamin B12 apparent intake,Average,µg/cap/d,3.22
+Milk and milk products,"Food, edible, apparent consumption",Average,g/cap/d,106.6
+Milk and milk products,Energy apparent intake,Average,kcal/cap/d,117
+Milk and milk products,Protein apparent intake,Average,g/cap/d,6.6
+Milk and milk products,Fat apparent intake,Average,g/cap/d,7
+Milk and milk products,Carbohydrate (available) apparent intake,Average,g/cap/d,6.7
+Milk and milk products,Dietary Fibre apparent intake,Average,g/cap/d,0
+Milk and milk products,Calcium apparent intake,Average,mg/cap/d,227
+Milk and milk products,Iron apparent intake,Average,mg/cap/d,0.2
+Milk and milk products,Magnesium apparent intake,Average,mg/cap/d,15
+Milk and milk products,Phosphorus apparent intake,Average,mg/cap/d,175
+Milk and milk products,Potassium apparent intake,Average,mg/cap/d,154
+Milk and milk products,Zinc apparent intake,Average,mg/cap/d,0.88
+Milk and milk products,Vitamin C apparent intake,Average,mg/cap/d,0
+Milk and milk products,Thiamin apparent intake,Average,mg/cap/d,0.04
+Milk and milk products,Riboflavin apparent intake,Average,mg/cap/d,0.25
+Milk and milk products,Vitamin B6 apparent intake,Average,mg/cap/d,0.02
+Milk and milk products,Vitamin B12 apparent intake,Average,µg/cap/d,0.65
+Miscellaneous,Energy apparent intake,Average,kcal/cap/d,175
+Miscellaneous,Protein apparent intake,Average,g/cap/d,7
+Miscellaneous,Fat apparent intake,Average,g/cap/d,6.2
+Miscellaneous,Carbohydrate (available) apparent intake,Average,g/cap/d,20.9
+Miscellaneous,Dietary Fibre apparent intake,Average,g/cap/d,1.4
+Miscellaneous,Calcium apparent intake,Average,mg/cap/d,50
+Miscellaneous,Iron apparent intake,Average,mg/cap/d,1.2
+Miscellaneous,Magnesium apparent intake,Average,mg/cap/d,19
+Miscellaneous,Phosphorus apparent intake,Average,mg/cap/d,103
+Miscellaneous,Potassium apparent intake,Average,mg/cap/d,214
+Miscellaneous,Zinc apparent intake,Average,mg/cap/d,0.91
+Miscellaneous,Vitamin C apparent intake,Average,mg/cap/d,8
+Miscellaneous,Thiamin apparent intake,Average,mg/cap/d,0.11
+Miscellaneous,Riboflavin apparent intake,Average,mg/cap/d,0.15
+Miscellaneous,Vitamin B6 apparent intake,Average,mg/cap/d,0.16
+Miscellaneous,Vitamin B12 apparent intake,Average,µg/cap/d,0.38
+"Pulses, seeds and nuts and their products","Food, edible, apparent consumption",Average,g/cap/d,1.9
+"Pulses, seeds and nuts and their products",Energy apparent intake,Average,kcal/cap/d,5
+"Pulses, seeds and nuts and their products",Protein apparent intake,Average,g/cap/d,0.3
+"Pulses, seeds and nuts and their products",Fat apparent intake,Average,g/cap/d,0.1
+"Pulses, seeds and nuts and their products",Carbohydrate (available) apparent intake,Average,g/cap/d,0.6
+"Pulses, seeds and nuts and their products",Dietary Fibre apparent intake,Average,g/cap/d,0.2
+"Pulses, seeds and nuts and their products",Calcium apparent intake,Average,mg/cap/d,1
+"Pulses, seeds and nuts and their products",Iron apparent intake,Average,mg/cap/d,0.1
+"Pulses, seeds and nuts and their products",Magnesium apparent intake,Average,mg/cap/d,1
+"Pulses, seeds and nuts and their products",Phosphorus apparent intake,Average,mg/cap/d,5
+"Pulses, seeds and nuts and their products",Potassium apparent intake,Average,mg/cap/d,12
+"Pulses, seeds and nuts and their products",Zinc apparent intake,Average,mg/cap/d,0.05
+"Pulses, seeds and nuts and their products",Vitamin C apparent intake,Average,mg/cap/d,0
+"Pulses, seeds and nuts and their products",Thiamin apparent intake,Average,mg/cap/d,0.01
+"Pulses, seeds and nuts and their products",Riboflavin apparent intake,Average,mg/cap/d,0
+"Pulses, seeds and nuts and their products",Vitamin B6 apparent intake,Average,mg/cap/d,0.01
+"Pulses, seeds and nuts and their products",Vitamin B12 apparent intake,Average,µg/cap/d,0
+"Roots, tubers, plantains and their products","Food, edible, apparent consumption",Average,g/cap/d,53
+"Roots, tubers, plantains and their products",Energy apparent intake,Average,kcal/cap/d,41
+"Roots, tubers, plantains and their products",Protein apparent intake,Average,g/cap/d,1.1
+"Roots, tubers, plantains and their products",Fat apparent intake,Average,g/cap/d,0
+"Roots, tubers, plantains and their products",Carbohydrate (available) apparent intake,Average,g/cap/d,8.6
+"Roots, tubers, plantains and their products",Dietary Fibre apparent intake,Average,g/cap/d,0.7
+"Roots, tubers, plantains and their products",Calcium apparent intake,Average,mg/cap/d,3
+"Roots, tubers, plantains and their products",Iron apparent intake,Average,mg/cap/d,0.2
+"Roots, tubers, plantains and their products",Magnesium apparent intake,Average,mg/cap/d,8
+"Roots, tubers, plantains and their products",Phosphorus apparent intake,Average,mg/cap/d,24
+"Roots, tubers, plantains and their products",Potassium apparent intake,Average,mg/cap/d,235
+"Roots, tubers, plantains and their products",Zinc apparent intake,Average,mg/cap/d,0.14
+"Roots, tubers, plantains and their products",Vitamin C apparent intake,Average,mg/cap/d,18
+"Roots, tubers, plantains and their products",Thiamin apparent intake,Average,mg/cap/d,0.06
+"Roots, tubers, plantains and their products",Riboflavin apparent intake,Average,mg/cap/d,0
+"Roots, tubers, plantains and their products",Vitamin B6 apparent intake,Average,mg/cap/d,0.09
+"Roots, tubers, plantains and their products",Vitamin B12 apparent intake,Average,µg/cap/d,0
+Savoury snacks,"Food, edible, apparent consumption",Average,g/cap/d,1.4
+Savoury snacks,Energy apparent intake,Average,kcal/cap/d,7
+Savoury snacks,Protein apparent intake,Average,g/cap/d,0.1
+Savoury snacks,Fat apparent intake,Average,g/cap/d,0.4
+Savoury snacks,Carbohydrate (available) apparent intake,Average,g/cap/d,0.8
+Savoury snacks,Dietary Fibre apparent intake,Average,g/cap/d,0.1
+Savoury snacks,Calcium apparent intake,Average,mg/cap/d,1
+Savoury snacks,Iron apparent intake,Average,mg/cap/d,0
+Savoury snacks,Magnesium apparent intake,Average,mg/cap/d,1
+Savoury snacks,Phosphorus apparent intake,Average,mg/cap/d,2
+Savoury snacks,Potassium apparent intake,Average,mg/cap/d,14
+Savoury snacks,Zinc apparent intake,Average,mg/cap/d,0.01
+Savoury snacks,Vitamin C apparent intake,Average,mg/cap/d,0
+Savoury snacks,Thiamin apparent intake,Average,mg/cap/d,0
+Savoury snacks,Riboflavin apparent intake,Average,mg/cap/d,0
+Savoury snacks,Vitamin B6 apparent intake,Average,mg/cap/d,0.01
+Savoury snacks,Vitamin B12 apparent intake,Average,µg/cap/d,0
+Spices and condiments,"Food, edible, apparent consumption",Average,g/cap/d,10.3
+Spices and condiments,Energy apparent intake,Average,kcal/cap/d,15
+Spices and condiments,Protein apparent intake,Average,g/cap/d,0.2
+Spices and condiments,Fat apparent intake,Average,g/cap/d,1.1
+Spices and condiments,Carbohydrate (available) apparent intake,Average,g/cap/d,1
+Spices and condiments,Dietary Fibre apparent intake,Average,g/cap/d,0.2
+Spices and condiments,Calcium apparent intake,Average,mg/cap/d,5
+Spices and condiments,Iron apparent intake,Average,mg/cap/d,0.1
+Spices and condiments,Magnesium apparent intake,Average,mg/cap/d,2
+Spices and condiments,Phosphorus apparent intake,Average,mg/cap/d,4
+Spices and condiments,Potassium apparent intake,Average,mg/cap/d,18
+Spices and condiments,Zinc apparent intake,Average,mg/cap/d,0.04
+Spices and condiments,Vitamin C apparent intake,Average,mg/cap/d,0
+Spices and condiments,Thiamin apparent intake,Average,mg/cap/d,0
+Spices and condiments,Riboflavin apparent intake,Average,mg/cap/d,0.01
+Spices and condiments,Vitamin B6 apparent intake,Average,mg/cap/d,0.01
+Spices and condiments,Vitamin B12 apparent intake,Average,µg/cap/d,0
+Sweets and sugars,"Food, edible, apparent consumption",Average,g/cap/d,38.3
+Sweets and sugars,Energy apparent intake,Average,kcal/cap/d,144
+Sweets and sugars,Protein apparent intake,Average,g/cap/d,1.2
+Sweets and sugars,Fat apparent intake,Average,g/cap/d,2.6
+Sweets and sugars,Carbohydrate (available) apparent intake,Average,g/cap/d,28.7
+Sweets and sugars,Dietary Fibre apparent intake,Average,g/cap/d,0.3
+Sweets and sugars,Calcium apparent intake,Average,mg/cap/d,23
+Sweets and sugars,Iron apparent intake,Average,mg/cap/d,0.5
+Sweets and sugars,Magnesium apparent intake,Average,mg/cap/d,8
+Sweets and sugars,Phosphorus apparent intake,Average,mg/cap/d,26
+Sweets and sugars,Potassium apparent intake,Average,mg/cap/d,54
+Sweets and sugars,Zinc apparent intake,Average,mg/cap/d,0.18
+Sweets and sugars,Vitamin C apparent intake,Average,mg/cap/d,1
+Sweets and sugars,Thiamin apparent intake,Average,mg/cap/d,0.02
+Sweets and sugars,Riboflavin apparent intake,Average,mg/cap/d,0.04
+Sweets and sugars,Vitamin B6 apparent intake,Average,mg/cap/d,0.02
+Sweets and sugars,Vitamin B12 apparent intake,Average,µg/cap/d,0.06
+Vegetables and their products,"Food, edible, apparent consumption",Average,g/cap/d,92.6
+Vegetables and their products,Energy apparent intake,Average,kcal/cap/d,25
+Vegetables and their products,Protein apparent intake,Average,g/cap/d,1.1
+Vegetables and their products,Fat apparent intake,Average,g/cap/d,0.2
+Vegetables and their products,Carbohydrate (available) apparent intake,Average,g/cap/d,4
+Vegetables and their products,Dietary Fibre apparent intake,Average,g/cap/d,1.6
+Vegetables and their products,Calcium apparent intake,Average,mg/cap/d,20
+Vegetables and their products,Iron apparent intake,Average,mg/cap/d,0.4
+Vegetables and their products,Magnesium apparent intake,Average,mg/cap/d,11
+Vegetables and their products,Phosphorus apparent intake,Average,mg/cap/d,26
+Vegetables and their products,Potassium apparent intake,Average,mg/cap/d,205
+Vegetables and their products,Zinc apparent intake,Average,mg/cap/d,0.2
+Vegetables and their products,Vitamin C apparent intake,Average,mg/cap/d,14
+Vegetables and their products,Thiamin apparent intake,Average,mg/cap/d,0.07
+Vegetables and their products,Riboflavin apparent intake,Average,mg/cap/d,0.03
+Vegetables and their products,Vitamin B6 apparent intake,Average,mg/cap/d,0.09
+Vegetables and their products,Vitamin B12 apparent intake,Average,µg/cap/d,0

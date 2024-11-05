@@ -1,2 +1,7 @@
 pandas
 numpy
+langchain 
+langchain-community 
+langchain-chroma
+langchain-openai
+beautifulsoup4
