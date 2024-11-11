@@ -24,25 +24,27 @@ Projects will be evaluated based on the effectiveness of the model in creating b
 
 ## Evaluation
 
-To ensure a smooth transition, we suggest you be on site by 4:30 p.m. so you can upload your presentation. You will have a maximum of 20 minutes to present your project, followed by a round of questions from the jury.
+You will have a maximum of 20 minutes to present your project, followed by a round of questions from the jury.
 
-Evaluation Criteria
+### Evaluation Criteria
 
 These are the points on which the evaluation of your project will be based:
 
-Quality of the Technical Solution (up to 40 points)
+#### Quality of the Technical Solution (up to 40 points)
 
 Innovation in the solution and approach to address the sustainability problem.
 Feasibility and scalability of the solution in the real world.
 Coverage of the complete data cycle: collection, analysis, integration and generation of insights.
 Implementation of Machine Learning & AI.
-Business Impact (up to 40 points)
+
+#### Business Impact (up to 40 points)
 
 Relevance and applicability of the solution for the sustainability sector and its recipients.
 Ability to solve the problem in practice and potential to improve processes.
 User Experience (UX) focused on ease of use, clarity in presentation of results and applicability.
 Process improvement through technology and data for sustainable optimization.
-Presentation and Defense (up to 20 points)
+
+#### Presentation and Defense (up to 20 points)
 
 Quality and originality of the presentation and clarity of the message.
 Clarity and effectiveness in the visualization of results.
