@@ -54,6 +54,7 @@ Power of the message and ability to convince the jury.
 
 * https://www.fao.org/faostat/en/#data/HCES
 * https://www.fao.org/faostat/en/#data/FS
+* https://www.fao.org/faostat/en/#data
 
 ## Nutrition Guidelines References:
 
@@ -61,8 +62,10 @@ Power of the message and ability to convince the jury.
 * https://applications.emro.who.int/docs/EMROPUB_2019_en_23536.pdf?ua=1
 * https://files.magicapp.org/guideline/a3fe934f-6516-460d-902f-e1c7bbcec034/published_guideline_7330-1_1.pdf
 
+## Tezchical references
 
-
+* https://python.langchain.com/docs/introduction/
+* https://huggingface.co/learn/cookbook/en/rag_evaluation
 
 ## How to run 
 
