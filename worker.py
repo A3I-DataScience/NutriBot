@@ -69,16 +69,17 @@ def process_pdfs_loop(documents,prefixe):
 
 def process_urls_loop(documents,url_filename):
 
-    url_tuple = ()
+    url_list = []
     with open(url_filename) as url_file:
         for line in url_file:
-            url_tuple.append(line)
-
-    bs4_strainer = bs4.SoupStrainer()
-    loader = WebBaseLoader(web_paths=url_tuple,
-    bs_kwargs={"parse_only": bs4_strainer},
-    )
-    documents.extend(loader.load())
+            if line.startswith('https://'):
+                url_list.append(line)
+    if len(url_list) > 0:
+        bs4_strainer = bs4.SoupStrainer()
+        loader = WebBaseLoader(web_paths=url_list,
+        bs_kwargs={"parse_only": bs4_strainer},
+        )
+        documents.extend(loader.load())
 
     return documents
 
@@ -92,7 +93,7 @@ def process_heatlh_risks_documents(documents,country):
         loader = DataFrameLoader(hces_norm_df_filtered_area, page_content_column="Food Group Indicator")
         documents.extend(loader.load())
     else:
-        print("No HCES data found for the specified country.")
+        print(f"No HCES data found for the country {country}.")
 
     fs_norm_filtered = pd.read_csv('fs_norm_filtered.csv')
     fs_norm_df_filtered_area = fs_norm_filtered[fs_norm_filtered['Area'] == country]
@@ -101,7 +102,7 @@ def process_heatlh_risks_documents(documents,country):
         loader = DataFrameLoader(fs_norm_df_filtered_area, page_content_column="Item")
         documents.extend(loader.load())
     else:
-        print("No FS data found for the specified country.")
+        print(f"No HCES data found for the country {country}.")
 
     documents = process_pdfs_loop(documents,prefixe = 'heatlh_risks')
     documents = process_urls_loop(documents,url_filename = 'health_risks_urls.txt' )
@@ -126,7 +127,7 @@ def process_agriculture_documents(documents,country):
     fao_url = f'https://www.fao.org/nutrition/education/food-dietary-guidelines/regions/countries/{country.lower()}/en/'
 
     bs4_strainer = bs4.SoupStrainer()
-    loader = WebBaseLoader(web_paths=(fao_url),
+    loader = WebBaseLoader(web_paths=[fao_url],
                             bs_kwargs={"parse_only": bs4_strainer},)
     documents.extend(loader.load())
     return documents
