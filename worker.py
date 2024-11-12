@@ -213,6 +213,8 @@ def process_prompt(prompt):
     },  
 )["answer"]
     
+    print(f"{output["answer"]} and  context: \n \n {output["context"]}") 
+    
     answer = output
     
     chat_history.append((prompt, answer))
