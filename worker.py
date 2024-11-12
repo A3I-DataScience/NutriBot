@@ -51,19 +51,39 @@ def process_local_documents(country):
 
     documents = []
 
-    documents = process_heatlh_risk_documents(documents,country)
-
+    documents = process_heatlh_risks_documents(documents,country)
     documents = process_diet_guidelines_documents(documents,country)
     documents = process_agriculture_documents(documents,country)
-
 
     return documents
 
 def format_docs(docs):
     return "\n\n".join(doc.page_content for doc in docs)
 
+def process_pdfs_loop(documents,prefixe):
+    for file in os.listdir():
+        if file.endswith(".pdf") and file.startswith(prefixe):
+            loader = PyPDFLoader(os.path.join(os.getcwd(), file))
+            documents.extend(loader.load())
+    return documents
+
+def process_urls_loop(documents,url_filename):
+
+    url_tuple = ()
+    with open(url_filename) as url_file:
+        for line in url_file:
+            url_tuple.append(line)
+
+    bs4_strainer = bs4.SoupStrainer()
+    loader = WebBaseLoader(web_paths=url_tuple,
+    bs_kwargs={"parse_only": bs4_strainer},
+    )
+    documents.extend(loader.load())
+
+    return documents
+
 # Function to process a PDF document
-def process_heatlh_risk_documents(documents,country):
+def process_heatlh_risks_documents(documents,country):
 
     hces_norm_filtered = pd.read_csv('hces_norm_filtered.csv')
     hces_norm_df_filtered_area = hces_norm_filtered[hces_norm_filtered['Area'] == country]
@@ -83,38 +103,26 @@ def process_heatlh_risk_documents(documents,country):
     else:
         print("No FS data found for the specified country.")
 
+    documents = process_pdfs_loop(documents,prefixe = 'heatlh_risks')
+    documents = process_urls_loop(documents,url_filename = 'health_risks_urls.txt' )
+
     return documents
 
 def process_diet_guidelines_documents(documents,country):
 
-    bs4_strainer = bs4.SoupStrainer()
-    loader = WebBaseLoader(web_paths=("https://www.who.int/news-room/fact-sheets/detail/healthy-diet",
-                                     "https://www.who.int/activities/developing-nutrition-guidelines"),
-    bs_kwargs={"parse_only": bs4_strainer},
-    )
-    documents.extend(loader.load())
+    
 
-    for file in os.listdir():
-        if file.endswith(".pdf"):
-            loader = PyPDFLoader(os.path.join(os.getcwd(), file))
-            documents.extend(loader.load())
+    documents = process_pdfs_loop(documents,prefixe = 'diet_guidelines')
+    documents = process_urls_loop(documents,url_filename = 'diet_guidelines_urls.txt')
 
     return documents
 
 def process_agriculture_documents(documents,country):
 
     documents = []
-    bs4_strainer = bs4.SoupStrainer()
-    loader = WebBaseLoader(web_paths=("https://www.who.int/news-room/fact-sheets/detail/healthy-diet",
-                                     "https://www.who.int/activities/developing-nutrition-guidelines"),
-    bs_kwargs={"parse_only": bs4_strainer},
-    )
-    documents.extend(loader.load())
 
-    for file in os.listdir():
-        if file.endswith(".pdf"):
-            loader = PyPDFLoader(os.path.join(os.getcwd(), file))
-            documents.extend(loader.load())
+    documents = process_pdfs_loop(documents,prefixe = 'agriculture')
+    documents = process_urls_loop(documents,url_filename = 'agriculture_urls.txt' )
 
     return documents
 
