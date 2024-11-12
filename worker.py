@@ -37,11 +37,12 @@ conversational_rag_chain = None
 chat_history = []
 llm = None
 embeddings = None
+temperature = 0.7
 
 # Function to initialize the language model and its embeddings
 def init_llm():
     global llm, embeddings
-    llm =  ChatOpenAI(model="gpt-4o-mini")
+    llm =  ChatOpenAI(model="gpt-4o-mini", temperature = temperature)
     embeddings = OpenAIEmbeddings()
 
 
