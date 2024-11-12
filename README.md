@@ -68,6 +68,8 @@ Power of the message and ability to convince the jury.
 
 * https://python.langchain.com/docs/introduction/
 * https://huggingface.co/learn/cookbook/en/rag_evaluation
+* https://cameronrwolfe.substack.com/p/a-practitioners-guide-to-retrieval?utm_source=profile&utm_medium=reader2
+* https://github.com/langchain-ai/rag-from-scratch
 
 ## How to run 
 
