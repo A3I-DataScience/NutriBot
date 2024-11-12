@@ -47,18 +47,23 @@ def init_llm():
 
 
 def process_local_documents(country):
-    documents = []
-    bs4_strainer = bs4.SoupStrainer()
-    loader = WebBaseLoader(web_paths=("https://www.who.int/news-room/fact-sheets/detail/healthy-diet",
-                                     "https://www.who.int/activities/developing-nutrition-guidelines"),
-    bs_kwargs={"parse_only": bs4_strainer},
-    )
-    documents.extend(loader.load())
 
-    for file in os.listdir():
-        if file.endswith(".pdf"):
-            loader = PyPDFLoader(os.path.join(os.getcwd(), file))
-            documents.extend(loader.load())
+
+    documents = []
+
+    documents = process_heatlh_risk_documents(documents,country)
+
+    documents = process_diet_guidelines_documents(documents,country)
+    documents = process_agriculture_documents(documents,country)
+
+
+    return documents
+
+def format_docs(docs):
+    return "\n\n".join(doc.page_content for doc in docs)
+
+# Function to process a PDF document
+def process_heatlh_risk_documents(documents,country):
 
     hces_norm_filtered = pd.read_csv('hces_norm_filtered.csv')
     hces_norm_df_filtered_area = hces_norm_filtered[hces_norm_filtered['Area'] == country]
@@ -80,10 +85,40 @@ def process_local_documents(country):
 
     return documents
 
-def format_docs(docs):
-    return "\n\n".join(doc.page_content for doc in docs)
+def process_diet_guidelines_documents(documents,country):
 
-# Function to process a PDF document
+    bs4_strainer = bs4.SoupStrainer()
+    loader = WebBaseLoader(web_paths=("https://www.who.int/news-room/fact-sheets/detail/healthy-diet",
+                                     "https://www.who.int/activities/developing-nutrition-guidelines"),
+    bs_kwargs={"parse_only": bs4_strainer},
+    )
+    documents.extend(loader.load())
+
+    for file in os.listdir():
+        if file.endswith(".pdf"):
+            loader = PyPDFLoader(os.path.join(os.getcwd(), file))
+            documents.extend(loader.load())
+
+    return documents
+
+def process_agriculture_documents(documents,country):
+
+    documents = []
+    bs4_strainer = bs4.SoupStrainer()
+    loader = WebBaseLoader(web_paths=("https://www.who.int/news-room/fact-sheets/detail/healthy-diet",
+                                     "https://www.who.int/activities/developing-nutrition-guidelines"),
+    bs_kwargs={"parse_only": bs4_strainer},
+    )
+    documents.extend(loader.load())
+
+    for file in os.listdir():
+        if file.endswith(".pdf"):
+            loader = PyPDFLoader(os.path.join(os.getcwd(), file))
+            documents.extend(loader.load())
+
+    return documents
+
+
 def process_document(documents,user_informations):
     global conversational_rag_chain
     
