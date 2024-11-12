@@ -61,6 +61,8 @@ Power of the message and ability to convince the jury.
 * https://iris.who.int/bitstream/handle/10665/326261/9789241515856-eng.pdf
 * https://applications.emro.who.int/docs/EMROPUB_2019_en_23536.pdf?ua=1
 * https://files.magicapp.org/guideline/a3fe934f-6516-460d-902f-e1c7bbcec034/published_guideline_7330-1_1.pdf
+* https://www.who.int/news-room/fact-sheets/detail/healthy-diet
+* https://www.who.int/activities/developing-nutrition-guidelines
 
 ## Technical references
 
