@@ -72,25 +72,33 @@ Power of the message and ability to convince the jury.
 * https://cameronrwolfe.substack.com/p/a-practitioners-guide-to-retrieval?utm_source=profile&utm_medium=reader2
 * https://github.com/langchain-ai/rag-from-scratch
 
-## How to run 
+## Quickstart
 
-1. clone the repo,
-2. Create an Open AI Key the key [here](https://platform.openai.com/api-keys), and run in terminal
+### Prerequisites
+- Install [uv](https://github.com/astral-sh/uv)
+- Install [pre-commit](https://pre-commit.com/) (Optional)
+
+
+### Environment Setup
+1. Clone the repo
+2. Run the following to create an virtual environment for the project and install all required dependencies.
+
+```
+uv venv
+source .venv/bin/activate
+uv pip install -r requirements.txt
+pre-commit install
+```
+
+3. Create an Open AI Key the key [here](https://platform.openai.com/api-keys), and run in terminal
 ```
 export OPENAI_API_KEY="your_api_key_here"
 ```
-**Warning** there multiple types of key that you can create on open AI platform 
+**Warning** there multiple types of key that you can create on open AI platform
 
-3. run 
+### Running the project
 
-```
-pip install -r requirements.txt
-```
-
-4. run 
+4. Start the server by running the following command
 ```
 flask --app server.py --debug run
 ```
-
-
-
