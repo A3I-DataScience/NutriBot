@@ -123,7 +123,12 @@ def process_agriculture_documents(documents,country):
 
     documents = process_pdfs_loop(documents,prefixe = 'agriculture')
     documents = process_urls_loop(documents,url_filename = 'agriculture_urls.txt' )
+    fao_url = f'https://www.fao.org/nutrition/education/food-dietary-guidelines/regions/countries/{country.lower()}/en/'
 
+    bs4_strainer = bs4.SoupStrainer()
+    loader = WebBaseLoader(web_paths=(fao_url),
+                            bs_kwargs={"parse_only": bs4_strainer},)
+    documents.extend(loader.load())
     return documents
 
 
