@@ -1,6 +1,7 @@
 import os
 import torch
 import pandas as pd
+import datetime
 
 from langchain_openai import OpenAIEmbeddings
 from langchain.document_loaders import PyPDFLoader
@@ -37,7 +38,7 @@ conversational_rag_chain = None
 chat_history = []
 llm = None
 embeddings = None
-temperature = 0.7
+temperature = 0.2
 
 # Function to initialize the language model and its embeddings
 def init_llm():
@@ -86,23 +87,15 @@ def process_urls_loop(documents,url_filename):
 # Function to process a PDF document
 def process_heatlh_risks_documents(documents,country):
 
-    hces_norm_filtered = pd.read_csv('hces_norm_filtered.csv')
-    hces_norm_df_filtered_area = hces_norm_filtered[hces_norm_filtered['Area'] == country]
-
-    if not hces_norm_df_filtered_area.empty:
-        loader = DataFrameLoader(hces_norm_df_filtered_area, page_content_column="Food Group Indicator")
-        documents.extend(loader.load())
-    else:
-        print(f"No HCES data found for the country {country}.")
-
     fs_norm_filtered = pd.read_csv('fs_norm_filtered.csv')
-    fs_norm_df_filtered_area = fs_norm_filtered[fs_norm_filtered['Area'] == country]
+    fs_norm_df_filtered_area = fs_norm_filtered[fs_norm_filtered['Area'] == country][['Area','Item','Sentence']]
+    fs_norm_df_filtered_area.fillna('Data not available', inplace=True)
 
     if not fs_norm_df_filtered_area.empty:
         loader = DataFrameLoader(fs_norm_df_filtered_area, page_content_column="Item")
         documents.extend(loader.load())
     else:
-        print(f"No HCES data found for the country {country}.")
+        print(f"No FS data found for the country {country}.")
 
     documents = process_pdfs_loop(documents,prefixe = 'heatlh_risks')
     documents = process_urls_loop(documents,url_filename = 'health_risks_urls.txt' )
@@ -121,6 +114,15 @@ def process_diet_guidelines_documents(documents,country):
 def process_agriculture_documents(documents,country):
 
     documents = []
+
+    production_norm_filtered = pd.read_csv('production_norm_filtered.csv')
+    production_norm_filtered = production_norm_filtered[production_norm_filtered['Area'] == country][['Area','Item','Sentence']]
+
+    if not production_norm_filtered.empty:
+        loader = DataFrameLoader(production_norm_filtered, page_content_column="Sentence")
+        documents.extend(loader.load())
+    else:
+        print(f"No Production data found for the country {country}.")
 
     documents = process_pdfs_loop(documents,prefixe = 'agriculture')
     documents = process_urls_loop(documents,url_filename = 'agriculture_urls.txt' )
@@ -160,12 +162,22 @@ def process_document(documents,user_informations):
     history_aware_retriever = create_history_aware_retriever(
         llm, retriever, contextualize_q_prompt
     )
-
+    today = datetime.date.today().strftime('%Y-%m-%d')
     ### Answer question ###
     qa_system_prompt = ("You are a Nutrition assistant for question-answering tasks." +
+                        f"The date is {today}. " +
     f"You are speaking to a  user of {user_informations['gender']} gender, of {user_informations['age']}years of age,"+
     f"with a size of {user_informations['size']}  cm and a weight of {user_informations['weight']}  kg from the country {user_informations['country']}." +
     "you need to help this person with their diet." + 
+    "you will initially ask one after the other, 3 questions to the end user about their health"+
+    "if someone doesn't answer one of your question, you will re-ask it up to 3 times."+
+    "then you will ask them if they have particular allergies, intolerences or food preferences."+
+    "After that you will produce a 1 week meal plan in a csv format that is optimised for the user health and "+
+    "also optimised to maximise the consumption of locally produced food and of seasonal products."+
+    "You will then ask the user if their is something you should correct in this plan."+
+    "If necessary you will correct this plan and re-submit it to the user."+
+    "Finally you will produce a csv file containing the final meal plan."+
+    "If you are asked questions about anything else but health, nutrition, agriculture, food or diet, you will answer that you don't know."+
     """If you don't know the answer, just say that you don't know. \
 
     {context}""")
@@ -212,14 +224,19 @@ def process_prompt(prompt):
     config={
         "configurable": {"session_id": "abc123"}
     },  
-)["answer"]
+)
     
-    print(f"{output["answer"]} and  context: \n \n {output["context"]}") 
+    #print(f"{output["answer"]} and  context: \n \n {output["context"]}") 
     
-    answer = output
+    answer = output["answer"]
     
     chat_history.append((prompt, answer))
-    
+    file_name = f'Meal-Plan_{datetime.datetime.now()}.csv'
+    if '```' in answer:
+        with open(file_name, "w") as csv_file:
+            csv_file.write(answer.split('```')[1])
+
+
     
     return answer
 

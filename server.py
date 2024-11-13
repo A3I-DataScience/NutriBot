@@ -2,7 +2,10 @@ import logging
 import os
 from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
+from flask import send_file, url_for
 import worker  # Import the worker module
+import pandas as pd
+import datetime
 
 # Initialize Flask app and CORS
 app = Flask(__name__)
@@ -11,13 +14,22 @@ app.logger.setLevel(logging.ERROR)
 documents = []
 user_informations = {}
 first_message = True
-
+meal_plan_df = pd.DataFrame()
 # Define the route for the index page
 @app.route('/', methods=['GET'])
 def index():
 
     return render_template('index.html')  # Render the index.html template
 
+
+@app.route('/download')
+def download():
+    
+    csvs = sorted([file for file in os.listdir() if file.endswith('.csv') and file.startswith('Meal-Plan')])
+    if len(csvs) > 0:
+        
+        path = csvs[-1]
+        return send_file(path, as_attachment=True)
 
 # Define the route for processing messages
 @app.route('/process-message', methods=['POST'])

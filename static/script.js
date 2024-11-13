@@ -1,11 +1,11 @@
 let lightMode = true;
 let recorder = null;
 let recording = false;
-let genderOption = "Male";
-let ageOption = "39";
-let sizeOption = "178";
-let weightOption = "78";
-let countryOption = "Argentina";
+let genderOption = "Female";
+let ageOption = "19";
+let sizeOption = "168";
+let weightOption = "43";
+let countryOption = "Afghanistan";
 const responses = [];
 const botRepeatButtonIDToIndexMap = {};
 const userRepeatButtonIDToRecordingMap = {};
@@ -91,7 +91,7 @@ const populateBotResponse = async (userMessage) => {
 
 
   if (isFirstMessage) {
-    response = { botResponse: "Hello there! I'm NutriBot your friendly nutrition assistant. Please provide the information required above and I will help you as much as I can!"};
+    response = { botResponse: "Hello there! I'm NutriBot your nutrition assistant. I will ask you a few questions to understand you better and provide you with personalized nutrition advice. Let's get started! ok?" };
 
   } else {
     response = await processUserMessage(userMessage);
