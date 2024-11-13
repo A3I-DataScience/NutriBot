@@ -1,11 +1,12 @@
 let lightMode = true;
 let recorder = null;
 let recording = false;
-let genderOption = "Female";
-let ageOption = "19";
-let sizeOption = "168";
-let weightOption = "43";
-let countryOption = "Afghanistan";
+let profileOption = "unknown";
+let genderOption = "unknown";
+let ageOption = "unknown";
+let sizeOption = "unknown";
+let weightOption = "unknown";
+let countryOption = "unknown";
 const responses = [];
 const botRepeatButtonIDToIndexMap = {};
 const userRepeatButtonIDToRecordingMap = {};
@@ -39,6 +40,7 @@ const processUserMessage = async (userMessage) => {
     method: "POST",
     headers: { Accept: "application/json", "Content-Type": "application/json" },
     body: JSON.stringify({ userMessage: userMessage,
+      profile: profileOption,
       gender: genderOption,
       age: ageOption,
       size: sizeOption,
@@ -176,6 +178,11 @@ $(document).ready(function () {
     $(".loading-dots").toggleClass("dark");
     $(".dot").toggleClass("dark-dot");
     lightMode = !lightMode;
+  });
+
+  $("#profile-options").change(function () {
+    profileOption = $(this).val();
+    console.log(profileOption);
   });
 
   $("#gender-options").change(function () {

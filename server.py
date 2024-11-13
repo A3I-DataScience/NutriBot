@@ -41,6 +41,34 @@ def download():
         path = csvs[-1]
         return send_file(path, as_attachment=True)
 
+predefined_profiles = {
+    "male_1": {
+        "gender": "male",
+        "age": 25,
+        "size": 180,
+        "weight": 90,
+        "country": "Switzerland"
+    },
+    "female_1": {
+        "gender": "female",
+        "age": 55,
+        "size": 165,
+        "weight": 50,
+        "country": "Mexico",
+    },
+    "male_2": {
+        "gender": "male",
+        "age": 65,
+        "size": 180,
+        "weight": 70,
+        "country": "China"
+    },
+    "female_2": {
+        "gender": "female",
+        "age": 35,
+        "size": 170,
+        "weight": 50,
+        "country": "India",}}
 
 # Define the route for processing messages
 @app.route("/process-message", methods=["POST"])
@@ -50,11 +78,17 @@ def process_message_route():
 
     user_informations_old = user_informations.copy()
 
-    user_informations["gender"] = request.json["gender"]
-    user_informations["age"] = request.json["age"]
-    user_informations["size"] = request.json["size"]
-    user_informations["weight"] = request.json["weight"]
-    user_informations["country"] = request.json["country"]
+    user_profile = request.json["profile"]
+
+    if user_profile!= 'unknown':
+        user_informations = predefined_profiles[user_profile]
+    else:
+
+        user_informations["gender"] = request.json["gender"]
+        user_informations["age"] = request.json["age"]
+        user_informations["size"] = request.json["size"]
+        user_informations["weight"] = request.json["weight"]
+        user_informations["country"] = request.json["country"]
 
     print("user_informations", user_informations)
 
