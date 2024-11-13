@@ -1,0 +1,36 @@
+[project]
+name = "nutribot"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "atlassian-python-api==3.36.0",
+    "beautifulsoup4>=4.12.3",
+    "bs4>=0.0.2",
+    "chromadb>=0.5.18",
+    "flask>=3.0.3",
+    "flask-cors>=5.0.0",
+    "huggingface-hub>=0.26.2",
+    "instructorembedding==1.0.0",
+    "langchain>=0.3.7",
+    "langchain-chroma>=0.1.4",
+    "langchain-community>=0.3.5",
+    "langchain-openai>=0.2.6",
+    "lxml>=5.3.0",
+    "numpy>=1.26.4",
+    "p4python>=2024.1.2645203",
+    "pandas>=2.2.3",
+    "pdf2image>=1.17.0",
+    "pypdf>=5.1.0",
+    "sentence-transformers==2.2.2",
+    "tiktoken>=0.8.0",
+    "torch>=2.5.1",
+]
+
+[tool.isort]
+force_single_line = true
+profile = "black"
+
+[tool.black]
+line-length = 100
