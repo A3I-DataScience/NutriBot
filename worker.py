@@ -50,6 +50,7 @@ def process_local_documents(country):
     documents = process_heatlh_risks_documents(documents, country)
     documents = process_diet_guidelines_documents(documents, country)
     documents = process_agriculture_documents(documents, country)
+    documents = process_recipes_documents(documents, country)
 
     return documents
 
@@ -144,6 +145,22 @@ def process_agriculture_documents(documents: List[Document], country: str) -> Li
         bs_kwargs={"parse_only": bs4_strainer},
     )
     documents.extend(loader.load())
+    return documents
+
+def process_recipes_documents(documents: List[Document], country: str) -> List[Document]:
+    recipes_folder = Path("data/recipes")
+    documents = process_pdfs_loop(documents=documents, folder=recipes_folder)
+    documents = process_urls_loop(
+        documents=documents, url_file=recipes_folder / "recipes_urls.txt"
+    )
+    recipes_df = pd.read_csv(recipes_folder / "recipes_data.csv")
+    if not recipes_df.empty:
+        loader = DataFrameLoader(recipes_df, page_content_column="Sentence")
+        documents.extend(loader.load())
+    else:
+        print(f"No recipes found.")
+
+
     return documents
 
 
