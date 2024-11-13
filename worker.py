@@ -237,7 +237,7 @@ def process_prompt(prompt):
     answer = output["answer"]
 
     chat_history.append((prompt, answer))
-    file_name = f"Meal-Plan_{datetime.datetime.now()}.csv"
+    file_name = f"Meal-Plan_{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}.csv"
     if "```" in answer:
         with open(file_name, "w") as csv_file:
             csv_file.write(answer.split("```")[1])
