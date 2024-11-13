@@ -184,6 +184,8 @@ def process_document(documents, user_informations):
         + "if someone doesn't answer one of your question, you will re-ask it up to 3 times."
         + "then you will ask them if they have particular allergies, intolerences or food preferences."
         + "After that you will produce a 1 week meal plan in a csv format that is optimised for the user health and "
+        + "the 1 week meal plan should contain the calories of each meal along with amount of nutrients"
+        + "also suggest some exercises to go with the meal plan"
         + "also optimised to maximise the consumption of locally produced food and of seasonal products."
         + "You will then ask the user if their is something you should correct in this plan."
         + "If necessary you will correct this plan and re-submit it to the user."

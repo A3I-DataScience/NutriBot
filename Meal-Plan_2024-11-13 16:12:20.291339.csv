@@ -1,0 +1,23 @@
+
+Day,Meal,Food Item,Calories,Protein (g),Carbohydrates (g),Fat (g)
+Monday,Breakfast,Oatmeal with honey and almonds,300,10,50,10
+Monday,Lunch,Grilled chicken salad with mixed greens,400,30,20,15
+Monday,Dinner,Lentil soup with whole grain bread,350,20,50,5
+Tuesday,Breakfast,Yogurt with seasonal fruit,250,8,35,5
+Tuesday,Lunch,Quinoa with roasted vegetables,450,15,70,10
+Tuesday,Dinner,Stir-fried tofu with broccoli and rice,400,20,60,10
+Wednesday,Breakfast,Smoothie with spinach, banana, and milk,300,10,45,5
+Wednesday,Lunch,Chickpea salad with tomatoes and cucumber,350,15,40,10
+Wednesday,Dinner,Grilled fish with sweet potatoes,450,30,50,15
+Thursday,Breakfast,Whole grain toast with avocado,300,8,30,15
+Thursday,Lunch,Vegetable curry with brown rice,400,12,60,15
+Thursday,Dinner,Stuffed bell peppers with quinoa,350,15,50,5
+Friday,Breakfast,Pancakes with honey and berries,350,8,60,10
+Friday,Lunch,Chicken wrap with lettuce and tomato,400,25,40,10
+Friday,Dinner,Vegetable stir-fry with noodles,450,15,70,10
+Saturday,Breakfast,Chia pudding with almond milk,300,10,40,15
+Saturday,Lunch,Lentil salad with carrots and herbs,350,20,50,5
+Saturday,Dinner,Beef kebabs with grilled vegetables,500,35,40,20
+Sunday,Breakfast,Fruit salad with nuts,250,5,35,10
+Sunday,Lunch,Vegetable soup with whole grain bread,300,10,40,5
+Sunday,Dinner,Roasted chicken with seasonal vegetables,500,40,50,20

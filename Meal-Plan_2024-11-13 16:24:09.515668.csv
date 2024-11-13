@@ -1,0 +1,30 @@
+csv
+Day,Meal,Food Item,Calories,Protein (g),Carbohydrates (g),Fats (g)
+Monday,Breakfast,Oatmeal with Milk and Banana,300,10,50,7
+Monday,Lunch,Lentil Soup with Whole Wheat Bread,400,20,60,10
+Monday,Dinner,Grilled Chicken with Mixed Vegetables,500,35,40,15
+Monday,Snack,Yogurt with Honey,150,5,25,3
+Tuesday,Breakfast,Smoothie with Spinach, Banana, and Yogurt,350,15,50,5
+Tuesday,Lunch,Rice with Chickpeas and Salad,450,15,70,10
+Tuesday,Dinner,Stir-fried Tofu with Broccoli and Carrots,400,20,30,15
+Tuesday,Snack,Apple,95,0,25,0
+Wednesday,Breakfast,Whole Wheat Toast with Avocado,350,8,40,15
+Wednesday,Lunch,Quinoa Salad with Vegetables,450,15,60,10
+Wednesday,Dinner,Baked Fish with Sweet Potatoes,500,30,45,15
+Wednesday,Snack,Nuts (Almonds or Walnuts),200,5,8,18
+Thursday,Breakfast,Pancakes with Honey and Berries,400,10,60,10
+Thursday,Lunch,Vegetable Curry with Rice,450,15,70,15
+Thursday,Dinner,Chicken Stir-fry with Bell Peppers,500,30,40,15
+Thursday,Snack,Carrot Sticks with Hummus,150,5,20,5
+Friday,Breakfast,Yogurt with Granola and Fruits,350,15,50,10
+Friday,Lunch,Stuffed Peppers with Quinoa and Beans,450,20,60,10
+Friday,Dinner,Lentil Stew with Bread,500,25,70,10
+Friday,Snack,Orange,62,1,15,0
+Saturday,Breakfast,Smoothie Bowl with Fruits and Seeds,400,15,60,10
+Saturday,Lunch,Chickpea Salad with Cucumber and Tomato,450,20,50,15
+Saturday,Dinner,Grilled Eggplant with Rice,500,10,80,20
+Saturday,Snack,Dark Chocolate (small piece),170,2,12,12
+Sunday,Breakfast,Oatmeal with Nuts and Honey,350,10,50,10
+Sunday,Lunch,Vegetable Soup with Whole Wheat Bread,400,15,60,10
+Sunday,Dinner,Roasted Chicken with Vegetables,500,35,40,15
+Sunday,Snack,Banana,105,1,27,0
