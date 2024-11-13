@@ -154,7 +154,8 @@ def process_recipes_documents(documents: List[Document], country: str) -> List[D
     documents = process_urls_loop(
         documents=documents, url_file=recipes_folder / "recipes_urls.txt"
     )
-    recipes_df = pd.read_csv(recipes_folder / "recipes_1.csv")
+
+    recipes_df = pd.read_csv(recipes_folder / "recipes_1.csv").dropna()
     if not recipes_df.empty:
         loader = DataFrameLoader(recipes_df, page_content_column="Sentence")
         documents.extend(loader.load())
@@ -201,7 +202,7 @@ def process_document(documents, user_informations):
         + "you will initially ask one after the other, 3 questions to the end user about their health"
         + "if someone doesn't answer one of your question, you will re-ask it up to 3 times."
         + "then you will ask them if they have particular allergies, intolerences or food preferences."
-        + "After that you will produce a 1 week meal plan in a csv format that is optimised for the user health and "
+        + "After that you will produce a 1 week meal plan in a csv format between triple quote marks that is optimised for the user health and "
         + "the 1 week meal plan should contain the calories of each meal along with amount of nutrients"
         + "also suggest some exercises to go with the meal plan"
         + "also optimised to maximise the consumption of locally produced food and of seasonal products."
@@ -257,7 +258,7 @@ def process_prompt(prompt):
     answer = output["answer"]
 
     chat_history.append((prompt, answer))
-    file_name = f"Meal-Plan_{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}.csv"
+    file_name = f"Meal-Plan_{datetime.datetime.now().strftime('%Y-%m-%d %H-%M-%S')}.csv"
     if "```" in answer:
         with open(file_name, "w") as csv_file:
             csv_file.write(answer.split("```")[1])
