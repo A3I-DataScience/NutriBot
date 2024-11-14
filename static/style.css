@@ -140,7 +140,7 @@ body {
   border-top-left-radius: 0;
   word-wrap: break-word;
   flex-grow: 0;
-  
+
 }
 
 .message-line.my-text {
@@ -330,6 +330,37 @@ body {
   }
 }
 
+.d-inline-block{
+  width: 322px;
+  height: 60px;
+  margin:100px auto;
+  padding:0 0 0 20px;
+  border-radius:10px;
+  font:18px arial;
+  color: #fff;
+  position: relative;
+  box-sizing:border-box;
+  border:1px solid #9b0db9;
+  animation: move 3s ease-in-out infinite;
+  position: relative;
+}
+.d-inline-block:hover, .d-inline-block:hover:after{
+  animation-play-state:paused;
+}
+.d-inline-block:after{
+  content:"";
+  position: absolute;
+  width: 250px;
+  height: 5px;
+  background:rgba(0,0,0, 0);
+  display: block;
+  top:100px;
+  left:37px;
+  margin: auto;
+  border-radius:50%;
+  box-shadow:0 15px 10px rgba(0,0,0, 0.4);
+  animation: moveShadow 3s ease-in-out infinite;
+}
 #profile-options {
   border-radius: 4px; /* Rounded edges */
 }
@@ -491,5 +522,3 @@ body {
 .trigger:hover::after {
 	bottom: 20px;
 }
-
-

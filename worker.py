@@ -254,9 +254,7 @@ def process_recipes_documents(documents: List[Document]) -> List[Document]:
 
     recipes_folder = Path("data/recipes")
     documents = process_pdfs_loop(documents=documents, folder=recipes_folder)
-    documents = process_urls_loop(
-        documents=documents, url_file=recipes_folder / "recipes_urls.txt"
-    )
+    documents = process_urls_loop(documents=documents, url_file=recipes_folder / "recipes_urls.txt")
 
     recipes_df = pd.read_csv(recipes_folder / "recipes_1.csv").dropna()
     if not recipes_df.empty:
@@ -264,7 +262,6 @@ def process_recipes_documents(documents: List[Document]) -> List[Document]:
         documents.extend(loader.load())
     else:
         print(f"No recipes found.")
-
 
     return documents
 
