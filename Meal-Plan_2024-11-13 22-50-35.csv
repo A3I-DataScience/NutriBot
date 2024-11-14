@@ -1,0 +1,23 @@
+csv
+Day,Meal,Food Item,Calories,Protein (g),Carbohydrates (g),Fat (g)
+Monday,Breakfast,Oatmeal with apple and cinnamon,300,10,50,5
+Monday,Lunch,Grilled chicken salad with mixed greens and tomatoes,450,35,20,15
+Monday,Dinner,Baked salmon with roasted seasonal vegetables (zucchini, bell peppers),500,40,30,25
+Tuesday,Breakfast,Smoothie with spinach, banana, and yogurt,350,15,50,5
+Tuesday,Lunch,Quinoa with chickpeas, cucumber, and feta cheese,400,20,60,10
+Tuesday,Dinner,Stuffed bell peppers with brown rice and ground turkey,550,30,40,20
+Wednesday,Breakfast,Whole grain toast with avocado and poached egg,350,15,30,20
+Wednesday,Lunch,Lentil soup with carrots and celery,400,25,60,5
+Wednesday,Dinner,Grilled shrimp with asparagus and quinoa,500,35,40,15
+Thursday,Breakfast,Yogurt with mixed berries and nuts,300,15,40,10
+Thursday,Lunch,Turkey wrap with lettuce, tomato, and whole grain tortilla,450,30,50,15
+Thursday,Dinner,Vegetable stir-fry with tofu and brown rice,500,25,70,15
+Friday,Breakfast,Smoothie bowl with banana, spinach, and granola,400,15,60,10
+Friday,Lunch,Grilled vegetable sandwich with hummus,450,20,50,15
+Friday,Dinner,Baked cod with sweet potato and green beans,500,35,40,15
+Saturday,Breakfast,Pancakes with seasonal fruits (e.g., pears),400,10,70,10
+Saturday,Lunch,Chickpea salad with tomatoes, cucumber, and parsley,400,20,50,10
+Saturday,Dinner,Roasted chicken with seasonal root vegetables,550,40,30,25
+Sunday,Breakfast,Chia pudding with almond milk and berries,350,15,40,15
+Sunday,Lunch,Spinach and feta stuffed portobello mushrooms,450,25,30,20
+Sunday,Dinner,Beef stew with carrots and potatoes,600,40,50,25

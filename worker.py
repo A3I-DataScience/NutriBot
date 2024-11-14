@@ -22,6 +22,10 @@ from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_openai import ChatOpenAI
 from langchain_openai import OpenAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain.docstore.document import Document as LangchainDocument
+
+from typing import Optional, List, Tuple
+
 
 # from langchain.chains import LLMChain, SimpleSequentialChain
 
@@ -30,20 +34,25 @@ DEVICE = "cuda:0" if torch.cuda.is_available() else "cpu"
 
 # Global variables
 conversational_rag_chain = None
-chat_history = []
+
 llm = None
 embeddings = None
 temperature = 0.2
+chunk_size= 1000
+embedding_model_name = 'text-embedding-3-small'
+temperature = 0.2
+chat_history = []
+
 
 
 # Function to initialize the language model and its embeddings
 def init_llm():
-    global llm, embeddings
+    global llm, embeddings,chunk_size,embedding_model_name
     llm = ChatOpenAI(model="gpt-4o-mini", temperature=temperature)
-    embeddings = OpenAIEmbeddings()
+    embeddings = OpenAIEmbeddings(chunk_size=chunk_size, model= embedding_model_name)
 
 
-def process_local_documents(country):
+def process_local_documents(country=None):
 
     documents = []
 
@@ -89,9 +98,12 @@ def process_heatlh_risks_documents(documents: List[Document], country: str) -> L
 
     health_risks_folder = Path("data/health_risks")
     fs_norm_filtered = pd.read_csv(health_risks_folder / "fs_norm_filtered.csv")
-    fs_norm_df_filtered_area = fs_norm_filtered[fs_norm_filtered["Area"] == country][
-        ["Area", "Item", "Sentence"]
-    ]
+    if country is not None:
+        fs_norm_df_filtered_area = fs_norm_filtered[fs_norm_filtered["Area"] == country][
+            ["Area", "Item", "Sentence"]
+        ]
+    else:
+        fs_norm_df_filtered_area = fs_norm_filtered[["Area", "Item", "Sentence"]]
     fs_norm_df_filtered_area.fillna("Data not available", inplace=True)
 
     if not fs_norm_df_filtered_area.empty:
@@ -123,9 +135,13 @@ def process_agriculture_documents(documents: List[Document], country: str) -> Li
 
     agriculture_folder = Path("data/agriculture")
     production_norm_filtered = pd.read_csv(agriculture_folder / "production_norm_filtered.csv")
-    production_norm_filtered = production_norm_filtered[
-        production_norm_filtered["Area"] == country
-    ][["Area", "Item", "Sentence"]]
+    if country is not None:
+        production_norm_filtered = production_norm_filtered[
+            production_norm_filtered["Area"] == country
+        ][["Area", "Item", "Sentence"]]
+    else:
+        production_norm_filtered = production_norm_filtered[["Area", "Item", "Sentence"]]
+
 
     if not production_norm_filtered.empty:
         loader = DataFrameLoader(production_norm_filtered, page_content_column="Sentence")
@@ -137,14 +153,16 @@ def process_agriculture_documents(documents: List[Document], country: str) -> Li
     documents = process_urls_loop(
         documents=documents, url_file=agriculture_folder / "agriculture_urls.txt"
     )
-    fao_url = f"https://www.fao.org/nutrition/education/food-dietary-guidelines/regions/countries/{country.lower()}/en/"
+    if country is not None:
+        
+        fao_url = f"https://www.fao.org/nutrition/education/food-dietary-guidelines/regions/countries/{country.lower()}/en/"
 
-    bs4_strainer = bs4.SoupStrainer()
-    loader = WebBaseLoader(
-        web_paths=[fao_url],
-        bs_kwargs={"parse_only": bs4_strainer},
-    )
-    documents.extend(loader.load())
+        bs4_strainer = bs4.SoupStrainer()
+        loader = WebBaseLoader(
+            web_paths=[fao_url],
+            bs_kwargs={"parse_only": bs4_strainer},
+        )
+        documents.extend(loader.load())
     return documents
 
 def process_recipes_documents(documents: List[Document], country: str) -> List[Document]:
@@ -165,16 +183,43 @@ def process_recipes_documents(documents: List[Document], country: str) -> List[D
 
     return documents
 
+def split_documents(
+    chunk_size: int,
+    documents: List[LangchainDocument],
+
+) -> List[LangchainDocument]:
+    """
+    Split documents into chunks of size `chunk_size` characters and return a list of documents.
+    """
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=200)
+
+    texts = []
+    for doc in documents:
+        texts += text_splitter.split_documents([doc])
+
+    return texts
+
+def load_embeddings(texts, embedding_model_name,chunk_size):
+    """
+    Load embeddings into a Chroma vectorstore.
+
+    """
+
+    embeddings = OpenAIEmbeddings(chunk_size=chunk_size, model=embedding_model_name)
+
+    vectorstore = Chroma.from_documents(texts, embeddings)
+    return vectorstore
 
 def process_document(documents, user_informations):
     global conversational_rag_chain
 
+
     # Split the document into chunks
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
-    texts = text_splitter.split_documents(documents)
+
+    texts = split_documents(documents =  documents, chunk_size = chunk_size)
 
     # Create an embeddings database using Chroma from the split text chunks.
-    vectorstore = Chroma.from_documents(texts, embedding=embeddings)
+    vectorstore = load_embeddings(texts, embedding_model_name,chunk_size)
 
     retriever = vectorstore.as_retriever()
 
@@ -190,6 +235,7 @@ def process_document(documents, user_informations):
             ("human", "{input}"),
         ]
     )
+
     history_aware_retriever = create_history_aware_retriever(llm, retriever, contextualize_q_prompt)
     today = datetime.date.today().strftime("%Y-%m-%d")
     ### Answer question ###
@@ -199,11 +245,19 @@ def process_document(documents, user_informations):
         + f"You are speaking to a  user of {user_informations['gender']} gender, of {user_informations['age']}years of age,"
         + f"with a size of {user_informations['size']}  cm and a weight of {user_informations['weight']}  kg from the country {user_informations['country']}."
         + "you need to help this person with their diet."
+        +"Using the information contained in the context,"
         + "you will initially ask one after the other, 3 questions to the end user about their health"
         + "if someone doesn't answer one of your question, you will re-ask it up to 3 times."
         + "then you will ask them if they have particular allergies, intolerences or food preferences."
-        + "After that you will produce a 1 week meal plan in a csv format between triple quote marks that is optimised for the user health and "
+        +"After that, using the information contained in the context"
+        +"you will identify 25 ingredients produced in the country of the user and available in this season"
+        +" you will ask the user if these ingredients are ok for them to eat."
+        + "After that, Using the information contained in the context,"
+        + "you will produce a 1 week meal plan in a csv format between triple quote marks that is optimised for the user health and "
+        +" that is based on the previous ingredients"
         + "the 1 week meal plan should contain the calories of each meal along with amount of nutrients"
+        + "you will not use expressions such as 'season vegetables' or 'season fruits' but instead you will use the names"
+        + " of the fruits and vegetables to eat in this season and in this country"
         + "also suggest some exercises to go with the meal plan"
         + "also optimised to maximise the consumption of locally produced food and of seasonal products."
         + "You will then ask the user if their is something you should correct in this plan."
@@ -243,7 +297,7 @@ def process_document(documents, user_informations):
 
 
 # Function to process a user prompt
-def process_prompt(prompt):
+def process_prompt(prompt,first_message):
     global conversational_rag_chain
     global chat_history
 
@@ -265,6 +319,59 @@ def process_prompt(prompt):
 
     return answer
 
+
+from ragatouille import RAGPretrainedModel
+from langchain_core.vectorstores import VectorStore
+from langchain_core.language_models.llms import LLM
+
+RAG_PROMPT_TEMPLATE = """
+<|system|>
+Using the information contained in the context,
+give a comprehensive answer to the question.
+Respond only to the question asked, response should be concise and relevant to the question.
+Provide the number of the source document when relevant.
+If the answer cannot be deduced from the context, do not give an answer.</s>
+<|user|>
+Context:
+{context}
+---
+Now here is the question you need to answer.
+
+Question: {question}
+</s>
+<|assistant|>
+"""
+
+def answer_with_rag(
+    question: str,
+    llm: LLM,
+    knowledge_index: VectorStore,
+    reranker: Optional[RAGPretrainedModel] = None,
+    num_retrieved_docs: int = 30,
+    num_docs_final: int = 7,
+) -> Tuple[str, List[LangchainDocument]]:
+    """Answer a question using RAG with the given knowledge index."""
+    # Gather documents with retriever
+    relevant_docs = knowledge_index.similarity_search(query=question, k=num_retrieved_docs)
+    relevant_docs = [doc.page_content for doc in relevant_docs]  # keep only the text
+
+    # Optionally rerank results
+    if reranker:
+        relevant_docs = reranker.rerank(question, relevant_docs, k=num_docs_final)
+        relevant_docs = [doc["content"] for doc in relevant_docs]
+
+    relevant_docs = relevant_docs[:num_docs_final]
+
+    # Build the final prompt
+    context = "\nExtracted documents:\n"
+    context += "".join([f"Document {str(i)}:::\n" + doc for i, doc in enumerate(relevant_docs)])
+
+    final_prompt = RAG_PROMPT_TEMPLATE.format(question=question, context=context)
+
+    # Redact an answer
+    answer = llm(final_prompt)
+
+    return answer, relevant_docs
 
 # Initialize the language model
 init_llm()

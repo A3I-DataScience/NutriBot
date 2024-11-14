@@ -76,9 +76,9 @@ def process_message_route():
     print("user_message", user_message)
 
     bot_response = worker.process_prompt(
-        user_message
+        user_message,first_message
     )  # Process the user's message using the worker module
-
+    first_message = False
     # Return the bot's response as JSON
     return jsonify({"botResponse": bot_response}), 200
 

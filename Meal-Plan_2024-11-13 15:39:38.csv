@@ -1,0 +1,37 @@
+
+Day,Meal,Food Item,Calories,Protein (g),Carbs (g),Fat (g)
+Monday,Breakfast,Poori with Aloo,300,6,50,10
+Monday,Snack,Banana,105,1.3,27,0.3
+Monday,Lunch,Vegetable Khichdi,350,12,60,8
+Monday,Snack,Carrot Sticks,50,1,12,0.2
+Monday,Dinner,Daal with Rice,400,18,70,5
+Tuesday,Breakfast,Upma with Vegetables,300,8,50,7
+Tuesday,Snack,Apple,95,0.5,25,0.3
+Tuesday,Lunch,Chickpea Curry with Rice,400,15,60,10
+Tuesday,Snack,Yogurt,120,6,18,3
+Tuesday,Dinner,Vegetable Roti,350,10,60,8
+Wednesday,Breakfast,Oats with Water and Sugar,250,6,45,5
+Wednesday,Snack,Orange,62,1,15,0.2
+Wednesday,Lunch,Daal with Chapati,400,18,60,5
+Wednesday,Snack,Popcorn,100,3,20,2
+Wednesday,Dinner,Vegetable Stir Fry with Rice,450,15,70,10
+Thursday,Breakfast,Idli with Sambar,250,8,45,5
+Thursday,Snack,Guava,68,2,15,0.2
+Thursday,Lunch,Moong Dal with Rice,400,20,60,8
+Thursday,Snack,Chia Pudding (with Water),150,5,20,7
+Thursday,Dinner,Vegetable Pulao,500,15,70,15
+Friday,Breakfast,Dosa with Chutney,300,8,50,10
+Friday,Snack,Banana,105,1.3,27,0.3
+Friday,Lunch,Chole with Rice,400,15,60,10
+Friday,Snack,Trail Mix (Homemade),200,6,20,10
+Friday,Dinner,Vegetable Khichdi,450,12,60,8
+Saturday,Breakfast,Poori with Aloo,300,6,50,10
+Saturday,Snack,Papaya,59,0.5,15,0.2
+Saturday,Lunch,Vegetable Soup with Rice,300,10,50,5
+Saturday,Snack,Roasted Chickpeas,150,7,25,3
+Saturday,Dinner,Paneer Bhurji with Chapati,500,20,60,20
+Sunday,Breakfast,Poha with Peas,250,6,45,5
+Sunday,Snack,Watermelon,46,1,12,0.2
+Sunday,Lunch,Vegetable Khichdi,350,12,60,8
+Sunday,Snack,Dates,100,1,27,0.2
+Sunday,Dinner,Daal with Rice,400,18,70,5

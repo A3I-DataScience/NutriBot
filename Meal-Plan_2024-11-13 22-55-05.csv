@@ -1,0 +1,23 @@
+
+Day,Meal,Food,Calories,Protein (g),Carbohydrates (g),Fat (g)
+Monday,Breakfast,Oatmeal with apples and walnuts,350,10,60,12
+Monday,Lunch,Grilled chicken salad with mixed greens and vinaigrette,450,35,20,20
+Monday,Dinner,Baked salmon with steamed broccoli and quinoa,500,40,45,20
+Tuesday,Breakfast,Yogurt with honey and seasonal berries,300,15,40,8
+Tuesday,Lunch,Vegetable soup with whole grain bread,400,15,60,10
+Tuesday,Dinner,Stir-fried tofu with bell peppers and brown rice,450,20,60,15
+Wednesday,Breakfast,Smoothie with banana, spinach, and almond milk,300,5,50,8
+Wednesday,Lunch,Quinoa salad with chickpeas, cucumber, and feta,450,20,60,15
+Wednesday,Dinner,Roasted chicken with carrots and potatoes,500,40,50,20
+Thursday,Breakfast,Whole grain toast with avocado and poached egg,350,15,30,20
+Thursday,Lunch,Turkey wrap with lettuce, tomato, and mustard,400,30,40,10
+Thursday,Dinner,Grilled shrimp with asparagus and couscous,500,35,45,15
+Friday,Breakfast,Cottage cheese with pineapple,300,25,30,5
+Friday,Lunch,Lentil salad with cherry tomatoes and parsley,400,25,60,10
+Friday,Dinner,Pork tenderloin with roasted Brussels sprouts,500,40,40,20
+Saturday,Breakfast,Pancakes with seasonal fruits,350,10,60,8
+Saturday,Lunch,Caprese salad with mozzarella and basil,400,20,30,25
+Saturday,Dinner,Vegetable curry with basmati rice,500,15,80,15
+Sunday,Breakfast,Chia pudding with almond milk and berries,300,10,40,10
+Sunday,Lunch,Grilled vegetable sandwich with hummus,400,15,50,15
+Sunday,Dinner,Beef stew with root vegetables,500,40,40,20
