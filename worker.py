@@ -2,7 +2,12 @@ import datetime
 import os
 from pathlib import Path
 from typing import List
+<<<<<<< HEAD
 from uuid import uuid4
+=======
+from typing import Optional
+from typing import Tuple
+>>>>>>> 5cab6bc (additions to meal plan)
 
 import bs4
 import chromadb
@@ -11,6 +16,7 @@ import torch
 from langchain.chains import create_history_aware_retriever
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain.docstore.document import Document as LangchainDocument
 from langchain.document_loaders import PyPDFLoader
 from langchain_chroma import Chroma
 from langchain_community.chat_message_histories import ChatMessageHistory
@@ -24,12 +30,15 @@ from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_openai import ChatOpenAI
 from langchain_openai import OpenAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
+<<<<<<< HEAD
 from langchain.docstore.document import Document as LangchainDocument
 
 from typing import Optional, List, Tuple
 
 from data.country_list import country_list
 
+=======
+>>>>>>> 5cab6bc (additions to meal plan)
 
 # from langchain.chains import LLMChain, SimpleSequentialChain
 
@@ -42,17 +51,17 @@ conversational_rag_chain = None
 llm = None
 embeddings = None
 temperature = 0.2
-chunk_size= 1000
-embedding_model_name = 'text-embedding-3-small'
+chunk_size = 1000
+embedding_model_name = "text-embedding-3-small"
 temperature = 0.2
 chat_history = []
 
 
-
 # Function to initialize the language model and its embeddings
 def init_llm():
-    global llm, embeddings,chunk_size,embedding_model_name
+    global llm, embeddings, chunk_size, embedding_model_name
     llm = ChatOpenAI(model="gpt-4o-mini", temperature=temperature)
+<<<<<<< HEAD
     embeddings = OpenAIEmbeddings(chunk_size=chunk_size, model= embedding_model_name)
     init_chroma_vector_store(embeddings)
 
@@ -72,6 +81,9 @@ def init_chroma_vector_store(embeddings):
         embeddings = OpenAIEmbeddings(chunk_size=chunk_size, model=embedding_model_name)
 
         Chroma.from_documents(texts, embedding=embeddings, collection_name='nutribot_collection', persist_directory="./data/chroma_db/chroma_langchain_db")
+=======
+    embeddings = OpenAIEmbeddings(chunk_size=chunk_size, model=embedding_model_name)
+>>>>>>> 5cab6bc (additions to meal plan)
 
 
     vector_store_from_client = Chroma(
@@ -227,6 +239,7 @@ def process_agriculture_documents(documents: List[Document]) -> List[Document]:
         else:
             production_norm_filtered = production_norm_filtered[["Area", "Item", "Sentence"]]
 
+<<<<<<< HEAD
 
         if not production_norm_filtered.empty:
             loader = DataFrameLoader(production_norm_filtered, page_content_column="Sentence")
@@ -237,6 +250,26 @@ def process_agriculture_documents(documents: List[Document]) -> List[Document]:
         documents = process_pdfs_loop(documents=documents, folder=agriculture_folder)
         documents = process_urls_loop(
             documents=documents, url_file=agriculture_folder / "agriculture_urls.txt"
+=======
+    if not production_norm_filtered.empty:
+        loader = DataFrameLoader(production_norm_filtered, page_content_column="Sentence")
+        documents.extend(loader.load())
+    else:
+        print(f"No Production data found for the country {country}.")
+
+    documents = process_pdfs_loop(documents=documents, folder=agriculture_folder)
+    documents = process_urls_loop(
+        documents=documents, url_file=agriculture_folder / "agriculture_urls.txt"
+    )
+    if country is not None:
+
+        fao_url = f"https://www.fao.org/nutrition/education/food-dietary-guidelines/regions/countries/{country.lower()}/en/"
+
+        bs4_strainer = bs4.SoupStrainer()
+        loader = WebBaseLoader(
+            web_paths=[fao_url],
+            bs_kwargs={"parse_only": bs4_strainer},
+>>>>>>> 5cab6bc (additions to meal plan)
         )
         if country is not None:
             
@@ -265,10 +298,10 @@ def process_recipes_documents(documents: List[Document]) -> List[Document]:
 
     return documents
 
+
 def split_documents(
     chunk_size: int,
     documents: List[LangchainDocument],
-
 ) -> List[LangchainDocument]:
     """
     Split documents into chunks of size `chunk_size` characters and return a list of documents.
@@ -281,7 +314,8 @@ def split_documents(
 
     return texts
 
-def load_embeddings(texts, embedding_model_name,chunk_size):
+
+def load_embeddings(texts, embedding_model_name, chunk_size):
     """
     Load embeddings into a Chroma vectorstore.
 
@@ -292,15 +326,29 @@ def load_embeddings(texts, embedding_model_name,chunk_size):
     #vectorstore = Chroma.from_documents(texts, embeddings, persist_directory="./data/chroma_db/chroma_langchain_db")
     vector_store_from_client.add_documents(texts)
 
+<<<<<<< HEAD
     return vector_store_from_client
 
 def process_new_profile(user_informations):
+=======
+
+def process_document(documents, user_informations):
+>>>>>>> 5cab6bc (additions to meal plan)
     global conversational_rag_chain
 
-
     # Split the document into chunks
+<<<<<<< HEAD
     vector_store = create_sub_vector_store(user_informations["country"])
     retriever = vector_store.as_retriever()
+=======
+
+    texts = split_documents(documents=documents, chunk_size=chunk_size)
+
+    # Create an embeddings database using Chroma from the split text chunks.
+    vectorstore = load_embeddings(texts, embedding_model_name, chunk_size)
+
+    retriever = vectorstore.as_retriever()
+>>>>>>> 5cab6bc (additions to meal plan)
 
     ### Contextualize question ###
     contextualize_q_system_prompt = """Given a chat history and the latest user question \
@@ -324,20 +372,22 @@ def process_new_profile(user_informations):
         + f"You are speaking to a  user of {user_informations['gender']} gender, of {user_informations['age']}years of age,"
         + f"with a size of {user_informations['size']}  cm and a weight of {user_informations['weight']}  kg from the country {user_informations['country']}."
         + "you need to help this person with their diet."
-        +"Using the information contained in the context,"
+        + "Using the information contained in the context,"
         + "you will initially ask one after the other, 3 questions to the end user about their health"
         + "if someone doesn't answer one of your question, you will re-ask it up to 3 times."
-        + "then you will ask them if they have particular allergies, intolerences or food preferences."
-        +"After that, using the information contained in the context"
-        +"you will identify 25 ingredients produced in the country of the user and available in this season"
-        +" you will ask the user if these ingredients are ok for them to eat."
+        + "also ask them about their social habits like drinking or smoking and the frequency"
+        "then you will ask them if they have particular allergies, intolerences or food preferences."
+        + "After that, using the information contained in the context"
+        + "you will identify 25 ingredients produced in the country of the user and available in this season"
+        + " you will ask the user if these ingredients are ok for them to eat."
         + "After that, Using the information contained in the context,"
-        + "you will produce a 1 week meal plan in a csv format between triple quote marks that is optimised for the user health and "
-        +" that is based on the previous ingredients"
-        + "the 1 week meal plan should contain the calories of each meal along with amount of nutrients"
+        + "you will produce a 1 week meal plan with snacks in between meals  in a csv format between triple quote marks that is optimised for the user health and "
+        + " that is based on the previous ingredients"
+        + "the 1 week meal plan should contain the amount of calories, serving size, fats, carbohydrates, sugars, proteins, Percent Daily Value, calcium, iron, potassium, and fiber for each meal"
+        + "mention the total of calories each day along with suggested calroie intake for the user based on their BMI"
         + "you will not use expressions such as 'season vegetables' or 'season fruits' but instead you will use the names"
         + " of the fruits and vegetables to eat in this season and in this country"
-        + "also suggest some exercises to go with the meal plan"
+        + "also suggest some exercises to go with the meal plan as an additional response"
         + "also optimised to maximise the consumption of locally produced food and of seasonal products."
         + "You will then ask the user if their is something you should correct in this plan."
         + "If necessary you will correct this plan and re-submit it to the user."
@@ -461,7 +511,7 @@ def process_new_profile(user_informations):
 
 
 # Function to process a user prompt
-def process_prompt(prompt,first_message):
+def process_prompt(prompt, first_message):
     global conversational_rag_chain
     global chat_history
 
@@ -487,4 +537,63 @@ def reset_chat_history():
     chat_history = []
     ChatMessageHistory().clear()
 
+<<<<<<< HEAD
+=======
+
+'''
+from ragatouille import RAGPretrainedModel
+from langchain_core.vectorstores import VectorStore
+from langchain_core.language_models.llms import LLM
+
+RAG_PROMPT_TEMPLATE = """
+<|system|>
+Using the information contained in the context,
+give a comprehensive answer to the question.
+Respond only to the question asked, response should be concise and relevant to the question.
+Provide the number of the source document when relevant.
+If the answer cannot be deduced from the context, do not give an answer.</s>
+<|user|>
+Context:
+{context}
+---
+Now here is the question you need to answer.
+
+Question: {question}
+</s>
+<|assistant|>
+"""
+
+def answer_with_rag(
+    question: str,
+    llm: LLM,
+    knowledge_index: VectorStore,
+    reranker: Optional[RAGPretrainedModel] = None,
+    num_retrieved_docs: int = 30,
+    num_docs_final: int = 7,
+) -> Tuple[str, List[LangchainDocument]]:
+    """Answer a question using RAG with the given knowledge index."""
+    # Gather documents with retriever
+    relevant_docs = knowledge_index.similarity_search(query=question, k=num_retrieved_docs)
+    relevant_docs = [doc.page_content for doc in relevant_docs]  # keep only the text
+
+    # Optionally rerank results
+    if reranker:
+        relevant_docs = reranker.rerank(question, relevant_docs, k=num_docs_final)
+        relevant_docs = [doc["content"] for doc in relevant_docs]
+
+    relevant_docs = relevant_docs[:num_docs_final]
+
+    # Build the final prompt
+    context = "\nExtracted documents:\n"
+    context += "".join([f"Document {str(i)}:::\n" + doc for i, doc in enumerate(relevant_docs)])
+
+    final_prompt = RAG_PROMPT_TEMPLATE.format(question=question, context=context)
+
+    # Redact an answer
+    answer = llm(final_prompt)
+
+    return answer, relevant_docs
+'''
+# Initialize the language model
+>>>>>>> 5cab6bc (additions to meal plan)
 init_llm()
