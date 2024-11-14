@@ -1,14 +1,42 @@
+
+
+
 /* Light mode */
 body {
   background-color: #d6ddec;
   color: #121717;
 }
-
 /* Dark mode */
 .dark-mode {
   background-color: #121717;
   color: #c9c9c9;
 }
+.titletext {
+  font-size:65px;
+  text-align: center;
+  font-weight:600;
+  letter-spacing:10px;
+  margin-bottom:20px;
+  /*background:black;*/
+  position:relative;
+  animation:text 3s 1;
+}
+
+@keyframes text{
+  0%{
+    color:black;
+    margin-bottom:10px;
+  }
+  30%{
+    letter-spacing:25px;
+    margin-bottom:10px;
+  }
+  85%{
+    letter-spacing:8px;
+    margin-bottom:10px;
+  }
+}
+
 
 #chat-window {
   position: relative;
@@ -21,6 +49,8 @@ body {
   width: 70%;
   word-break: break-word;
   display: flex;
+  content: "\f019";
+  font-family: FontAwesome;
 }
 
 .message-box {
@@ -33,6 +63,7 @@ body {
   border-top-left-radius: 0;
   word-wrap: break-word;
   flex-grow: 0;
+  
 }
 
 .message-line.my-text {
@@ -43,7 +74,7 @@ body {
 .message-box.my-text {
   transform: rotateY(180deg);
   background-color: #e7f9d8;
-  margin-left:150px;
+  margin-left:50px;
 }
 
 .me {
@@ -133,13 +164,17 @@ body {
 .send i {
   display: block;
   width: 25px;
-  color: #125ee5;
+  color: #0f4c9e;
+  content: "\f0a9";
+  font-family: FontAwesome;
 }
 
 .reset i {
   display: block;
   width: 25px;
-  color: #125ee5;
+  color: #0f4c9e;
+  content: "\f021";
+  font-family: FontAwesome;
 }
 
 
@@ -269,8 +304,8 @@ body {
 
 .trigger {
 	position: relative;
-  top: 5%;
-  left: 95%;
+  /*top: 5%;
+  left: 95%;*/
 	background: #0d7614;
 	display: inline-block;
 	width: 200px;
@@ -379,3 +414,5 @@ body {
 .trigger:hover::after {
 	bottom: 20px;
 }
+
+
