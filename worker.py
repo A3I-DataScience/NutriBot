@@ -319,7 +319,7 @@ def process_prompt(prompt,first_message):
 
     return answer
 
-
+'''
 from ragatouille import RAGPretrainedModel
 from langchain_core.vectorstores import VectorStore
 from langchain_core.language_models.llms import LLM
@@ -372,6 +372,6 @@ def answer_with_rag(
     answer = llm(final_prompt)
 
     return answer, relevant_docs
-
+'''
 # Initialize the language model
 init_llm()
