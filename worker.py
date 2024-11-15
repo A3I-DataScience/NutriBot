@@ -2,6 +2,8 @@ import datetime
 import os
 from pathlib import Path
 from typing import List
+from typing import Optional
+from typing import Tuple
 from uuid import uuid4
 
 import bs4
@@ -11,6 +13,7 @@ import torch
 from langchain.chains import create_history_aware_retriever
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain.docstore.document import Document as LangchainDocument
 from langchain.document_loaders import PyPDFLoader
 from langchain_chroma import Chroma
 from langchain_community.chat_message_histories import ChatMessageHistory
@@ -24,12 +27,8 @@ from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_openai import ChatOpenAI
 from langchain_openai import OpenAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain.docstore.document import Document as LangchainDocument
-
-from typing import Optional, List, Tuple
 
 from data.country_list import country_list
-
 
 # from langchain.chains import LLMChain, SimpleSequentialChain
 
@@ -42,37 +41,41 @@ conversational_rag_chain = None
 llm = None
 embeddings = None
 temperature = 0.2
-chunk_size= 1000
-embedding_model_name = 'text-embedding-3-small'
+chunk_size = 1000
+embedding_model_name = "text-embedding-3-small"
 temperature = 0.2
 chat_history = []
 
 
-
 # Function to initialize the language model and its embeddings
 def init_llm():
-    global llm, embeddings,chunk_size,embedding_model_name
+    global llm, embeddings, chunk_size, embedding_model_name
     llm = ChatOpenAI(model="gpt-4o-mini", temperature=temperature)
-    embeddings = OpenAIEmbeddings(chunk_size=chunk_size, model= embedding_model_name)
+    embeddings = OpenAIEmbeddings(chunk_size=chunk_size, model=embedding_model_name)
     init_chroma_vector_store(embeddings)
+
 
 def init_chroma_vector_store(embeddings):
     global vector_store_from_client
 
     persistent_client = chromadb.PersistentClient(path="./data/chroma_db/chroma_langchain_db")
 
-    try: 
+    try:
         persistent_client.get_collection("nutribot_collection")
     except:
         persistent_client.get_or_create_collection("nutribot_collection")
         documents = process_local_documents()
-        texts = split_documents(documents =  documents, chunk_size = chunk_size)
+        texts = split_documents(documents=documents, chunk_size=chunk_size)
 
         # Create an embeddings database using Chroma from the split text chunks.
         embeddings = OpenAIEmbeddings(chunk_size=chunk_size, model=embedding_model_name)
 
-        Chroma.from_documents(texts, embedding=embeddings, collection_name='nutribot_collection', persist_directory="./data/chroma_db/chroma_langchain_db")
-
+        Chroma.from_documents(
+            texts,
+            embedding=embeddings,
+            collection_name="nutribot_collection",
+            persist_directory="./data/chroma_db/chroma_langchain_db",
+        )
 
     vector_store_from_client = Chroma(
         client=persistent_client,
@@ -80,32 +83,25 @@ def init_chroma_vector_store(embeddings):
         embedding_function=embeddings,
     )
 
+
 def create_sub_vector_store(country):
     global vector_store_from_client
 
     persistent_client = chromadb.PersistentClient(path="./data/chroma_db/chroma_langchain_db")
 
     # Create a new sub-vector store with the filtered documents
-    user_collection = vector_store_from_client.get(where={ "$or": [
-        {
-            "Area": {
-                '$eq': country
-            }
-        },
-        {
-            "Type": {
-                '$eq': 'commun'
-            }
-        }
-    ]})
+    user_collection = vector_store_from_client.get(
+        where={"$or": [{"Area": {"$eq": country}}, {"Type": {"$eq": "commun"}}]}
+    )
     country_documents = [Document(page_content=doc) for doc in user_collection["documents"]]
 
     vectordb = Chroma.from_documents(
-            documents=country_documents, 
-            embedding=embeddings, 
-            persist_directory="./data/chroma_db/chroma_langchain_db"  # type: ignore
-        )
+        documents=country_documents,
+        embedding=embeddings,
+        persist_directory="./data/chroma_db/chroma_langchain_db",  # type: ignore
+    )
     return vectordb
+
 
 def process_local_documents():
 
@@ -128,15 +124,15 @@ def process_pdfs_loop(documents: List[Document], folder: Path) -> List[Document]
         if file.suffix != ".pdf":
             continue
         loader = PyPDFLoader(file)
-        metadata =  {"Type": "commun"}
+        metadata = {"Type": "commun"}
         loaded_documents = loader.load()
-                
+
         # Add metadata to each document
         for doc in loaded_documents:
             # If doc is a string, convert it into a Document object
             if isinstance(doc, str):
                 doc = Document(page_content=doc)
-                
+
             # Add the metadata to the document
             doc.metadata.update(metadata)  # Assumes 'metadata' is a dictionary
 
@@ -158,15 +154,15 @@ def process_urls_loop(documents: List[Document], url_file: Path) -> List[Documen
             web_paths=url_list,
             bs_kwargs={"parse_only": bs4_strainer},
         )
-        metadata =  {"Type": "commun"}
+        metadata = {"Type": "commun"}
         loaded_documents = loader.load()
-                
+
         # Add metadata to each document
         for doc in loaded_documents:
             # If doc is a string, convert it into a Document object
             if isinstance(doc, str):
                 doc = Document(page_content=doc)
-                
+
             # Add the metadata to the document
             doc.metadata.update(metadata)  # Assumes 'metadata' is a dictionary
 
@@ -178,7 +174,7 @@ def process_urls_loop(documents: List[Document], url_file: Path) -> List[Documen
 
 
 def process_heatlh_risks_documents(documents: List[Document]) -> List[Document]:
-    
+
     for country in country_list:
         health_risks_folder = Path("data/health_risks")
         fs_norm_filtered = pd.read_csv(health_risks_folder / "fs_norm_filtered.csv")
@@ -227,7 +223,6 @@ def process_agriculture_documents(documents: List[Document]) -> List[Document]:
         else:
             production_norm_filtered = production_norm_filtered[["Area", "Item", "Sentence"]]
 
-
         if not production_norm_filtered.empty:
             loader = DataFrameLoader(production_norm_filtered, page_content_column="Sentence")
             documents.extend(loader.load())
@@ -239,7 +234,7 @@ def process_agriculture_documents(documents: List[Document]) -> List[Document]:
             documents=documents, url_file=agriculture_folder / "agriculture_urls.txt"
         )
         if country is not None:
-            
+
             fao_url = f"https://www.fao.org/nutrition/education/food-dietary-guidelines/regions/countries/{country.lower()}/en/"
 
             bs4_strainer = bs4.SoupStrainer()
@@ -250,13 +245,12 @@ def process_agriculture_documents(documents: List[Document]) -> List[Document]:
             documents.extend(loader.load())
     return documents
 
+
 def process_recipes_documents(documents: List[Document]) -> List[Document]:
 
     recipes_folder = Path("data/recipes")
     documents = process_pdfs_loop(documents=documents, folder=recipes_folder)
-    documents = process_urls_loop(
-        documents=documents, url_file=recipes_folder / "recipes_urls.txt"
-    )
+    documents = process_urls_loop(documents=documents, url_file=recipes_folder / "recipes_urls.txt")
 
     recipes_df = pd.read_csv(recipes_folder / "recipes_1.csv").dropna()
     if not recipes_df.empty:
@@ -265,13 +259,12 @@ def process_recipes_documents(documents: List[Document]) -> List[Document]:
     else:
         print(f"No recipes found.")
 
-
     return documents
+
 
 def split_documents(
     chunk_size: int,
     documents: List[LangchainDocument],
-
 ) -> List[LangchainDocument]:
     """
     Split documents into chunks of size `chunk_size` characters and return a list of documents.
@@ -284,7 +277,8 @@ def split_documents(
 
     return texts
 
-def load_embeddings(texts, embedding_model_name,chunk_size):
+
+def load_embeddings(texts, embedding_model_name, chunk_size):
     """
     Load embeddings into a Chroma vectorstore.
 
@@ -292,14 +286,14 @@ def load_embeddings(texts, embedding_model_name,chunk_size):
     global vector_store_from_client
     embeddings = OpenAIEmbeddings(chunk_size=chunk_size, model=embedding_model_name)
 
-    #vectorstore = Chroma.from_documents(texts, embeddings, persist_directory="./data/chroma_db/chroma_langchain_db")
+    # vectorstore = Chroma.from_documents(texts, embeddings, persist_directory="./data/chroma_db/chroma_langchain_db")
     vector_store_from_client.add_documents(texts)
 
     return vector_store_from_client
 
+
 def process_new_profile(user_informations):
     global conversational_rag_chain
-
 
     # Split the document into chunks
     vector_store = create_sub_vector_store(user_informations["country"])
@@ -327,20 +321,22 @@ def process_new_profile(user_informations):
         + f"You are speaking to a  user of {user_informations['gender']} gender, of {user_informations['age']}years of age,"
         + f"with a size of {user_informations['size']}  cm and a weight of {user_informations['weight']}  kg from the country {user_informations['country']}."
         + "you need to help this person with their diet."
-        +"Using the information contained in the context,"
+        + "Using the information contained in the context,"
         + "you will initially ask one after the other, 3 questions to the end user about their health"
         + "if someone doesn't answer one of your question, you will re-ask it up to 3 times."
-        + "then you will ask them if they have particular allergies, intolerences or food preferences."
-        +"After that, using the information contained in the context"
-        +"you will identify 25 ingredients produced in the country of the user and available in this season"
-        +" you will ask the user if these ingredients are ok for them to eat."
+        + "also ask them about their social habits like drinking or smoking and the frequency"
+        "then you will ask them if they have particular allergies, intolerences or food preferences."
+        + "After that, using the information contained in the context"
+        + "you will identify 25 ingredients produced in the country of the user and available in this season"
+        + " you will ask the user if these ingredients are ok for them to eat."
         + "After that, Using the information contained in the context,"
-        + "you will produce a 1 week meal plan in a csv format between triple quote marks that is optimised for the user health and "
-        +" that is based on the previous ingredients"
-        + "the 1 week meal plan should contain the calories of each meal along with amount of nutrients"
+        + "you will produce a 1 week meal plan with snacks in between meals  in a csv format between triple quote marks that is optimised for the user health and "
+        + " that is based on the previous ingredients"
+        + "the 1 week meal plan should contain the amount of calories, serving size, fats, carbohydrates, sugars, proteins, Percent Daily Value, calcium, iron, potassium, and fiber for each meal"
+        + "mention the total of calories each day along with suggested calroie intake for the user based on their BMI"
         + "you will not use expressions such as 'season vegetables' or 'season fruits' but instead you will use the names"
         + " of the fruits and vegetables to eat in this season and in this country"
-        + "also suggest some exercises to go with the meal plan"
+        + "also suggest some exercises to go with the meal plan as an additional response"
         + "also optimised to maximise the consumption of locally produced food and of seasonal products."
         + "You will then ask the user if their is something you should correct in this plan."
         + "If necessary you will correct this plan and re-submit it to the user."
@@ -376,8 +372,10 @@ def process_new_profile(user_informations):
         history_messages_key="chat_history",
         output_messages_key="answer",
     )
+
+
 # def process_document(documents, user_informations):
-    
+
 #     global conversational_rag_chain
 
 
@@ -464,7 +462,7 @@ def process_new_profile(user_informations):
 
 
 # Function to process a user prompt
-def process_prompt(prompt,first_message):
+def process_prompt(prompt, first_message):
     global conversational_rag_chain
     global chat_history
 
@@ -485,9 +483,12 @@ def process_prompt(prompt,first_message):
             csv_file.write(answer.split("```")[1])
 
     return answer
+
+
 def reset_chat_history():
     global chat_history
     chat_history = []
     ChatMessageHistory().clear()
+
 
 init_llm()

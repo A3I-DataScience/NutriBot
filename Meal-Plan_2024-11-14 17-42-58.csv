@@ -1,0 +1,44 @@
+
+Day,Meal,Food,Calories,Nutrients (g),Minerals (mg),Vitamins (mg)
+Monday,Breakfast,Quinoa porridge with berries,300,10,50,15
+Monday,Snack,Apple with almond butter,200,5,150,5
+Monday,Lunch,Grilled chicken salad with spinach and avocado,400,30,300,20
+Monday,Snack,Carrot sticks with hummus,150,4,100,2
+Monday,Dinner,Baked tilapia with sweet potatoes and broccoli,450,40,400,25
+Monday,Total,,"1500, 89, 1000, 67"
+Tuesday,Breakfast,Smoothie with spinach, banana, and chia seeds,350,12,50,20
+Tuesday,Snack,Pear,100,1,20,5
+Tuesday,Lunch,Lentil soup with carrots and tomatoes,400,25,300,15
+Tuesday,Snack,Cucumber slices with guacamole,150,3,50,3
+Tuesday,Dinner,Stir-fried chicken with bell peppers and brown rice,450,35,400,20
+Tuesday,Total,,"1500, 76, 820, 63"
+Wednesday,Breakfast,Oatmeal with sliced banana and walnuts,350,10,50,15
+Wednesday,Snack,Orange,80,1,20,5
+Wednesday,Lunch,Chickpea salad with tomatoes and cucumbers,400,20,300,15
+Wednesday,Snack,Berries,100,1,10,5
+Wednesday,Dinner,Grilled salmon with quinoa and steamed kale,500,40,400,25
+Wednesday,Total,,"1530, 72, 780, 65"
+Thursday,Breakfast,Smoothie with papaya and spinach,300,8,50,15
+Thursday,Snack,Almonds,200,7,150,5
+Thursday,Lunch,Black bean and sweet potato bowl,400,20,300,15
+Thursday,Snack,Carrot sticks,50,1,30,1
+Thursday,Dinner,Chicken stir-fry with broccoli and bell peppers,450,35,400,20
+Thursday,Total,,"1450, 71, 930, 56"
+Friday,Breakfast,Quinoa with apple slices and cinnamon,350,10,50,15
+Friday,Snack,Pineapple,100,1,20,5
+Friday,Lunch,Grilled vegetable salad with chickpeas,400,20,300,15
+Friday,Snack,Cucumber with hummus,150,3,50,3
+Friday,Dinner,Baked tilapia with brown rice and spinach,450,40,400,25
+Friday,Total,,"1450, 74, 820, 63"
+Saturday,Breakfast,Oatmeal with berries and chia seeds,350,10,50,15
+Saturday,Snack,Pear,100,1,20,5
+Saturday,Lunch,Lentil salad with tomatoes and cucumbers,400,25,300,15
+Saturday,Snack,Carrot sticks,50,1,30,1
+Saturday,Dinner,Grilled chicken with sweet potatoes and kale,450,40,400,20
+Saturday,Total,,"1450, 77, 820, 56"
+Sunday,Breakfast,Smoothie with banana and spinach,300,8,50,15
+Sunday,Snack,Almonds,200,7,150,5
+Sunday,Lunch,Quinoa salad with black beans and avocado,400,20,300,15
+Sunday,Snack,Berries,100,1,10,5
+Sunday,Dinner,Stir-fried fish with vegetables and brown rice,500,40,400,25
+Sunday,Total,,"1500, 76, 820, 65"

@@ -12,7 +12,6 @@ from flask import url_for
 from flask_cors import CORS
 
 import parameters as params
-
 import worker  # Import the worker module
 
 # Initialize Flask app and CORS
@@ -22,6 +21,7 @@ app.logger.setLevel(logging.ERROR)
 documents = []
 user_informations = {}
 first_message = True
+
 
 # Define the route for the index page
 @app.route("/", methods=["GET"])
@@ -39,9 +39,10 @@ def download():
     if len(csvs) > 0:
 
         path = csvs[-1]
-        #for file in csvs[:-1]:
+        # for file in csvs[:-1]:
         #    os.remove(file)
         return send_file(path, as_attachment=True)
+
 
 # Define the route for processing messages
 @app.route("/process-message", methods=["POST"])
@@ -53,7 +54,7 @@ def process_message_route():
 
     user_profile = request.json["profile"]
 
-    if user_profile!= 'unknown':
+    if user_profile != "unknown":
         user_informations = params.predefined_profiles[user_profile]
     else:
 

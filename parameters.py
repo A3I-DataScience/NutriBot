@@ -3,9 +3,10 @@ predefined_profiles = {
     "female_1": {
         "gender": "female",
         "age": 55,
-        "size": 160,
-        "weight": 65,
-        "country": "Chile",
+        "size": 165,
+        "weight": 50,
+        "country": "Mexico",
+
     },
     "male_2": {"gender": "male", "age": 65, "size": 180, "weight": 70, "country": "China"},
     "female_2": {
@@ -29,4 +30,5 @@ predefined_profiles = {
         "weight": 95,
         "country": "Lebanon",
     },
+
 }

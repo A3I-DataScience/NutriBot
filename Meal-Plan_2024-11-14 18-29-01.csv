@@ -1,0 +1,44 @@
+
+Day,Meal,Food,Calories,Serving Size,Fats (g),Carbohydrates (g),Sugars (g),Proteins (g),Percent Daily Value (%),Calcium (mg),Iron (mg),Potassium (mg),Fiber (g)
+Monday,Breakfast,Vegetable Oats with Tea,300,1 cup,7,50,2,10,15,30,2.5,300,5
+Monday,Snack,Apple,95,1 medium,0,25,19,0,3,10,0.2,150,4
+Monday,Lunch,Chickpea Salad with Spinach,350,1 cup,10,45,5,15,20,80,3.5,400,8
+Monday,Snack,Carrot Sticks with Hummus,150,1 cup,5,20,5,5,10,30,0.5,200,4
+Monday,Dinner,Grilled Chicken with Broccoli,400,150 g,15,10,0,35,25,40,1.5,500,4
+Total Calories for Monday,,,"1295",,,,,"",,,,,
+Tuesday,Breakfast,Quinoa Porridge with Guava,320,1 cup,6,55,8,10,15,20,2.5,250,5
+Tuesday,Snack,Pomegranate,100,1 medium,1,25,20,2,3,15,0.3,200,5
+Tuesday,Lunch,Vegetable Stir-fry with Brown Rice,400,1 cup,10,60,5,10,15,30,2,450,6
+Tuesday,Snack,Roasted Chickpeas,120,1/2 cup,2,20,0,6,10,15,1,100,5
+Tuesday,Dinner,Fish Curry with Cauliflower Rice,350,150 g,15,15,2,30,20,25,1.5,400,3
+Total Calories for Tuesday,,,"1290",,,,,"",,,,,
+Wednesday,Breakfast,Vegetable Upma with Tea,300,1 cup,5,50,2,10,15,30,2,300,5
+Wednesday,Snack,Banana,105,1 medium,0,27,14,1,3,10,0.3,400,3
+Wednesday,Lunch,Lentil Soup with Spinach,350,1 cup,5,55,3,20,15,40,3,300,8
+Wednesday,Snack,Beetroot Salad,150,1 cup,5,30,5,5,10,20,0.5,200,4
+Wednesday,Dinner,Stuffed Bell Peppers with Quinoa,400,2 pieces,10,50,5,15,20,30,2,450,6
+Total Calories for Wednesday,,,"1305",,,,,"",,,,,
+Thursday,Breakfast,Oats with Papaya,300,1 cup,5,50,10,10,15,20,2,300,5
+Thursday,Snack,Orange,80,1 medium,0,20,12,1,3,10,0.2,150,4
+Thursday,Lunch,Chickpea and Vegetable Curry with Brown Rice,400,1 cup,10,60,5,15,20,30,2,450,6
+Thursday,Snack,Carrot and Cucumber Sticks,100,1 cup,0,20,5,3,5,10,0.5,200,4
+Thursday,Dinner,Grilled Chicken Salad with Mustard Greens,350,150 g,15,10,0,35,25,40,1.5,500,4
+Total Calories for Thursday,,,"1230",,,,,"",,,,,
+Friday,Breakfast,Quinoa Idli with Tea,300,2 pieces,5,50,2,10,15,20,2,300,5
+Friday,Snack,Guava,100,1 medium,1,25,10,2,3,15,0.3,200,5
+Friday,Lunch,Vegetable Khichdi with Spinach,400,1 cup,10,60,5,15,20,30,2,450,6
+Friday,Snack,Pumpkin Seeds,150,1 oz,9,5,1,7,10,15,1,100,5
+Friday,Dinner,Fish Tikka with Green Beans,350,150 g,15,10,0,30,20,25,1.5,400,4
+Total Calories for Friday,,,"1300",,,,,"",,,,,
+Saturday,Breakfast,Oats Chilla with Tea,300,2 pieces,5,50,2,10,15,20,2,300,5
+Saturday,Snack,Apple,95,1 medium,0,25,19,0,3,10,0.2,150,4
+Saturday,Lunch,Lentil Salad with Carrots,350,1 cup,5,55,3,20,15,40,3,300,8
+Saturday,Snack,Roasted Peas,120,1/2 cup,2,20,0,6,10,15,1,100,5
+Saturday,Dinner,Stuffed Zucchini with Quinoa,400,2 pieces,10,50,5,15,20,30,2,450,6
+Total Calories for Saturday,,,"1265",,,,,"",,,,,
+Sunday,Breakfast,Vegetable Dosa with Tea,300,2 pieces,5,50,2,10,15,20,2,300,5
+Sunday,Snack,Pomegranate,100,1 medium,1,25,20,2,3,15,0.3,200,5
+Sunday,Lunch,Chickpea Curry with Cauliflower Rice,400,1 cup,10,60,5,15,20,30,2,450,6
+Sunday,Snack,Carrot Sticks with Hummus,150,1 cup,5,20,5,5,10,30,0.5,200,4
+Sunday,Dinner,Grilled Chicken with Beetroot Salad,400,150 g,15,10,0,35,25,40,1.5,500,4
+Total Calories for Sunday,,,"1350",,,,,"",,,,,
