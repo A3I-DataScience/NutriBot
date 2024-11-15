@@ -3,9 +3,9 @@ predefined_profiles = {
     "female_1": {
         "gender": "female",
         "age": 55,
-        "size": 165,
-        "weight": 50,
-        "country": "Mexico",
+        "size": 160,
+        "weight": 65,
+        "country": "Chile",
     },
     "male_2": {"gender": "male", "age": 65, "size": 180, "weight": 70, "country": "China"},
     "female_2": {
