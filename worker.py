@@ -485,7 +485,6 @@ def process_prompt(prompt,first_message):
             csv_file.write(answer.split("```")[1])
 
     return answer
-
 def reset_chat_history():
     global chat_history
     chat_history = []
