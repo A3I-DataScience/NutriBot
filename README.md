@@ -1,8 +1,7 @@
 # NutriBot
 
-To contain the code of the Nutrition bot data challenge proposed by Datais in Madrid in November 2024 and developed by [A3I-Data Science](https://a3i-datascience.github.io/) Team.
+THis repository contain the code developed by [A3I-Data Science](https://a3i-datascience.github.io/) at the occasion of a dataton proposed by [Datais](https://www.datais.es/dataton-sostenibilidad) in Madrid in November 2024.
 
-https://www.datais.es/dataton-sostenibilidad
 
 ## Acknowledgment
 
