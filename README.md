@@ -1,6 +1,6 @@
 # NutriBot
 
-To contain the code of the Nutrition bot data challenge.
+To contain the code of the Nutrition bot data challenge proposed by Datais in Madrid in November 2024 and developed by [A3I-Data Science](https://a3i-datascience.github.io/) Team.
 
 https://www.datais.es/dataton-sostenibilidad
 
