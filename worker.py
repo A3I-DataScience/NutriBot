@@ -476,11 +476,13 @@ def process_prompt(prompt, first_message):
 
     answer = output["answer"]
 
-    chat_history.append((prompt, answer))
     file_name = f"Meal-Plan_{datetime.datetime.now().strftime('%Y-%m-%d %H-%M-%S')}.csv"
     if "```" in answer:
         with open(file_name, "w") as csv_file:
             csv_file.write(answer.split("```")[1])
+
+    # answer = answer.replace(answer.split("```")[1], "Get ready to nourish your body! Your customized Meal Plan, blending sustainability, nutrition, and your unique health needs is now downloadable.")
+    chat_history.append((prompt, answer))
 
     return answer
 

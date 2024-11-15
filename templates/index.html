@@ -22,7 +22,7 @@
 
 </head>
 <body>
-    <div class="container d-flex flex-column vh-100">
+    <div class="container d-flex flex-column">
         <div class="row">
             <div class="col-12" style="margin-top: 2rem">
                 <h1 class="titletext">A3I NutriBot</h1>
@@ -741,7 +741,7 @@
                     <p>
                       <a class="trigger" href="{{url_for('download')}}">
                         <span>
-                            <em>Download Your Meal Plan</em>
+                            <em>Download</em>
                             <i aria-hidden="true"></i>
                           </span>
 
@@ -770,15 +770,17 @@
                     </div>
                 </div>
                 </div>
+
                 <div class="input-group mt-1">
                     <input type="text" id="message-input" class="form-control" placeholder="Type your message here..." />
                     <div class="input-group-append">
                         <button id="send-button" class="btn btn-primary send">
-                            <i class='fa fa-paper-plane'></i>
+                            <i class='fa fa-send'></i>
                         </button>
                         <button id="reset-button" class="btn btn-primary reset">
                             <i class="fa fa-refresh"></i>
                         </button>
+                    </div>
                     </div>
                 </div>
             </div>

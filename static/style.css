@@ -1,7 +1,7 @@
 
 /* Light mode */
 body {
-  background-color: #d6ddec;
+  background-color: #cce8d2;
   color: #799D7F;
 
 }
@@ -19,6 +19,10 @@ body {
   /*background:black;*/
   position:relative;
   animation:text 3s 1;
+}
+
+.container {
+  height: 100vh;
 }
 
 @keyframes text{
@@ -47,7 +51,7 @@ body {
 	height: 30px;
 	position: relative;
 	display: block;
-	background: #ebebeb;
+	background: #cce8d2;
 	border-radius: 30px;
 	box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.4),
 		inset 0px -5px 15px rgba(255, 255, 255, 0.4);
@@ -118,13 +122,14 @@ body {
 
 #chat-window {
   position: relative;
-  height: 70vh;
+  /*height: 100vh;*/
+  height: 100%;
   overflow: auto;
   width: 100%;
   color: #000000;
 }
 #message-list{
-  width: 100%
+  width: 100%;
 }
 
 .message-line {
@@ -141,7 +146,7 @@ body {
   border-radius: 15px;
   display: inline-block;
   position: relative;
-  background-color: #799D7F;
+  background-color: #93bd9a;
   min-width: 26px;
   border-top-left-radius: 0;
   word-wrap: break-word;
@@ -156,7 +161,7 @@ body {
 
 .message-box.my-text {
   transform: rotateY(180deg);
-  background-color: #799D7F;
+  background-color: #c0be90;
   margin-left:50px;
 }
 
@@ -165,14 +170,25 @@ body {
 }
 
 .message-box.my-text.dark {
-  background-color: #DA8E5F;
+  background-color: #deacac;
 }
 
 .message-box.dark {
-  background-color: #DA8E5F;
+  background-color: #d5b39e;
 }
 
 /* Input container */
+.input-group {
+  position: relative;
+  /*z-index: 1000;*/
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  width: 100%;
+  border-radius: 40px;
+  border: 4px solid #207d3a;
+  margin-bottom: 1em;
+}
 #message-input {
   bottom: 0;
   width: 100%;
@@ -218,19 +234,11 @@ body {
   font-size: 24px;
 }
 
-.input-group {
-  position: relative;
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: stretch;
-  width: 100%;
-  border-radius: 40px;
-  border: 4px solid #fcb40c;
-}
+
 
 #upload-button {
   color: white;
-  background-color: #FFDC88;
+  background-color: #207d3a;
   border: none;
   padding: 5px 10px;
   border-radius: 5px;
@@ -241,13 +249,13 @@ body {
 }
 
 #upload-button:hover {
-  background-color: #fcb40c;
+  background-color: #207d3a;
 }
 
 .send i {
   display: block;
   width: 25px;
-  color: #fcb40c;
+  color: #207d3a;
   content: "\f0a9";
   font-family: FontAwesome;
 }
@@ -255,7 +263,7 @@ body {
 .reset i {
   display: block;
   width: 25px;
-  color: #fcb40c;
+  color: #207d3a;
   content: "\f021";
   font-family: FontAwesome;
 }
@@ -277,7 +285,7 @@ body {
   padding: 12px;
   border-radius: 15px;
   position: relative;
-  background-color: #799D7F;
+  background-color: #93bd9a;
   min-width: 26px;
   border-top-left-radius: 0;
   display: flex;
@@ -288,7 +296,7 @@ body {
 
 .loading-dots.my-loading {
   transform: rotateY(180deg);
-  background-color: #799D7F;
+  background-color: #c0be90;
   float: right;
 }
 
@@ -302,11 +310,11 @@ body {
 }
 
 .loading-dots.my-loading.dark {
-  background-color: #DA8E5F;
+  background-color: #deacac;
 }
 
 .loading-dots.dark {
-  background-color: #DA8E5F;
+  background-color: #d5b39e;
 }
 
 .dark-dot {
@@ -337,13 +345,13 @@ body {
 }
 
 .d-inline-block label{
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  /*font-family: Helvetica Neue, Helvetica, Arial, sans-serif;*/
 	font-size: 1rem;
-	font-weight:  300;
+	font-weight:  bold;
 	letter-spacing: 2px;
 	text-align: center;
-	/*color: #f35626;
-	background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
+	color: #2d9161;
+	/*background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	-webkit-animation: hue 10s infinite linear;*/
@@ -366,8 +374,7 @@ body {
   /*margin: 20px 20px 80px;*/
   padding: 4px;
   font-size: 0.8rem;
-  font-weight: bold;
-  text-transform: uppercase;
+  font-weight: 400;
   /*letter-spacing: 1px;*/
   /*background: linear-gradient(to right bottom, var(--bg));*/
   position: relative;
@@ -381,7 +388,7 @@ body {
 
 /* Change color of select on hover */
 #profile-options:hover {
-  background-color:#FFDC88;
+  background-color:#d0d8c4;
 }
 
 #gender-options {
@@ -390,7 +397,7 @@ body {
 
 /* Change color of select on hover */
 #gender-options:hover {
-  background-color: #FFDC88;
+  background-color: #d0d8c4;
 }
 
 #age-options {
@@ -398,7 +405,7 @@ body {
 }
 
 #age-options:hover {
-  background-color: #FFDC88;
+  background-color: #d0d8c4;
 }
 
 #size-options {
@@ -406,14 +413,14 @@ body {
 }
 
 #size-options:hover {
-  background-color: #FFDC88;
+  background-color: #d0d8c4;
 }
 #weight-options {
   border-radius: 4px; /* Rounded edges */
 }
 
 #weight-options:hover {
-  background-color: #FFDC88;
+  background-color: #d0d8c4;
 }
 
 #country-options {
@@ -421,7 +428,7 @@ body {
 }
 
 #country-options:hover {
-  background-color: #FFDC88;
+  background-color: #d0d8c4;
 }
 
 .trigger {
@@ -430,7 +437,7 @@ body {
   left: 95%;
 	background: #FFDC88;
 	display: inline-block;
-	width: 200px;
+	width: 80px;
 	height: 30px;
 	border-radius: 50em;
 	box-shadow: 0 2px 20px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.2);
@@ -457,7 +464,7 @@ body {
 	Download and SVG located on initial state
 	and on hover
 	*/
-	overflow: hidden;
+	overflow:hidden;
 }
 
 .trigger em {
@@ -474,7 +481,7 @@ body {
   content: "\f019";
   font-family: FontAwesome;
   font-size: 1.5rem;
-  color : #3f8052;
+  color : #2b4834;
 }
 
 .trigger:hover em {
@@ -496,14 +503,14 @@ body {
 
 .trigger::before {
 	content: "Meal Plan";
-	width: 140px;
+	width: 100px;
 	height: 20px;
 	line-height: 20px; /*to make the text vertically center*/
 	background: #3f8052;
 	border-radius: 0.25em;
 	bottom: 50px;
   color: #FFDC88;
-	left: calc(50% - 70px); /*take the left size of the box and pull it left by 70px (half of the box's width) referencing .trigger element as the base*/
+	left: calc(50% - 50px); /*take the left size of the box and pull it left by 70px (half of the box's width) referencing .trigger element as the base*/
 }
 
 /*the triangle below the `File size` box*/
