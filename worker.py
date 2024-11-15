@@ -2,8 +2,10 @@ import datetime
 import os
 from pathlib import Path
 from typing import List
+from uuid import uuid4
 
 import bs4
+import chromadb
 import pandas as pd
 import torch
 from langchain.chains import create_history_aware_retriever
@@ -25,6 +27,8 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.docstore.document import Document as LangchainDocument
 
 from typing import Optional, List, Tuple
+
+from data.country_list import country_list
 
 
 # from langchain.chains import LLMChain, SimpleSequentialChain
@@ -50,16 +54,67 @@ def init_llm():
     global llm, embeddings,chunk_size,embedding_model_name
     llm = ChatOpenAI(model="gpt-4o-mini", temperature=temperature)
     embeddings = OpenAIEmbeddings(chunk_size=chunk_size, model= embedding_model_name)
+    init_chroma_vector_store(embeddings)
+
+def init_chroma_vector_store(embeddings):
+    global vector_store_from_client
+
+    persistent_client = chromadb.PersistentClient(path="./data/chroma_db/chroma_langchain_db")
+
+    try: 
+        persistent_client.get_collection("nutribot_collection")
+    except:
+        persistent_client.get_or_create_collection("nutribot_collection")
+        documents = process_local_documents()
+        texts = split_documents(documents =  documents, chunk_size = chunk_size)
+
+        # Create an embeddings database using Chroma from the split text chunks.
+        embeddings = OpenAIEmbeddings(chunk_size=chunk_size, model=embedding_model_name)
+
+        Chroma.from_documents(texts, embedding=embeddings, collection_name='nutribot_collection', persist_directory="./data/chroma_db/chroma_langchain_db")
 
 
-def process_local_documents(country=None):
+    vector_store_from_client = Chroma(
+        client=persistent_client,
+        collection_name="nutribot_collection",
+        embedding_function=embeddings,
+    )
+
+def create_sub_vector_store(country):
+    global vector_store_from_client
+
+    persistent_client = chromadb.PersistentClient(path="./data/chroma_db/chroma_langchain_db")
+
+    # Create a new sub-vector store with the filtered documents
+    user_collection = vector_store_from_client.get(where={ "$or": [
+        {
+            "Area": {
+                '$eq': country
+            }
+        },
+        {
+            "Type": {
+                '$eq': 'commun'
+            }
+        }
+    ]})
+    country_documents = [Document(page_content=doc) for doc in user_collection["documents"]]
+
+    vectordb = Chroma.from_documents(
+            documents=country_documents, 
+            embedding=embeddings, 
+            persist_directory="./data/chroma_db/chroma_langchain_db"  # type: ignore
+        )
+    return vectordb
+
+def process_local_documents():
 
     documents = []
 
-    documents = process_heatlh_risks_documents(documents, country)
-    documents = process_diet_guidelines_documents(documents, country)
-    documents = process_agriculture_documents(documents, country)
-    documents = process_recipes_documents(documents, country)
+    documents = process_heatlh_risks_documents(documents)
+    documents = process_diet_guidelines_documents(documents)
+    documents = process_agriculture_documents(documents)
+    documents = process_recipes_documents(documents)
 
     return documents
 
@@ -73,7 +128,21 @@ def process_pdfs_loop(documents: List[Document], folder: Path) -> List[Document]
         if file.suffix != ".pdf":
             continue
         loader = PyPDFLoader(file)
-        documents.extend(loader.load())
+        metadata =  {"Type": "commun"}
+        loaded_documents = loader.load()
+                
+        # Add metadata to each document
+        for doc in loaded_documents:
+            # If doc is a string, convert it into a Document object
+            if isinstance(doc, str):
+                doc = Document(page_content=doc)
+                
+            # Add the metadata to the document
+            doc.metadata.update(metadata)  # Assumes 'metadata' is a dictionary
+
+            # Append the document to the list
+            documents.append(doc)
+        documents.extend(loaded_documents)
     return documents
 
 
@@ -89,38 +158,54 @@ def process_urls_loop(documents: List[Document], url_file: Path) -> List[Documen
             web_paths=url_list,
             bs_kwargs={"parse_only": bs4_strainer},
         )
+        metadata =  {"Type": "commun"}
+        loaded_documents = loader.load()
+                
+        # Add metadata to each document
+        for doc in loaded_documents:
+            # If doc is a string, convert it into a Document object
+            if isinstance(doc, str):
+                doc = Document(page_content=doc)
+                
+            # Add the metadata to the document
+            doc.metadata.update(metadata)  # Assumes 'metadata' is a dictionary
+
+            # Append the document to the list
+            documents.append(doc)
         documents.extend(loader.load())
 
     return documents
 
 
-def process_heatlh_risks_documents(documents: List[Document], country: str) -> List[Document]:
+def process_heatlh_risks_documents(documents: List[Document]) -> List[Document]:
+    
+    for country in country_list:
+        health_risks_folder = Path("data/health_risks")
+        fs_norm_filtered = pd.read_csv(health_risks_folder / "fs_norm_filtered.csv")
+        if country is not None:
+            fs_norm_df_filtered_area = fs_norm_filtered[fs_norm_filtered["Area"] == country][
+                ["Area", "Item", "Sentence"]
+            ]
+        else:
+            fs_norm_df_filtered_area = fs_norm_filtered[["Area", "Item", "Sentence"]]
+        fs_norm_df_filtered_area.fillna("Data not available", inplace=True)
 
-    health_risks_folder = Path("data/health_risks")
-    fs_norm_filtered = pd.read_csv(health_risks_folder / "fs_norm_filtered.csv")
-    if country is not None:
-        fs_norm_df_filtered_area = fs_norm_filtered[fs_norm_filtered["Area"] == country][
-            ["Area", "Item", "Sentence"]
-        ]
-    else:
-        fs_norm_df_filtered_area = fs_norm_filtered[["Area", "Item", "Sentence"]]
-    fs_norm_df_filtered_area.fillna("Data not available", inplace=True)
+        if not fs_norm_df_filtered_area.empty:
+            loader = DataFrameLoader(fs_norm_df_filtered_area, page_content_column="Item")
+            documents.extend(loader.load())
+        else:
+            print(f"No FS data found for the country {country}.")
 
-    if not fs_norm_df_filtered_area.empty:
-        loader = DataFrameLoader(fs_norm_df_filtered_area, page_content_column="Item")
-        documents.extend(loader.load())
-    else:
-        print(f"No FS data found for the country {country}.")
-
-    documents = process_pdfs_loop(documents=documents, folder=health_risks_folder)
-    documents = process_urls_loop(
-        documents=documents, url_file=health_risks_folder / "health_risks_urls.txt"
-    )
+        documents = process_pdfs_loop(documents=documents, folder=health_risks_folder)
+        documents = process_urls_loop(
+            documents=documents, url_file=health_risks_folder / "health_risks_urls.txt"
+        )
+        # Add metadata manually after loading the documents
 
     return documents
 
 
-def process_diet_guidelines_documents(documents: List[Document], country: str) -> List[Document]:
+def process_diet_guidelines_documents(documents: List[Document]) -> List[Document]:
 
     diet_guidelines_folder = Path("data/diet_guidelines")
     documents = process_pdfs_loop(documents=documents, folder=diet_guidelines_folder)
@@ -131,41 +216,41 @@ def process_diet_guidelines_documents(documents: List[Document], country: str) -
     return documents
 
 
-def process_agriculture_documents(documents: List[Document], country: str) -> List[Document]:
+def process_agriculture_documents(documents: List[Document]) -> List[Document]:
+    for country in country_list:
+        agriculture_folder = Path("data/agriculture")
+        production_norm_filtered = pd.read_csv(agriculture_folder / "production_norm_filtered.csv")
+        if country is not None:
+            production_norm_filtered = production_norm_filtered[
+                production_norm_filtered["Area"] == country
+            ][["Area", "Item", "Sentence"]]
+        else:
+            production_norm_filtered = production_norm_filtered[["Area", "Item", "Sentence"]]
 
-    agriculture_folder = Path("data/agriculture")
-    production_norm_filtered = pd.read_csv(agriculture_folder / "production_norm_filtered.csv")
-    if country is not None:
-        production_norm_filtered = production_norm_filtered[
-            production_norm_filtered["Area"] == country
-        ][["Area", "Item", "Sentence"]]
-    else:
-        production_norm_filtered = production_norm_filtered[["Area", "Item", "Sentence"]]
 
+        if not production_norm_filtered.empty:
+            loader = DataFrameLoader(production_norm_filtered, page_content_column="Sentence")
+            documents.extend(loader.load())
+        else:
+            print(f"No Production data found for the country {country}.")
 
-    if not production_norm_filtered.empty:
-        loader = DataFrameLoader(production_norm_filtered, page_content_column="Sentence")
-        documents.extend(loader.load())
-    else:
-        print(f"No Production data found for the country {country}.")
-
-    documents = process_pdfs_loop(documents=documents, folder=agriculture_folder)
-    documents = process_urls_loop(
-        documents=documents, url_file=agriculture_folder / "agriculture_urls.txt"
-    )
-    if country is not None:
-        
-        fao_url = f"https://www.fao.org/nutrition/education/food-dietary-guidelines/regions/countries/{country.lower()}/en/"
-
-        bs4_strainer = bs4.SoupStrainer()
-        loader = WebBaseLoader(
-            web_paths=[fao_url],
-            bs_kwargs={"parse_only": bs4_strainer},
+        documents = process_pdfs_loop(documents=documents, folder=agriculture_folder)
+        documents = process_urls_loop(
+            documents=documents, url_file=agriculture_folder / "agriculture_urls.txt"
         )
-        documents.extend(loader.load())
+        if country is not None:
+            
+            fao_url = f"https://www.fao.org/nutrition/education/food-dietary-guidelines/regions/countries/{country.lower()}/en/"
+
+            bs4_strainer = bs4.SoupStrainer()
+            loader = WebBaseLoader(
+                web_paths=[fao_url],
+                bs_kwargs={"parse_only": bs4_strainer},
+            )
+            documents.extend(loader.load())
     return documents
 
-def process_recipes_documents(documents: List[Document], country: str) -> List[Document]:
+def process_recipes_documents(documents: List[Document]) -> List[Document]:
 
     recipes_folder = Path("data/recipes")
     documents = process_pdfs_loop(documents=documents, folder=recipes_folder)
@@ -204,24 +289,21 @@ def load_embeddings(texts, embedding_model_name,chunk_size):
     Load embeddings into a Chroma vectorstore.
 
     """
-
+    global vector_store_from_client
     embeddings = OpenAIEmbeddings(chunk_size=chunk_size, model=embedding_model_name)
 
-    vectorstore = Chroma.from_documents(texts, embeddings)
-    return vectorstore
+    #vectorstore = Chroma.from_documents(texts, embeddings, persist_directory="./data/chroma_db/chroma_langchain_db")
+    vector_store_from_client.add_documents(texts)
 
-def process_document(documents, user_informations):
+    return vector_store_from_client
+
+def process_new_profile(user_informations):
     global conversational_rag_chain
 
 
     # Split the document into chunks
-
-    texts = split_documents(documents =  documents, chunk_size = chunk_size)
-
-    # Create an embeddings database using Chroma from the split text chunks.
-    vectorstore = load_embeddings(texts, embedding_model_name,chunk_size)
-
-    retriever = vectorstore.as_retriever()
+    vector_store = create_sub_vector_store(user_informations["country"])
+    retriever = vector_store.as_retriever()
 
     ### Contextualize question ###
     contextualize_q_system_prompt = """Given a chat history and the latest user question \
@@ -294,6 +376,91 @@ def process_document(documents, user_informations):
         history_messages_key="chat_history",
         output_messages_key="answer",
     )
+# def process_document(documents, user_informations):
+    
+#     global conversational_rag_chain
+
+
+#     # Split the document into chunks
+
+#     texts = split_documents(documents =  documents, chunk_size = chunk_size)
+
+#     # Create an embeddings database using Chroma from the split text chunks.
+#     vectorstore = load_embeddings(texts, embedding_model_name,chunk_size)
+
+#     retriever = vectorstore.as_retriever()
+
+#     ### Contextualize question ###
+#     contextualize_q_system_prompt = """Given a chat history and the latest user question \
+#     which might reference context in the chat history, formulate a standalone question \
+#     which can be understood without the chat history. Do NOT answer the question, \
+#     just reformulate it if needed and otherwise return it as is."""
+#     contextualize_q_prompt = ChatPromptTemplate.from_messages(
+#         [
+#             ("system", contextualize_q_system_prompt),
+#             MessagesPlaceholder("chat_history"),
+#             ("human", "{input}"),
+#         ]
+#     )
+
+#     history_aware_retriever = create_history_aware_retriever(llm, retriever, contextualize_q_prompt)
+#     today = datetime.date.today().strftime("%Y-%m-%d")
+#     ### Answer question ###
+#     qa_system_prompt = (
+#         "You are a Nutrition assistant for question-answering tasks."
+#         + f"The date is {today}. "
+#         + f"You are speaking to a  user of {user_informations['gender']} gender, of {user_informations['age']}years of age,"
+#         + f"with a size of {user_informations['size']}  cm and a weight of {user_informations['weight']}  kg from the country {user_informations['country']}."
+#         + "you need to help this person with their diet."
+#         +"Using the information contained in the context,"
+#         + "you will initially ask one after the other, 3 questions to the end user about their health"
+#         + "if someone doesn't answer one of your question, you will re-ask it up to 3 times."
+#         + "then you will ask them if they have particular allergies, intolerences or food preferences."
+#         +"After that, using the information contained in the context"
+#         +"you will identify 25 ingredients produced in the country of the user and available in this season"
+#         +" you will ask the user if these ingredients are ok for them to eat."
+#         + "After that, Using the information contained in the context,"
+#         + "you will produce a 1 week meal plan in a csv format between triple quote marks that is optimised for the user health and "
+#         +" that is based on the previous ingredients"
+#         + "the 1 week meal plan should contain the calories of each meal along with amount of nutrients"
+#         + "you will not use expressions such as 'season vegetables' or 'season fruits' but instead you will use the names"
+#         + " of the fruits and vegetables to eat in this season and in this country"
+#         + "also suggest some exercises to go with the meal plan"
+#         + "also optimised to maximise the consumption of locally produced food and of seasonal products."
+#         + "You will then ask the user if their is something you should correct in this plan."
+#         + "If necessary you will correct this plan and re-submit it to the user."
+#         + "Finally you will produce a csv file containing the final meal plan."
+#         + "If you are asked questions about anything else but health, nutrition, agriculture, food or diet, you will answer that you don't know."
+#         + """If you don't know the answer, just say that you don't know. \
+
+#     {context}"""
+#     )
+#     qa_prompt = ChatPromptTemplate.from_messages(
+#         [
+#             ("system", qa_system_prompt),
+#             MessagesPlaceholder("chat_history"),
+#             ("human", "{input}"),
+#         ]
+#     )
+#     question_answer_chain = create_stuff_documents_chain(llm, qa_prompt)
+
+#     rag_chain = create_retrieval_chain(history_aware_retriever, question_answer_chain)
+
+#     ### Statefully manage chat history ###
+#     store = {}
+
+#     def get_session_history(session_id: str) -> BaseChatMessageHistory:
+#         if session_id not in store:
+#             store[session_id] = ChatMessageHistory()
+#         return store[session_id]
+
+#     conversational_rag_chain = RunnableWithMessageHistory(
+#         rag_chain,
+#         get_session_history,
+#         input_messages_key="input",
+#         history_messages_key="chat_history",
+#         output_messages_key="answer",
+#     )
 
 
 # Function to process a user prompt
@@ -319,59 +486,9 @@ def process_prompt(prompt,first_message):
 
     return answer
 
+def reset_chat_history():
+    global chat_history
+    chat_history = []
+    ChatMessageHistory().clear()
 
-from ragatouille import RAGPretrainedModel
-from langchain_core.vectorstores import VectorStore
-from langchain_core.language_models.llms import LLM
-
-RAG_PROMPT_TEMPLATE = """
-<|system|>
-Using the information contained in the context,
-give a comprehensive answer to the question.
-Respond only to the question asked, response should be concise and relevant to the question.
-Provide the number of the source document when relevant.
-If the answer cannot be deduced from the context, do not give an answer.</s>
-<|user|>
-Context:
-{context}
----
-Now here is the question you need to answer.
-
-Question: {question}
-</s>
-<|assistant|>
-"""
-
-def answer_with_rag(
-    question: str,
-    llm: LLM,
-    knowledge_index: VectorStore,
-    reranker: Optional[RAGPretrainedModel] = None,
-    num_retrieved_docs: int = 30,
-    num_docs_final: int = 7,
-) -> Tuple[str, List[LangchainDocument]]:
-    """Answer a question using RAG with the given knowledge index."""
-    # Gather documents with retriever
-    relevant_docs = knowledge_index.similarity_search(query=question, k=num_retrieved_docs)
-    relevant_docs = [doc.page_content for doc in relevant_docs]  # keep only the text
-
-    # Optionally rerank results
-    if reranker:
-        relevant_docs = reranker.rerank(question, relevant_docs, k=num_docs_final)
-        relevant_docs = [doc["content"] for doc in relevant_docs]
-
-    relevant_docs = relevant_docs[:num_docs_final]
-
-    # Build the final prompt
-    context = "\nExtracted documents:\n"
-    context += "".join([f"Document {str(i)}:::\n" + doc for i, doc in enumerate(relevant_docs)])
-
-    final_prompt = RAG_PROMPT_TEMPLATE.format(question=question, context=context)
-
-    # Redact an answer
-    answer = llm(final_prompt)
-
-    return answer, relevant_docs
-
-# Initialize the language model
 init_llm()

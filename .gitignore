@@ -44,3 +44,13 @@ ehthumbs.db
 .gitpod.yml
 
 FAO-Data/
+data/chroma_db/chroma_langchain_db/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
