@@ -6,6 +6,7 @@ predefined_profiles = {
         "size": 165,
         "weight": 50,
         "country": "Mexico",
+
     },
     "male_2": {"gender": "male", "age": 65, "size": 180, "weight": 70, "country": "China"},
     "female_2": {
@@ -29,7 +30,7 @@ predefined_profiles = {
         "weight": 95,
         "country": "Lebanon",
     },
-        "male_5": {
+    "male_5": {
         "gender": "male",
         "age": 28,
         "size": 175,

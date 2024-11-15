@@ -237,7 +237,7 @@ $(document).ready(function () {
 
 
   // handle the event of switching light-dark mode
-  $("#light-dark-mode-switch").change(function () {
+  $("#darkmode-toggle").change(function () {
     $("body").toggleClass("dark-mode");
     $(".message-box").toggleClass("dark");
     $(".loading-dots").toggleClass("dark");
