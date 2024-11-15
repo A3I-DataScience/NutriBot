@@ -65,6 +65,9 @@ Power of the message and ability to convince the jury.
 * https://www.who.int/news-room/fact-sheets/detail/healthy-diet
 * https://www.who.int/activities/developing-nutrition-guidelines
 
+## Recipes:
+* https://www.kaggle.com/datasets/wilmerarltstrmberg/recipe-dataset-over-2m
+
 ## Technical references
 
 * https://python.langchain.com/docs/introduction/
