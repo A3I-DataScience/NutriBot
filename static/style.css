@@ -1,15 +1,14 @@
 
-
-
 /* Light mode */
 body {
   background-color: #d6ddec;
-  color: #121717;
+  color: #799D7F;
+
 }
 /* Dark mode */
 .dark-mode {
   background-color: #121717;
-  color: #c9c9c9;
+  color: #DA8E5F;
 }
 .titletext {
   font-size:75px;
@@ -24,16 +23,16 @@ body {
 
 @keyframes text{
   0%{
-    color:rgb(2, 75, 28);
+    color:#DA8E5F;
     margin-bottom:10px;
   }
   30%{
-    color:rgb(2, 105, 28);
+    color:#FFDC88;;
     letter-spacing:25px;
     margin-bottom:10px;
   }
   85%{
-    color:rgb(2, 165, 28);
+    color: #799D7F;
     letter-spacing:8px;
     margin-bottom:10px;
   }
@@ -121,7 +120,8 @@ body {
   position: relative;
   height: 70vh;
   overflow: auto;
-  width: 100%
+  width: 100%;
+  color: #000000;
 }
 #message-list{
   width: 100%
@@ -141,7 +141,7 @@ body {
   border-radius: 15px;
   display: inline-block;
   position: relative;
-  background-color: #efefef;
+  background-color: #799D7F;
   min-width: 26px;
   border-top-left-radius: 0;
   word-wrap: break-word;
@@ -156,7 +156,7 @@ body {
 
 .message-box.my-text {
   transform: rotateY(180deg);
-  background-color: #e7f9d8;
+  background-color: #799D7F;
   margin-left:50px;
 }
 
@@ -165,11 +165,11 @@ body {
 }
 
 .message-box.my-text.dark {
-  background-color: #0f4c9e;
+  background-color: #DA8E5F;
 }
 
 .message-box.dark {
-  background-color: #263443;
+  background-color: #DA8E5F;
 }
 
 /* Input container */
@@ -225,12 +225,12 @@ body {
   align-items: stretch;
   width: 100%;
   border-radius: 40px;
-  border: 1px solid #2d2d2d;
+  border: 4px solid #fcb40c;
 }
 
 #upload-button {
   color: white;
-  background-color: #007bff;
+  background-color: #FFDC88;
   border: none;
   padding: 5px 10px;
   border-radius: 5px;
@@ -241,13 +241,13 @@ body {
 }
 
 #upload-button:hover {
-  background-color: #0056b3;
+  background-color: #fcb40c;
 }
 
 .send i {
   display: block;
   width: 25px;
-  color: #0f4c9e;
+  color: #fcb40c;
   content: "\f0a9";
   font-family: FontAwesome;
 }
@@ -255,7 +255,7 @@ body {
 .reset i {
   display: block;
   width: 25px;
-  color: #0f4c9e;
+  color: #fcb40c;
   content: "\f021";
   font-family: FontAwesome;
 }
@@ -277,7 +277,7 @@ body {
   padding: 12px;
   border-radius: 15px;
   position: relative;
-  background-color: #efefef;
+  background-color: #799D7F;
   min-width: 26px;
   border-top-left-radius: 0;
   display: flex;
@@ -288,7 +288,7 @@ body {
 
 .loading-dots.my-loading {
   transform: rotateY(180deg);
-  background-color: #e7f9d8;
+  background-color: #799D7F;
   float: right;
 }
 
@@ -302,15 +302,15 @@ body {
 }
 
 .loading-dots.my-loading.dark {
-  background-color: #0e4d9e;
+  background-color: #DA8E5F;
 }
 
-.dark {
-  background-color: #263443;
+.loading-dots.dark {
+  background-color: #DA8E5F;
 }
 
 .dark-dot {
-  background: #c9c9c9;
+  background: #5a5a5a;
 }
 
 .dot:nth-of-type(1) {
@@ -339,24 +339,24 @@ body {
 .d-inline-block label{
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 	font-size: 1rem;
-	font-weight:  100;
+	font-weight:  300;
 	letter-spacing: 2px;
 	text-align: center;
-	color: #f35626;
+	/*color: #f35626;
 	background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
-	-webkit-animation: hue 10s infinite linear;
+	-webkit-animation: hue 10s infinite linear;*/
 }
 
-@-webkit-keyframes hue {
+/*@-webkit-keyframes hue {
   from {
     -webkit-filter: hue-rotate(0deg);
   }
   to {
     -webkit-filter: hue-rotate(-360deg);
   }
-}
+}*/
 
 .d-inline-block select{
   display: inline-block;
@@ -381,7 +381,7 @@ body {
 
 /* Change color of select on hover */
 #profile-options:hover {
-  background-color: #bbc8a0;
+  background-color:#FFDC88;
 }
 
 #gender-options {
@@ -390,7 +390,7 @@ body {
 
 /* Change color of select on hover */
 #gender-options:hover {
-  background-color: #bbc8a0;
+  background-color: #FFDC88;
 }
 
 #age-options {
@@ -398,7 +398,7 @@ body {
 }
 
 #age-options:hover {
-  background-color: #bbc8a0;
+  background-color: #FFDC88;
 }
 
 #size-options {
@@ -406,14 +406,14 @@ body {
 }
 
 #size-options:hover {
-  background-color: #bbc8a0;
+  background-color: #FFDC88;
 }
 #weight-options {
   border-radius: 4px; /* Rounded edges */
 }
 
 #weight-options:hover {
-  background-color: #bbc8a0;
+  background-color: #FFDC88;
 }
 
 #country-options {
@@ -421,20 +421,21 @@ body {
 }
 
 #country-options:hover {
-  background-color: #bbc8a0;
+  background-color: #FFDC88;
 }
 
 .trigger {
 	position: relative;
   top: 5%;
   left: 95%;
-	background: #024a07;
+	background: #FFDC88;
 	display: inline-block;
 	width: 200px;
 	height: 30px;
 	border-radius: 50em;
 	box-shadow: 0 2px 20px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.2);
-	color: #fff;
+	color: #3f8052;
+  font-weight: bold;
 }
 
 .trigger span, em, i {
@@ -473,7 +474,7 @@ body {
   content: "\f019";
   font-family: FontAwesome;
   font-size: 1.5rem;
-  color : #fff;
+  color : #3f8052;
 }
 
 .trigger:hover em {
@@ -498,10 +499,10 @@ body {
 	width: 140px;
 	height: 20px;
 	line-height: 20px; /*to make the text vertically center*/
-	background: #152216;
+	background: #3f8052;
 	border-radius: 0.25em;
 	bottom: 50px;
-  color: #fff;
+  color: #FFDC88;
 	left: calc(50% - 70px); /*take the left size of the box and pull it left by 70px (half of the box's width) referencing .trigger element as the base*/
 }
 
@@ -517,7 +518,7 @@ body {
 	left to center = 10px
 	center to right = 10px
 	*/
-	border-top-color: #0d7614;
+	border-top-color: #3f8052;
 	left: calc(50% - 10px); /*take the left size of the box and pull it left by 10px (half of the box's width) referencing .trigger element as the base*/
 	/*bottom: 70px;*/
 }

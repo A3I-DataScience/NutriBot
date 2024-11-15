@@ -2,12 +2,9 @@ import datetime
 import os
 from pathlib import Path
 from typing import List
-<<<<<<< HEAD
-from uuid import uuid4
-=======
 from typing import Optional
 from typing import Tuple
->>>>>>> 5cab6bc (additions to meal plan)
+from uuid import uuid4
 
 import bs4
 import chromadb
@@ -30,15 +27,8 @@ from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_openai import ChatOpenAI
 from langchain_openai import OpenAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-<<<<<<< HEAD
-from langchain.docstore.document import Document as LangchainDocument
-
-from typing import Optional, List, Tuple
 
 from data.country_list import country_list
-
-=======
->>>>>>> 5cab6bc (additions to meal plan)
 
 # from langchain.chains import LLMChain, SimpleSequentialChain
 
@@ -61,30 +51,31 @@ chat_history = []
 def init_llm():
     global llm, embeddings, chunk_size, embedding_model_name
     llm = ChatOpenAI(model="gpt-4o-mini", temperature=temperature)
-<<<<<<< HEAD
-    embeddings = OpenAIEmbeddings(chunk_size=chunk_size, model= embedding_model_name)
+    embeddings = OpenAIEmbeddings(chunk_size=chunk_size, model=embedding_model_name)
     init_chroma_vector_store(embeddings)
+
 
 def init_chroma_vector_store(embeddings):
     global vector_store_from_client
 
     persistent_client = chromadb.PersistentClient(path="./data/chroma_db/chroma_langchain_db")
 
-    try: 
+    try:
         persistent_client.get_collection("nutribot_collection")
     except:
         persistent_client.get_or_create_collection("nutribot_collection")
         documents = process_local_documents()
-        texts = split_documents(documents =  documents, chunk_size = chunk_size)
+        texts = split_documents(documents=documents, chunk_size=chunk_size)
 
         # Create an embeddings database using Chroma from the split text chunks.
         embeddings = OpenAIEmbeddings(chunk_size=chunk_size, model=embedding_model_name)
 
-        Chroma.from_documents(texts, embedding=embeddings, collection_name='nutribot_collection', persist_directory="./data/chroma_db/chroma_langchain_db")
-=======
-    embeddings = OpenAIEmbeddings(chunk_size=chunk_size, model=embedding_model_name)
->>>>>>> 5cab6bc (additions to meal plan)
-
+        Chroma.from_documents(
+            texts,
+            embedding=embeddings,
+            collection_name="nutribot_collection",
+            persist_directory="./data/chroma_db/chroma_langchain_db",
+        )
 
     vector_store_from_client = Chroma(
         client=persistent_client,
@@ -92,32 +83,25 @@ def init_chroma_vector_store(embeddings):
         embedding_function=embeddings,
     )
 
+
 def create_sub_vector_store(country):
     global vector_store_from_client
 
     persistent_client = chromadb.PersistentClient(path="./data/chroma_db/chroma_langchain_db")
 
     # Create a new sub-vector store with the filtered documents
-    user_collection = vector_store_from_client.get(where={ "$or": [
-        {
-            "Area": {
-                '$eq': country
-            }
-        },
-        {
-            "Type": {
-                '$eq': 'commun'
-            }
-        }
-    ]})
+    user_collection = vector_store_from_client.get(
+        where={"$or": [{"Area": {"$eq": country}}, {"Type": {"$eq": "commun"}}]}
+    )
     country_documents = [Document(page_content=doc) for doc in user_collection["documents"]]
 
     vectordb = Chroma.from_documents(
-            documents=country_documents, 
-            embedding=embeddings, 
-            persist_directory="./data/chroma_db/chroma_langchain_db"  # type: ignore
-        )
+        documents=country_documents,
+        embedding=embeddings,
+        persist_directory="./data/chroma_db/chroma_langchain_db",  # type: ignore
+    )
     return vectordb
+
 
 def process_local_documents():
 
@@ -140,15 +124,15 @@ def process_pdfs_loop(documents: List[Document], folder: Path) -> List[Document]
         if file.suffix != ".pdf":
             continue
         loader = PyPDFLoader(file)
-        metadata =  {"Type": "commun"}
+        metadata = {"Type": "commun"}
         loaded_documents = loader.load()
-                
+
         # Add metadata to each document
         for doc in loaded_documents:
             # If doc is a string, convert it into a Document object
             if isinstance(doc, str):
                 doc = Document(page_content=doc)
-                
+
             # Add the metadata to the document
             doc.metadata.update(metadata)  # Assumes 'metadata' is a dictionary
 
@@ -170,15 +154,15 @@ def process_urls_loop(documents: List[Document], url_file: Path) -> List[Documen
             web_paths=url_list,
             bs_kwargs={"parse_only": bs4_strainer},
         )
-        metadata =  {"Type": "commun"}
+        metadata = {"Type": "commun"}
         loaded_documents = loader.load()
-                
+
         # Add metadata to each document
         for doc in loaded_documents:
             # If doc is a string, convert it into a Document object
             if isinstance(doc, str):
                 doc = Document(page_content=doc)
-                
+
             # Add the metadata to the document
             doc.metadata.update(metadata)  # Assumes 'metadata' is a dictionary
 
@@ -190,7 +174,7 @@ def process_urls_loop(documents: List[Document], url_file: Path) -> List[Documen
 
 
 def process_heatlh_risks_documents(documents: List[Document]) -> List[Document]:
-    
+
     for country in country_list:
         health_risks_folder = Path("data/health_risks")
         fs_norm_filtered = pd.read_csv(health_risks_folder / "fs_norm_filtered.csv")
@@ -239,8 +223,6 @@ def process_agriculture_documents(documents: List[Document]) -> List[Document]:
         else:
             production_norm_filtered = production_norm_filtered[["Area", "Item", "Sentence"]]
 
-<<<<<<< HEAD
-
         if not production_norm_filtered.empty:
             loader = DataFrameLoader(production_norm_filtered, page_content_column="Sentence")
             documents.extend(loader.load())
@@ -250,29 +232,9 @@ def process_agriculture_documents(documents: List[Document]) -> List[Document]:
         documents = process_pdfs_loop(documents=documents, folder=agriculture_folder)
         documents = process_urls_loop(
             documents=documents, url_file=agriculture_folder / "agriculture_urls.txt"
-=======
-    if not production_norm_filtered.empty:
-        loader = DataFrameLoader(production_norm_filtered, page_content_column="Sentence")
-        documents.extend(loader.load())
-    else:
-        print(f"No Production data found for the country {country}.")
-
-    documents = process_pdfs_loop(documents=documents, folder=agriculture_folder)
-    documents = process_urls_loop(
-        documents=documents, url_file=agriculture_folder / "agriculture_urls.txt"
-    )
-    if country is not None:
-
-        fao_url = f"https://www.fao.org/nutrition/education/food-dietary-guidelines/regions/countries/{country.lower()}/en/"
-
-        bs4_strainer = bs4.SoupStrainer()
-        loader = WebBaseLoader(
-            web_paths=[fao_url],
-            bs_kwargs={"parse_only": bs4_strainer},
->>>>>>> 5cab6bc (additions to meal plan)
         )
         if country is not None:
-            
+
             fao_url = f"https://www.fao.org/nutrition/education/food-dietary-guidelines/regions/countries/{country.lower()}/en/"
 
             bs4_strainer = bs4.SoupStrainer()
@@ -282,6 +244,7 @@ def process_agriculture_documents(documents: List[Document]) -> List[Document]:
             )
             documents.extend(loader.load())
     return documents
+
 
 def process_recipes_documents(documents: List[Document]) -> List[Document]:
 
@@ -323,32 +286,18 @@ def load_embeddings(texts, embedding_model_name, chunk_size):
     global vector_store_from_client
     embeddings = OpenAIEmbeddings(chunk_size=chunk_size, model=embedding_model_name)
 
-    #vectorstore = Chroma.from_documents(texts, embeddings, persist_directory="./data/chroma_db/chroma_langchain_db")
+    # vectorstore = Chroma.from_documents(texts, embeddings, persist_directory="./data/chroma_db/chroma_langchain_db")
     vector_store_from_client.add_documents(texts)
 
-<<<<<<< HEAD
     return vector_store_from_client
 
-def process_new_profile(user_informations):
-=======
 
-def process_document(documents, user_informations):
->>>>>>> 5cab6bc (additions to meal plan)
+def process_new_profile(user_informations):
     global conversational_rag_chain
 
     # Split the document into chunks
-<<<<<<< HEAD
     vector_store = create_sub_vector_store(user_informations["country"])
     retriever = vector_store.as_retriever()
-=======
-
-    texts = split_documents(documents=documents, chunk_size=chunk_size)
-
-    # Create an embeddings database using Chroma from the split text chunks.
-    vectorstore = load_embeddings(texts, embedding_model_name, chunk_size)
-
-    retriever = vectorstore.as_retriever()
->>>>>>> 5cab6bc (additions to meal plan)
 
     ### Contextualize question ###
     contextualize_q_system_prompt = """Given a chat history and the latest user question \
@@ -423,8 +372,10 @@ def process_document(documents, user_informations):
         history_messages_key="chat_history",
         output_messages_key="answer",
     )
+
+
 # def process_document(documents, user_informations):
-    
+
 #     global conversational_rag_chain
 
 
@@ -532,68 +483,12 @@ def process_prompt(prompt, first_message):
             csv_file.write(answer.split("```")[1])
 
     return answer
+
+
 def reset_chat_history():
     global chat_history
     chat_history = []
     ChatMessageHistory().clear()
 
-<<<<<<< HEAD
-=======
 
-'''
-from ragatouille import RAGPretrainedModel
-from langchain_core.vectorstores import VectorStore
-from langchain_core.language_models.llms import LLM
-
-RAG_PROMPT_TEMPLATE = """
-<|system|>
-Using the information contained in the context,
-give a comprehensive answer to the question.
-Respond only to the question asked, response should be concise and relevant to the question.
-Provide the number of the source document when relevant.
-If the answer cannot be deduced from the context, do not give an answer.</s>
-<|user|>
-Context:
-{context}
----
-Now here is the question you need to answer.
-
-Question: {question}
-</s>
-<|assistant|>
-"""
-
-def answer_with_rag(
-    question: str,
-    llm: LLM,
-    knowledge_index: VectorStore,
-    reranker: Optional[RAGPretrainedModel] = None,
-    num_retrieved_docs: int = 30,
-    num_docs_final: int = 7,
-) -> Tuple[str, List[LangchainDocument]]:
-    """Answer a question using RAG with the given knowledge index."""
-    # Gather documents with retriever
-    relevant_docs = knowledge_index.similarity_search(query=question, k=num_retrieved_docs)
-    relevant_docs = [doc.page_content for doc in relevant_docs]  # keep only the text
-
-    # Optionally rerank results
-    if reranker:
-        relevant_docs = reranker.rerank(question, relevant_docs, k=num_docs_final)
-        relevant_docs = [doc["content"] for doc in relevant_docs]
-
-    relevant_docs = relevant_docs[:num_docs_final]
-
-    # Build the final prompt
-    context = "\nExtracted documents:\n"
-    context += "".join([f"Document {str(i)}:::\n" + doc for i, doc in enumerate(relevant_docs)])
-
-    final_prompt = RAG_PROMPT_TEMPLATE.format(question=question, context=context)
-
-    # Redact an answer
-    answer = llm(final_prompt)
-
-    return answer, relevant_docs
-'''
-# Initialize the language model
->>>>>>> 5cab6bc (additions to meal plan)
 init_llm()
