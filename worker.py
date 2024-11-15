@@ -103,7 +103,7 @@ def create_sub_vector_store(country):
     vectordb = Chroma.from_documents(
             documents=country_documents, 
             embedding=embeddings, 
-            persist_directory="./data/chroma_db/chroma_langchain_db"  # type: ignore
+            persist_directory="./data/chroma_db/chroma_langchain_db" 
         )
     return vectordb
 

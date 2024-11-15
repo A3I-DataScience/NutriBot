@@ -42,7 +42,6 @@ def download():
         #for file in csvs[:-1]:
         #    os.remove(file)
         return send_file(path, as_attachment=True)
-
 # Define the route for processing messages
 @app.route("/process-message", methods=["POST"])
 def process_message_route():

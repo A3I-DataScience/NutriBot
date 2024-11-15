@@ -7,10 +7,44 @@ let ageOption = "unknown";
 let sizeOption = "unknown";
 let weightOption = "unknown";
 let countryOption = "unknown";
+let optionChanges = {};
+
 const responses = [];
 const botRepeatButtonIDToIndexMap = {};
 const userRepeatButtonIDToRecordingMap = {};
 const baseUrl = window.location.origin
+
+
+const areOptionsValid = () => {
+  // Condition 1: `profileOption` is filled
+  if (profileOption && profileOption !== "unknown") {
+    return true;
+  }
+
+  // Condition 2: All other options are filled
+  const otherOptions = [genderOption, ageOption, sizeOption, weightOption, countryOption];
+  return otherOptions.every(option => option && option !== "unknown");
+};
+const updateSendButtonState = () => {
+  const sendButton = document.getElementById("send-button");
+  const messageInput = document.getElementById("message-input");
+  
+  // Enable or disable the send button based on areOptionsValid()
+  sendButton.disabled = !areOptionsValid();
+  
+};
+
+$("#send-button").click(async function () {
+  if (!areOptionsValid()) {
+    alert("Please complete your profile or fill out all the other fields.");
+    return;
+  }
+
+  const message = cleanTextInput($("#message-input").val());
+  populateUserMessage(message, null);
+  populateBotResponse(message);
+});
+
 
 async function showBotLoadingAnimation() {
   await sleep(200);
@@ -91,22 +125,53 @@ const populateBotResponse = async (userMessage) => {
 
   let response;
 
-
   if (isFirstMessage) {
     response = { botResponse: "Hello there! I'm NutriBot your nutrition assistant. I will ask you a few questions to understand you better and provide you with personalized nutrition advice. Let's get started! ok?" };
-
-  } else {
-    response = await processUserMessage(userMessage);
+    
+    renderBotResponse(response);
+    isFirstMessage = false;
+    return;
   }
 
-  renderBotResponse(response)
-  isFirstMessage = false
+  // Generate a message for the changed options, if any
+  if (Object.keys(optionChanges).length > 0) {
+    let changesMessage = "";
+    for (const [key, value] of Object.entries(optionChanges)) {
+      changesMessage += `I see you've updated your profile, please give me some time to think. `;
+    }
 
-  // Event listener for user informations
-  
+    // Render acknowledgment for changes
+    renderBotResponse({ botResponse: changesMessage });
 
+    optionChanges = {}; // Reset changes after acknowledgment
+  }
 
+  await showBotLoadingAnimation();
+
+  // Process the user's message and render the bot's response
+  response = await processUserMessage(userMessage);
+  renderBotResponse(response);
 };
+
+// const populateBotResponse = async (userMessage) => {
+//   await showBotLoadingAnimation();
+
+//   let response;
+
+
+//   if (isFirstMessage) {
+//     response = { botResponse: "Hello there! I'm NutriBot your nutrition assistant. I will ask you a few questions to understand you better and provide you with personalized nutrition advice. Let's get started! ok?" };
+
+//   } else {
+//     response = await processUserMessage(userMessage);
+//   }
+
+//   renderBotResponse(response)
+//   isFirstMessage = false
+
+//   // Event listener for user informations
+  
+// };
 
 const renderBotResponse = (response) => {
   responses.push(response);
@@ -180,33 +245,47 @@ $(document).ready(function () {
     lightMode = !lightMode;
   });
 
-  $("#profile-options").change(function () {
+ $("#profile-options").change(function () {
     profileOption = $(this).val();
-    console.log(profileOption);
-  });
+    console.log("Profile option changed to:", profileOption);
+    optionChanges["Profile"] = profileOption;
+    updateSendButtonState();
+});
 
-  $("#gender-options").change(function () {
+$("#gender-options").change(function () {
     genderOption = $(this).val();
-    console.log(genderOption);
-  });
+    console.log("Gender option changed to:", genderOption);
+    optionChanges["Gender"] = genderOption;
+    updateSendButtonState();
+});
 
-  $("#age-options").change(function () {
+$("#age-options").change(function () {
     ageOption = $(this).val();
-    console.log(ageOption);
-  });
-  $("#size-options").change(function () {
-    sizeOption = $(this).val();
-    console.log(sizeOption);
-  });
-  $("#weight-options").change(function () {
-    weightOption = $(this).val();
-    console.log(weightOption);
-  });
+    console.log("Age option changed to:", ageOption);
+    optionChanges["Age"] = ageOption;
+    updateSendButtonState();
+});
 
-  $("#country-options").change(function () {
+$("#size-options").change(function () {
+    sizeOption = $(this).val();
+    console.log("Size option changed to:", sizeOption);
+    optionChanges["Size"] = sizeOption;
+    updateSendButtonState();
+});
+
+$("#weight-options").change(function () {
+    weightOption = $(this).val();
+    console.log("Weight option changed to:", weightOption);
+    optionChanges["Weight"] = weightOption;
+    updateSendButtonState();
+});
+
+$("#country-options").change(function () {
     countryOption = $(this).val();
-    console.log(countryOption);
-  });
+    console.log("Country option changed to:", countryOption);
+    optionChanges["Country"] = countryOption;
+    updateSendButtonState();
+});
 
 
 });
