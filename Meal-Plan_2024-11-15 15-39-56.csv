@@ -1,0 +1,23 @@
+csv
+Day,Meal,Food,Calories,Protein (g),Carbs (g),Fat (g)
+Monday,Breakfast,Spinach and Feta Omelette with Whole Grain Toast,350,20,30,15
+Monday,Lunch,Chickpea Salad with Tomatoes, Cucumbers, and Olive Oil,400,15,50,18
+Monday,Dinner,Quinoa with Roasted Vegetables (Bell Peppers, Zucchini, Eggplant),450,12,60,20
+Tuesday,Breakfast,Smoothie with Kale, Banana, and Almond Milk,300,5,45,10
+Tuesday,Lunch,Lentil Soup with Carrots and Celery,350,18,50,5
+Tuesday,Dinner,Stuffed Bell Peppers with Quinoa and Black Beans,500,20,70,15
+Wednesday,Breakfast,Oatmeal with Apples and Walnuts,400,10,60,15
+Wednesday,Lunch,Beet and Goat Cheese Salad with Walnuts,450,12,40,25
+Wednesday,Dinner,Vegetable Stir-fry with Tofu and Brown Rice,500,25,60,15
+Thursday,Breakfast,Greek Yogurt with Figs and Honey,350,15,40,10
+Thursday,Lunch,Roasted Cauliflower and Chickpea Bowl,400,15,50,15
+Thursday,Dinner,Vegetable Curry with Lentils and Quinoa,500,20,70,15
+Friday,Breakfast,Smoothie with Spinach, Orange, and Chia Seeds,300,5,45,10
+Friday,Lunch,Tomato and Cucumber Salad with Feta,350,15,30,20
+Friday,Dinner,Stuffed Zucchini with Rice and Herbs,450,12,60,15
+Saturday,Breakfast,Avocado Toast with Radishes,400,10,40,25
+Saturday,Lunch,Quinoa Salad with Pomegranate and Walnuts,450,15,50,20
+Saturday,Dinner,Vegetable Lasagna with Spinach and Ricotta,500,25,60,20
+Sunday,Breakfast,Chia Pudding with Almond Milk and Berries,350,10,40,15
+Sunday,Lunch,Roasted Vegetable Wrap with Hummus,400,12,50,15
+Sunday,Dinner,Grilled Eggplant with Tomato Sauce and Quinoa,500,20,60,15

@@ -30,5 +30,11 @@ predefined_profiles = {
         "weight": 95,
         "country": "Lebanon",
     },
-
+    "male_5": {
+        "gender": "male",
+        "age": 28,
+        "size": 175,
+        "weight": 73,
+        "country": "Switzerland",
+    },
 }
