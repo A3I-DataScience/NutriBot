@@ -4,17 +4,11 @@ To contain the code of the Nutrition bot data challenge.
 
 https://www.datais.es/dataton-sostenibilidad
 
+## Acknowledgment
+
+* This flask has been developed using this template https://github.com/arora-r/chatapp-with-voice-and-openai-outline.
+
 ## Project Scope
-
-#### In Spanish
-
-Optimización de dietas nutricionales con IA Generativa
-
-El objetivo de este reto es desarrollar un modelo y una aplicación utilizando IA generativa para optimizar dietas nutricionales, garantizando una ingesta balanceada y adecuada para diferentes poblaciones. Los participantes deberán abordar el diseño de soluciones que no solo promuevan la salud, sino que también sean personalizables y accesibles, teniendo en cuenta las preferencias y necesidades nutricionales de los usuarios.
-
-Los proyectos serán evaluados en función de la efectividad del modelo para crear dietas equilibradas, la innovación en el uso de IA generativa, la usabilidad de la aplicación desarrollada y la claridad de la presentación de resultados. Se recomienda utilizar los siguientes conjuntos de datos: Apparent Intake (based on household consumption and expenditure surveys) y Suite of Food Security Indicators 2.
-
-#### In English
 
 Optimization of nutritional diets with Generative AI
 
@@ -50,7 +44,7 @@ Quality and originality of the presentation and clarity of the message.
 Clarity and effectiveness in the visualization of results.
 Power of the message and ability to convince the jury.
 
-## Predefined profiles for Demonstration
+## Predefined profiles
 
 * Antonio, is a male person of 39 years old living in spain, who has a sedentary job and is interested in improving his diet.
 * Ivo, is a young male of 27 years old living in Lebanon, who is interested in improving his diet to improve his weight lifting performances.
