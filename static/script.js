@@ -137,7 +137,7 @@ const populateBotResponse = async (userMessage) => {
   if (Object.keys(optionChanges).length > 0) {
     let changesMessage = "";
     for (const [key, value] of Object.entries(optionChanges)) {
-      changesMessage += `I see you've updated your profile, please give me some time to think. `;
+      changesMessage = `I see you've updated your profile, please give me some time to think. `;
     }
 
     // Render acknowledgment for changes
@@ -152,26 +152,6 @@ const populateBotResponse = async (userMessage) => {
   response = await processUserMessage(userMessage);
   renderBotResponse(response);
 };
-
-// const populateBotResponse = async (userMessage) => {
-//   await showBotLoadingAnimation();
-
-//   let response;
-
-
-//   if (isFirstMessage) {
-//     response = { botResponse: "Hello there! I'm NutriBot your nutrition assistant. I will ask you a few questions to understand you better and provide you with personalized nutrition advice. Let's get started! ok?" };
-
-//   } else {
-//     response = await processUserMessage(userMessage);
-//   }
-
-//   renderBotResponse(response)
-//   isFirstMessage = false
-
-//   // Event listener for user informations
-  
-// };
 
 const renderBotResponse = (response) => {
   responses.push(response);
