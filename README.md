@@ -30,7 +30,7 @@ Feasibility and scalability of the solution in the real world.
 Coverage of the complete data cycle: collection, analysis, integration and generation of insights.
 Implementation of Machine Learning & AI.
 
-#### Business Impact (up to 40 points)
+#### Business Impact (up to 40 points)Can 
 
 Relevance and applicability of the solution for the sustainability sector and its recipients.
 Ability to solve the problem in practice and potential to improve processes.
