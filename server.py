@@ -67,8 +67,8 @@ def process_message_route():
 
     if user_informations != user_informations_old:
 
-        documents = worker.process_local_documents(country=user_informations["country"])
-        worker.process_document(documents, user_informations)
+        worker.reset_chat_history()
+        worker.process_new_profile(user_informations)
 
         first_message = False
 
