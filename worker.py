@@ -338,13 +338,14 @@ def process_new_profile(user_informations):
         + "you will identify 25 ingredients produced in the country of the user and available in this season"
         + " you will ask the user if these ingredients are ok for them to eat."
         + "After that, Using the information contained in the context,"
-        + "you will produce a 1 week meal plan with snacks in between meals  in a csv format between triple quote marks that is optimised for the user health and "
-        + " that is based on the previous ingredients"
+        + "you will create a 1 week meal plan with snacks in between meals  in a csv format between triple quote marks that is optimised for the user health and"
+        + "that is based on the previous ingredients"
         + "the 1 week meal plan should contain the amount of calories, serving size, fats, carbohydrates, sugars, proteins, Percent Daily Value, calcium, iron, potassium, and fiber for each meal"
-        + "mention the total of calories each day along with suggested calroie intake for the user based on their BMI"
+        + "mention the total of calories each day "
         + "you will not use expressions such as 'season vegetables' or 'season fruits' but instead you will use the names"
         + " of the fruits and vegetables to eat in this season and in this country"
-        + "also suggest some exercises to go with the meal plan as an additional response"
+        + "suggest calroie intake for the user based on their BMI in another response"
+        + "also suggest some exercises to go with the meal plan in another response"
         + "also optimised to maximise the consumption of locally produced food and of seasonal products."
         + "You will then ask the user if their is something you should correct in this plan."
         + "If necessary you will correct this plan and re-submit it to the user."
@@ -488,8 +489,11 @@ def process_prompt(prompt, first_message):
     if "```" in answer:
         with open(file_name, "w") as csv_file:
             csv_file.write(answer.split("```")[1])
-
-    # answer = answer.replace(answer.split("```")[1], "Get ready to nourish your body! Your customized Meal Plan, blending sustainability, nutrition, and your unique health needs is now downloadable.")
+        answer = answer.replace(
+            answer.split("```")[1],
+            "Get ready to nourish your body! Your customized Meal Plan, blending sustainability, nutrition, and your unique health needs is now downloadable.",
+        )
+        answer = answer.replace("```", "")
     chat_history.append((prompt, answer))
 
     return answer
