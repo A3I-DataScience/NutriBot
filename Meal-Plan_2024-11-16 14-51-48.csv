@@ -1,0 +1,50 @@
+csv
+Day,Meal,Food,Calories,Serving Size,Fats (g),Carbohydrates (g),Sugars (g),Proteins (g),Percent Daily Value (%),Calcium (mg),Iron (mg),Potassium (mg),Fiber (g)
+Monday,Breakfast,Oatmeal with banana,150,1 cup,3,27,5,5,8,30,1.5,200,4
+Monday,Snack,Carrot sticks with hummus,100,1 cup,4,15,3,3,5,50,0.5,250,4
+Monday,Lunch,Grilled chicken salad with spinach,300,1 plate,10,10,2,30,20,100,2,400,5
+Monday,Snack,Pineapple slices,80,1 cup,0,21,16,1,2,20,0.5,180,2
+Monday,Dinner,Steamed beans with sweet potatoes,250,1 cup,1,45,5,10,15,60,3,300,8
+Total Calories for Monday, , ,880, , , , , , , , , ,
+
+Tuesday,Breakfast,Smoothie with spinach and mango,200,1 glass,2,40,30,5,10,50,1.5,300,5
+Tuesday,Snack,Apple slices,95,1 medium,0,25,19,0,2,10,0.3,150,4
+Tuesday,Lunch,Cabbage and carrot stir-fry with beans,250,1 plate,5,40,5,10,15,80,2,350,6
+Tuesday,Snack,Orange,62,1 medium,0,15,12,1,3,50,0.1,250,3
+Tuesday,Dinner,Grilled fish with zucchini,300,1 plate,15,10,0,35,20,150,1.5,400,4
+Total Calories for Tuesday, , ,907, , , , , , , , , ,
+
+Wednesday,Breakfast,Yogurt alternative with passion fruit,150,1 cup,5,20,15,5,10,100,0.5,200,3
+Wednesday,Snack,Cucumber slices,16,1 cup,0,4,2,1,1,20,0.1,100,1
+Wednesday,Lunch,Maize porridge with beans,250,1 bowl,2,45,5,10,15,60,2,300,5
+Wednesday,Snack,Banana,105,1 medium,0,27,14,1,3,6,0.3,400,3
+Wednesday,Dinner,Roasted pumpkin with garlic,200,1 cup,4,40,5,5,10,50,1.5,250,4
+Total Calories for Wednesday, , ,721, , , , , , , , , ,
+
+Thursday,Breakfast,Chia pudding with mango,180,1 cup,5,30,20,5,10,50,1,200,5
+Thursday,Snack,Tomato slices,22,1 medium,0,5,3,1,1,10,0.2,100,1
+Thursday,Lunch,Vegetable soup with beans,250,1 bowl,3,40,5,10,15,80,2,300,6
+Thursday,Snack,Pineapple chunks,80,1 cup,0,21,16,1,2,20,0.5,180,2
+Thursday,Dinner,Grilled chicken with green beans,300,1 plate,10,10,2,30,20,100,2,400,5
+Total Calories for Thursday, , ,832, , , , , , , , , ,
+
+Friday,Breakfast,Oatmeal with apple,150,1 cup,3,27,5,5,8,30,1.5,200,4
+Friday,Snack,Carrot sticks,50,1 cup,0,12,6,1,2,20,0.5,150,2
+Friday,Lunch,Quinoa salad with vegetables,300,1 plate,5,45,5,10,15,80,2,350,6
+Friday,Snack,Orange,62,1 medium,0,15,12,1,3,50,0.1,250,3
+Friday,Dinner,Steamed fish with sweet potatoes,250,1 plate,10,40,5,25,20,100,2,400,5
+Total Calories for Friday, , ,812, , , , , , , , , ,
+
+Saturday,Breakfast,Smoothie with spinach and banana,200,1 glass,2,40,30,5,10,50,1.5,300,5
+Saturday,Snack,Apple slices,95,1 medium,0,25,19,0,2,10,0.3,150,4
+Saturday,Lunch,Cabbage salad with beans,250,1 plate,5,40,5,10,15,80,2,350,6
+Saturday,Snack,Pineapple slices,80,1 cup,0,21,16,1,2,20,0.5,180,2
+Saturday,Dinner,Roasted chicken with vegetables,300,1 plate,15,10,0,35,20,150,1.5,400,4
+Total Calories for Saturday, , ,925, , , , , , , , , ,
+
+Sunday,Breakfast,Yogurt alternative with banana,150,1 cup,5,20,15,5,10,100,0.5,200,3
+Sunday,Snack,Cucumber slices,16,1 cup,0,4,2,1,1,20,0.1,100,1
+Sunday,Lunch,Maize porridge with beans,250,1 bowl,2,45,5,10,15,60,2,300,5
+Sunday,Snack,Banana,105,1 medium,0,27,14,1,3,6,0.3,400,3
+Sunday,Dinner,Vegetable stir-fry with chicken,300,1 plate,10,10,2,30,20,100,2,400,5
+Total Calories for Sunday, , ,821, , , , , , , , , ,

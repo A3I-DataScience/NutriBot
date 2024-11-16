@@ -1,0 +1,44 @@
+
+Day,Meal,Food,Calories,Serving Size,Fats (g),Carbohydrates (g),Sugars (g),Proteins (g),Calcium (%DV),Iron (%DV),Potassium (%DV),Fiber (g)
+Monday,Breakfast,Oatmeal with Strawberries,300,1 cup,5,54,10,10,2,6,6,8
+Monday,Snack,Apple,95,1 medium,0,25,19,0,1,1,4,4
+Monday,Lunch,Grilled Chicken Salad with Spinach and Avocado,400,1 plate,20,10,2,40,4,10,15,8
+Monday,Snack,Almonds,160,30g,14,6,1,6,8,6,5,3
+Monday,Dinner,Baked Barramundi with Sweet Potatoes and Broccoli,450,1 fillet + 1 cup,15,40,5,35,2,8,20,6
+Monday,Total Calories,,"1405",,,,,"",,,,
+Tuesday,Breakfast,Smoothie with Kiwi, Spinach, and Almond Milk,250,1 glass,5,40,20,5,2,4,8,5
+Tuesday,Snack,Orange,62,1 medium,0,15,12,1,5,2,5,3
+Tuesday,Lunch,Lentil Soup with Carrots and Zucchini,350,1 bowl,5,60,5,20,4,15,10,8
+Tuesday,Snack,Walnuts,200,30g,18,4,1,5,2,4,5,2
+Tuesday,Dinner,Stir-fried Chicken with Peas and Cauliflower,450,1 plate,15,30,4,40,2,10,15,5
+Tuesday,Total Calories,,"1312",,,,,"",,,,
+Wednesday,Breakfast,Egg and Spinach Breakfast Wrap,300,1 wrap,10,30,2,20,4,8,10,4
+Wednesday,Snack,Strawberries,50,1 cup,0,12,7,1,1,1,5,3
+Wednesday,Lunch,Quinoa Salad with Avocado and Tomatoes,400,1 plate,15,50,5,10,2,6,15,6
+Wednesday,Snack,Apple,95,1 medium,0,25,19,0,1,1,4,4
+Wednesday,Dinner,Grilled Fish with Sweet Potatoes and Broccoli,450,1 fillet + 1 cup,15,40,5,35,2,8,20,6
+Wednesday,Total Calories,,"1295",,,,,"",,,,
+Thursday,Breakfast,Oatmeal with Cherries,300,1 cup,5,54,10,10,2,6,6,8
+Thursday,Snack,Kiwi,42,1 medium,0,10,8,1,1,1,4,2
+Thursday,Lunch,Chicken and Vegetable Stir-fry,400,1 plate,15,30,4,40,2,10,15,5
+Thursday,Snack,Almonds,160,30g,14,6,1,6,8,6,5,3
+Thursday,Dinner,Lentil and Sweet Potato Stew,450,1 bowl,5,60,5,20,4,15,10,8
+Thursday,Total Calories,,"1302",,,,,"",,,,
+Friday,Breakfast,Smoothie with Spinach and Banana,250,1 glass,5,40,20,5,2,4,8,5
+Friday,Snack,Orange,62,1 medium,0,15,12,1,5,2,5,3
+Friday,Lunch,Grilled Chicken Salad with Avocado and Tomatoes,400,1 plate,20,10,2,40,4,10,15,8
+Friday,Snack,Walnuts,200,30g,18,4,1,5,2,4,5,2
+Friday,Dinner,Baked Barramundi with Broccoli and Quinoa,450,1 fillet + 1 cup,15,40,5,35,2,8,20,6
+Friday,Total Calories,,"1362",,,,,"",,,,
+Saturday,Breakfast,Egg and Spinach Breakfast Wrap,300,1 wrap,10,30,2,20,4,8,10,4
+Saturday,Snack,Strawberries,50,1 cup,0,12,7,1,1,1,5,3
+Saturday,Lunch,Lentil Soup with Carrots and Zucchini,350,1 bowl,5,60,5,20,4,15,10,8
+Saturday,Snack,Apple,95,1 medium,0,25,19,0,1,1,4,4
+Saturday,Dinner,Grilled Fish with Sweet Potatoes and Broccoli,450,1 fillet + 1 cup,15,40,5,35,2,8,20,6
+Saturday,Total Calories,,"1295",,,,,"",,,,
+Sunday,Breakfast,Oatmeal with Strawberries,300,1 cup,5,54,10,10,2,6,6,8
+Sunday,Snack,Kiwi,42,1 medium,0,10,8,1,1,1,4,2
+Sunday,Lunch,Quinoa Salad with Avocado and Tomatoes,400,1 plate,15,50,5,10,2,6,15,6
+Sunday,Snack,Almonds,160,30g,14,6,1,6,8,6,5,3
+Sunday,Dinner,Lentil and Sweet Potato Stew,450,1 bowl,5,60,5,20,4,15,10,8
+Sunday,Total Calories,,"1352",,,,,"",,,,
