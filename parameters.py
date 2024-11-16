@@ -36,28 +36,28 @@ predefined_profiles = {
         "weight": 73,
         "country": "Switzerland",
     },
-    "Kim": {
+    "male_6": {
         "gender": "male",
         "age": 70,
         "size": 155,
         "weight": 59,
         "country": "Korea, Republic of",
     },
-    "Mia": {
+    "female_4": {
         "gender": "female",
         "age": 27,
         "size": 168,
         "weight": 70,
         "country": "Antartica",
     },
-    "Ahmad": {
+    "male_7": {
         "gender": "male",
         "age": 21,
         "size": 178,
         "weight": 80,
         "country": "Egypt",
     },
-    "Cherry": {
+    "female_5": {
         "gender": "female",
         "age": 33,
         "size": 169,
