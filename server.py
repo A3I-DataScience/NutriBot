@@ -39,9 +39,10 @@ def download():
     if len(csvs) > 0:
 
         path = csvs[-1]
-        # for file in csvs[:-1]:
-        #    os.remove(file)
+        for file in csvs[:-1]:
+            os.remove(file)
         return send_file(path, as_attachment=True)
+
 
 # Define the route for processing messages
 @app.route("/process-message", methods=["POST"])
@@ -76,7 +77,7 @@ def process_message_route():
     print("user_message", user_message)
 
     bot_response = worker.process_prompt(
-        user_message,first_message
+        user_message, first_message
     )  # Process the user's message using the worker module
     first_message = False
     # Return the bot's response as JSON
