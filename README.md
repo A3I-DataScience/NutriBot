@@ -48,6 +48,10 @@ Power of the message and ability to convince the jury.
 * Antonio, is a male person of 39 years old living in spain, who has a sedentary job and is interested in improving his diet.
 * Ivo, is a young male of 27 years old living in Lebanon, who is interested in improving his diet to improve his weight lifting performances.
 * Paula, is a female of 55 years living in Chile who would like to lose a bit of weight.
+* Kim lives in South Korea (Korea, Republic of). He is 70, weighs 59kg and is 155cm tall. He has Cancer and is undergoing Chemo. He also suffered a heart attack.He has been prescribed blood thinners and multi-vitamins. He consumes alcohol regularly. He updated the meal plan to have Soju on weekends.
+* Mia lives in Antartica. She is 27, weighs 70kg and is 168cm tall. She is in the first trimester of her pregnancy and has low haemoglobin. She enjoys walking. She is vegan with no social habits.She asked for a protein and iron rich meal.
+* Ahmad is from Egypt. He is 21, weighs 80kg and is 178cm tall. He has Celiac disease and is a swimmer and feels hungry quite often.
+* Cherry is from Republic of Moldova. She is 33, weighs 46kg and is 169cm tall. She wants to improve her weight and strength. She practices Yoga. She has nut allergy.
 
 
 ## Data sets:
@@ -107,9 +111,3 @@ export OPENAI_API_KEY="your_api_key_here"
 ```
 flask --app server.py --debug run
 ```
-
-### Sample Profiles
-1. Kim lives in South Korea. He is 70, weighs 59kg and is 155cm tall. He has Cancer and is undergoing Chemo. He also suffered a heart attack.He has been prescribed blood thinners and multi-vitamins. He consumes alcohol regularly. He updated the meal plan to have Soju on weekends.
-2. Mia lives in Antartica. She is 27, weighs 70kg and is 168cm tall. She is in the first trimester of her pregnancy and has low haemoglobin. She enjoys walking. She is vegan with no social habits.She asked for a protein and iron rich meal.
-3. Ahmad is from Egypt. He is 21, weighs 80kg and is 178cm tall. He has Celiac disease and is a swimmer and feels hungry quite often.
-4. Cherry is from Republic of Moldova. She is 33, weighs 46kg and is 169cm tall. She wants to improve her weight and strength. She practices Yoga. She has nut allergy.
