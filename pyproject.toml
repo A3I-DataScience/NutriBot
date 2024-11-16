@@ -23,9 +23,7 @@ dependencies = [
     "pandas>=2.2.3",
     "pdf2image>=1.17.0",
     "pypdf>=5.1.0",
-    "sentence-transformers==2.2.2",
     "tiktoken>=0.8.0",
-    "torch>=2.5.1",
 ]
 
 [tool.isort]
