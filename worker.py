@@ -9,7 +9,6 @@ from uuid import uuid4
 import bs4
 import chromadb
 import pandas as pd
-import torch
 from langchain.chains import create_history_aware_retriever
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
@@ -33,7 +32,6 @@ from data.country_list import country_list
 # from langchain.chains import LLMChain, SimpleSequentialChain
 
 # Check for GPU availability and set the appropriate device for computation.
-DEVICE = "cuda:0" if torch.cuda.is_available() else "cpu"
 
 # Global variables
 conversational_rag_chain = None
@@ -59,28 +57,38 @@ def init_chroma_vector_store(embeddings):
     global vector_store_from_client
 
     persistent_client = chromadb.PersistentClient(path="./data/chroma_db/chroma_langchain_db")
-
-    try:
-        persistent_client.get_collection("nutribot_collection")
-    except:
-        persistent_client.get_or_create_collection("nutribot_collection")
+    collection = persistent_client.get_or_create_collection("nutribot_collection")
+    embedding_function = OpenAIEmbeddings(chunk_size=chunk_size, model=embedding_model_name)
+    if collection.count() == 0:
         documents = process_local_documents()
-        texts = split_documents(documents=documents, chunk_size=chunk_size)
+        documents_splitted = split_documents(documents=documents, chunk_size=chunk_size)
 
-        # Create an embeddings database using Chroma from the split text chunks.
-        embeddings = OpenAIEmbeddings(chunk_size=chunk_size, model=embedding_model_name)
+        texts, ids, metadatas = [], [], []
+        for i, document in enumerate(documents_splitted):
+            texts.append(document.page_content)
+            metadatas.append(document.metadata)
+            ids.append(str(i))
 
-        Chroma.from_documents(
-            texts,
-            embedding=embeddings,
-            collection_name="nutribot_collection",
-            persist_directory="./data/chroma_db/chroma_langchain_db",
-        )
+        print("embedding documents...")
+        embeddings = embedding_function.embed_documents(texts)
+
+        max_batch_size = 5461
+        current_batch_min, current_batch_max = 0, 5461
+        while current_batch_min < len(texts):
+            print(f"adding documents {current_batch_min} to {current_batch_max}...")
+            collection.add(
+                documents=texts[current_batch_min:current_batch_max],
+                embeddings=embeddings[current_batch_min:current_batch_max],
+                metadatas=metadatas[current_batch_min:current_batch_max],
+                ids=ids[current_batch_min:current_batch_max],
+            )
+            current_batch_min += max_batch_size
+            current_batch_max += max_batch_size
 
     vector_store_from_client = Chroma(
         client=persistent_client,
         collection_name="nutribot_collection",
-        embedding_function=embeddings,
+        embedding_function=embedding_function,
     )
 
 
