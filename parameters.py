@@ -6,7 +6,6 @@ predefined_profiles = {
         "size": 165,
         "weight": 50,
         "country": "Mexico",
-
     },
     "male_2": {"gender": "male", "age": 65, "size": 180, "weight": 70, "country": "China"},
     "female_2": {
@@ -36,5 +35,33 @@ predefined_profiles = {
         "size": 175,
         "weight": 73,
         "country": "Switzerland",
+    },
+    "male_6": {
+        "gender": "male",
+        "age": 70,
+        "size": 155,
+        "weight": 59,
+        "country": "Korea, Republic of",
+    },
+    "female_4": {
+        "gender": "female",
+        "age": 27,
+        "size": 168,
+        "weight": 70,
+        "country": "Antartica",
+    },
+    "male_7": {
+        "gender": "male",
+        "age": 21,
+        "size": 178,
+        "weight": 80,
+        "country": "Egypt",
+    },
+    "female_5": {
+        "gender": "female",
+        "age": 33,
+        "size": 169,
+        "weight": 46,
+        "country": "Moldova, Republic of",
     },
 }

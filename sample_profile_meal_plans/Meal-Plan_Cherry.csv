@@ -1,0 +1,44 @@
+csv
+Day,Meal,Food,Calories,Serving Size,Fats (g),Carbohydrates (g),Sugars (g),Proteins (g),Percent Daily Value (%),Calcium (mg),Iron (mg),Potassium (mg),Fiber (g)
+Monday,Breakfast,Oatmeal with apples and milk,350,1 cup,6,60,10,12,20,200,1.5,300,5
+Monday,Snack,Yogurt with grapes,150,1 cup,4,20,15,8,10,150,0.5,200,1
+Monday,Lunch,Grilled chicken with potatoes and spinach,500,150g chicken,15,45,5,40,30,300,2,600,6
+Monday,Snack,Cheese with bread,200,50g cheese + 1 slice bread,10,25,2,10,15,200,0.5,150,1
+Monday,Dinner,Pork stew with carrots and cabbage,600,200g pork,20,50,8,45,25,250,3,500,4
+Total Calories for Monday,,,"1900",,,,,"",,,,,
+Tuesday,Breakfast,Scrambled eggs with tomatoes,300,2 eggs + 1 tomato,20,5,3,20,15,100,1,250,0
+Tuesday,Snack,Apple slices with cheese,200,1 apple + 30g cheese,10,30,5,10,10,150,0.5,200,2
+Tuesday,Lunch,Fish with pumpkin and broccoli,450,150g fish,15,40,4,35,25,250,2,400,5
+Tuesday,Snack,Yogurt with plums,150,1 cup,4,20,15,8,10,150,0.5,200,1
+Tuesday,Dinner,Stuffed bell peppers with rice,500,2 peppers,10,60,8,20,20,200,2,300,4
+Total Calories for Tuesday,,,"1800",,,,,"",,,,,
+Wednesday,Breakfast,Oatmeal with pears,350,1 cup,6,60,10,12,20,200,1.5,300,5
+Wednesday,Snack,Grapes,100,1 cup,0,25,15,1,5,100,0.5,150,1
+Wednesday,Lunch,Grilled chicken salad with cabbage,450,150g chicken,15,30,5,40,30,300,2,600,6
+Wednesday,Snack,Cheese with bread,200,50g cheese + 1 slice bread,10,25,2,10,15,200,0.5,150,1
+Wednesday,Dinner,Pork with beets and potatoes,600,200g pork,20,50,8,45,25,250,3,500,4
+Total Calories for Wednesday,,,"1800",,,,,"",,,,,
+Thursday,Breakfast,Smoothie with spinach and banana,300,1 cup,5,50,15,5,10,150,0.5,200,2
+Thursday,Snack,Yogurt with apples,150,1 cup,4,20,15,8,10,150,0.5,200,1
+Thursday,Lunch,Fish with zucchini and carrots,450,150g fish,15,40,4,35,25,250,2,400,5
+Thursday,Snack,Plum slices,100,1 cup,0,25,15,1,5,100,0.5,150,1
+Thursday,Dinner,Stuffed cabbage rolls,600,3 rolls,20,50,8,45,25,250,3,500,4
+Total Calories for Thursday,,,"1700",,,,,"",,,,,
+Friday,Breakfast,Oatmeal with pumpkin,350,1 cup,6,60,10,12,20,200,1.5,300,5
+Friday,Snack,Grapes,100,1 cup,0,25,15,1,5,100,0.5,150,1
+Friday,Lunch,Grilled chicken with broccoli and rice,500,150g chicken,15,45,5,40,30,300,2,600,6
+Friday,Snack,Cheese with bread,200,50g cheese + 1 slice bread,10,25,2,10,15,200,0.5,150,1
+Friday,Dinner,Pork with carrots and potatoes,600,200g pork,20,50,8,45,25,250,3,500,4
+Total Calories for Friday,,,"1850",,,,,"",,,,,
+Saturday,Breakfast,Scrambled eggs with spinach,300,2 eggs + 1 cup spinach,20,5,3,20,15,100,1,250,0
+Saturday,Snack,Yogurt with plums,150,1 cup,4,20,15,8,10,150,0.5,200,1
+Saturday,Lunch,Fish with pumpkin and cabbage,450,150g fish,15,40,4,35,25,250,2,400,5
+Saturday,Snack,Apple slices with cheese,200,1 apple + 30g cheese,10,30,5,10,10,150,0.5,200,2
+Saturday,Dinner,Stuffed bell peppers with rice,500,2 peppers,10,60,8,20,20,200,2,300,4
+Total Calories for Saturday,,,"1850",,,,,"",,,,,
+Sunday,Breakfast,Oatmeal with apples,350,1 cup,6,60,10,12,20,200,1.5,300,5
+Sunday,Snack,Grapes,100,1 cup,0,25,15,1,5,100,0.5,150,1
+Sunday,Lunch,Grilled chicken with potatoes and spinach,500,150g chicken,15,45,5,40,30,300,2,600,6
+Sunday,Snack,Cheese with bread,200,50g cheese + 1 slice bread,10,25,2,10,15,200,0.5,150,1
+Sunday,Dinner,Pork stew with carrots and cabbage,600,200g pork,20,50,8,45,25,250,3,500,4
+Total Calories for Sunday,,,"1850",,,,,"",,,,,
