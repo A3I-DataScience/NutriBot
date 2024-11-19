@@ -128,7 +128,6 @@ const populateBotResponse = async (userMessage) => {
   if (isFirstMessage) {
 
     response = { botResponse: "Hello there! I'm CocinEco: an AI assistant that will help you elaborate sustainable meal plans. I will ask you a few questions to understand you better and provide you with personalized nutrition advice. Let's get started! ok?" };
-
     renderBotResponse(response);
     isFirstMessage = false;
     return;
@@ -266,4 +265,3 @@ $("#country-options").change(function () {
     optionChanges["Country"] = countryOption;
     updateSendButtonState();
 });
-

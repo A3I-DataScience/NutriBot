@@ -1,0 +1,36 @@
+
+Day,Meal,Food,Calories,Protein (g),Carbs (g),Fat (g)
+Monday,Breakfast,Oatmeal with Apples and Cinnamon,300,8,54,6
+Monday,Lunch,Grilled Chicken Salad with Spinach and Olive Oil,450,35,10,25
+Monday,Dinner,Baked Salmon with Sweet Potatoes and Broccoli,500,40,40,20
+Monday,Snack,Yogurt with Pomegranate,150,5,30,2
+
+Tuesday,Breakfast,Smoothie with Oranges, Spinach, and Banana,350,5,70,5
+Tuesday,Lunch,Quinoa Salad with Red Bell Peppers and Chickpeas,400,15,60,10
+Tuesday,Dinner,Stuffed Zucchini with Ground Turkey and Cheese,550,45,30,25
+Tuesday,Snack,Carrot Sticks with Hummus,200,5,30,8
+
+Wednesday,Breakfast,Whole Grain Toast with Avocado and Eggs,400,20,30,20
+Wednesday,Lunch,Vegetable Stir-Fry with Tofu and Brown Rice,450,20,60,15
+Wednesday,Dinner,Grilled Shrimp with Garlic and Brussels Sprouts,500,35,40,20
+Wednesday,Snack,Chestnuts,200,5,40,2
+
+Thursday,Breakfast,Greek Yogurt with Figs and Honey,300,15,40,5
+Thursday,Lunch,Chicken and Vegetable Soup,400,30,40,10
+Thursday,Dinner,Roasted Pork with Cauliflower Mash,550,45,30,25
+Thursday,Snack,Apple Slices with Almond Butter,200,5,30,10
+
+Friday,Breakfast,Smoothie Bowl with Berries and Nuts,350,10,50,15
+Friday,Lunch,Spinach and Feta Stuffed Peppers,450,20,40,20
+Friday,Dinner,Grilled Mackerel with Pumpkin and Green Beans,500,40,40,20
+Friday,Snack,Orange Segments,100,2,25,0
+
+Saturday,Breakfast,Pancakes with Maple Syrup and Pears,400,8,70,10
+Saturday,Lunch,Chickpea Salad with Cabbage and Carrots,400,15,60,10
+Saturday,Dinner,Lentil Stew with Mushrooms and Kale,500,30,70,10
+Saturday,Snack,Yogurt with Honey and Nuts,200,10,30,8
+
+Sunday,Breakfast,Chia Pudding with Grapes and Almonds,350,10,50,15
+Sunday,Lunch,Grilled Vegetable and Quinoa Bowl,450,15,60,10
+Sunday,Dinner,Roasted Chicken with Potatoes and Spinach,500,40,40,20
+Sunday,Snack,Pomegranate Seeds,100,2,25,0
