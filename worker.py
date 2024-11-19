@@ -57,7 +57,7 @@ def init_chroma_vector_store(embeddings):
     global vector_store_from_client
 
     persistent_client = chromadb.PersistentClient(path="./data/chroma_db/chroma_langchain_db")
-    collection = persistent_client.get_or_create_collection("nutribot_collection")
+    collection = persistent_client.get_or_create_collection("cocineco_collection")
     embedding_function = OpenAIEmbeddings(chunk_size=chunk_size, model=embedding_model_name)
     if collection.count() == 0:
         documents = process_local_documents()
@@ -87,7 +87,7 @@ def init_chroma_vector_store(embeddings):
 
     vector_store_from_client = Chroma(
         client=persistent_client,
-        collection_name="nutribot_collection",
+        collection_name="cocineco_collection",
         embedding_function=embedding_function,
     )
 
@@ -381,93 +381,6 @@ def process_new_profile(user_informations):
         history_messages_key="chat_history",
         output_messages_key="answer",
     )
-
-
-# def process_document(documents, user_informations):
-
-#     global conversational_rag_chain
-
-
-#     # Split the document into chunks
-
-#     texts = split_documents(documents =  documents, chunk_size = chunk_size)
-
-#     # Create an embeddings database using Chroma from the split text chunks.
-#     vectorstore = load_embeddings(texts, embedding_model_name,chunk_size)
-
-#     retriever = vectorstore.as_retriever()
-
-#     ### Contextualize question ###
-#     contextualize_q_system_prompt = """Given a chat history and the latest user question \
-#     which might reference context in the chat history, formulate a standalone question \
-#     which can be understood without the chat history. Do NOT answer the question, \
-#     just reformulate it if needed and otherwise return it as is."""
-#     contextualize_q_prompt = ChatPromptTemplate.from_messages(
-#         [
-#             ("system", contextualize_q_system_prompt),
-#             MessagesPlaceholder("chat_history"),
-#             ("human", "{input}"),
-#         ]
-#     )
-
-#     history_aware_retriever = create_history_aware_retriever(llm, retriever, contextualize_q_prompt)
-#     today = datetime.date.today().strftime("%Y-%m-%d")
-#     ### Answer question ###
-#     qa_system_prompt = (
-#         "You are a Nutrition assistant for question-answering tasks."
-#         + f"The date is {today}. "
-#         + f"You are speaking to a  user of {user_informations['gender']} gender, of {user_informations['age']}years of age,"
-#         + f"with a size of {user_informations['size']}  cm and a weight of {user_informations['weight']}  kg from the country {user_informations['country']}."
-#         + "you need to help this person with their diet."
-#         +"Using the information contained in the context,"
-#         + "you will initially ask one after the other, 3 questions to the end user about their health"
-#         + "if someone doesn't answer one of your question, you will re-ask it up to 3 times."
-#         + "then you will ask them if they have particular allergies, intolerences or food preferences."
-#         +"After that, using the information contained in the context"
-#         +"you will identify 25 ingredients produced in the country of the user and available in this season"
-#         +" you will ask the user if these ingredients are ok for them to eat."
-#         + "After that, Using the information contained in the context,"
-#         + "you will produce a 1 week meal plan in a csv format between triple quote marks that is optimised for the user health and "
-#         +" that is based on the previous ingredients"
-#         + "the 1 week meal plan should contain the calories of each meal along with amount of nutrients"
-#         + "you will not use expressions such as 'season vegetables' or 'season fruits' but instead you will use the names"
-#         + " of the fruits and vegetables to eat in this season and in this country"
-#         + "also suggest some exercises to go with the meal plan"
-#         + "also optimised to maximise the consumption of locally produced food and of seasonal products."
-#         + "You will then ask the user if their is something you should correct in this plan."
-#         + "If necessary you will correct this plan and re-submit it to the user."
-#         + "Finally you will produce a csv file containing the final meal plan."
-#         + "If you are asked questions about anything else but health, nutrition, agriculture, food or diet, you will answer that you don't know."
-#         + """If you don't know the answer, just say that you don't know. \
-
-#     {context}"""
-#     )
-#     qa_prompt = ChatPromptTemplate.from_messages(
-#         [
-#             ("system", qa_system_prompt),
-#             MessagesPlaceholder("chat_history"),
-#             ("human", "{input}"),
-#         ]
-#     )
-#     question_answer_chain = create_stuff_documents_chain(llm, qa_prompt)
-
-#     rag_chain = create_retrieval_chain(history_aware_retriever, question_answer_chain)
-
-#     ### Statefully manage chat history ###
-#     store = {}
-
-#     def get_session_history(session_id: str) -> BaseChatMessageHistory:
-#         if session_id not in store:
-#             store[session_id] = ChatMessageHistory()
-#         return store[session_id]
-
-#     conversational_rag_chain = RunnableWithMessageHistory(
-#         rag_chain,
-#         get_session_history,
-#         input_messages_key="input",
-#         history_messages_key="chat_history",
-#         output_messages_key="answer",
-#     )
 
 
 # Function to process a user prompt

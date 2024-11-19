@@ -126,12 +126,12 @@ const populateBotResponse = async (userMessage) => {
   let response;
 
   if (isFirstMessage) {
-    response = { botResponse: "Hello there! I'm NutriBot your nutrition assistant. I will ask you a few questions to understand you better and provide you with personalized nutrition advice. Let's get started! ok?" };
-    
+
+    response = { botResponse: "Hello there! I'm CocinEco: an AI assistant that will help you elaborate sustainable meal plans. I will ask you a few questions to understand you better and provide you with personalized nutrition advice. Let's get started! ok?" };
+
     renderBotResponse(response);
     isFirstMessage = false;
     return;
-  }
 
   // Generate a message for the changed options, if any
   if (Object.keys(optionChanges).length > 0) {
