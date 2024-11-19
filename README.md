@@ -15,34 +15,6 @@ The objective of this challenge is to develop a model and an application using g
 
 Projects will be evaluated based on the effectiveness of the model in creating balanced diets, innovation in the use of generative AI, the usability of the developed application and the clarity of the presentation of results. It is recommended to use the following data sets: Apparent Intake (based on household consumption and expenditure surveys) and Suite of Food Security Indicators 2.
 
-## Evaluation
-
-You will have a maximum of 20 minutes to present your project, followed by a round of questions from the jury.
-
-### Evaluation Criteria
-
-These are the points on which the evaluation of your project will be based:
-
-#### Quality of the Technical Solution (up to 40 points)
-
-Innovation in the solution and approach to address the sustainability problem.
-Feasibility and scalability of the solution in the real world.
-Coverage of the complete data cycle: collection, analysis, integration and generation of insights.
-Implementation of Machine Learning & AI.
-
-#### Business Impact (up to 40 points)Can 
-
-Relevance and applicability of the solution for the sustainability sector and its recipients.
-Ability to solve the problem in practice and potential to improve processes.
-User Experience (UX) focused on ease of use, clarity in presentation of results and applicability.
-Process improvement through technology and data for sustainable optimization.
-
-#### Presentation and Defense (up to 20 points)
-
-Quality and originality of the presentation and clarity of the message.
-Clarity and effectiveness in the visualization of results.
-Power of the message and ability to convince the jury.
-
 ## Predefined profiles
 
 * Antonio, is a male person of 39 years old living in spain, who has a sedentary job and is interested in improving his diet.
