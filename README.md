@@ -52,6 +52,7 @@ Projects will be evaluated based on the effectiveness of the model in creating b
 * https://huggingface.co/learn/cookbook/en/rag_evaluation
 * https://cameronrwolfe.substack.com/p/a-practitioners-guide-to-retrieval?utm_source=profile&utm_medium=reader2
 * https://github.com/langchain-ai/rag-from-scratch
+* https://www.coursera.org/learn/building-gen-ai-powered-applications/
 
 ## Quickstart
 
