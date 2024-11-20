@@ -267,5 +267,3 @@ $("#country-options").change(function () {
     updateSendButtonState();
 });
 
-
-});
